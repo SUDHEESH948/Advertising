@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import {
   ArrowRight,
   CheckCircle2,
-  Instagram,
   Mail,
   MapPin,
   Phone,
@@ -61,7 +60,9 @@ export default function ContactFooter() {
         />
 
         <div className="relative mx-auto max-w-7xl">
-          {/* Contact Content */}
+          {/* =====================================================
+              CONTACT CONTENT
+          ====================================================== */}
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
             {/* LEFT CONTENT */}
             <motion.div
@@ -70,6 +71,7 @@ export default function ContactFooter() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7 }}
             >
+              {/* Section Label */}
               <div className="flex items-center gap-3">
                 <span className="h-[2px] w-8 bg-[#D1007F]" />
 
@@ -78,6 +80,7 @@ export default function ContactFooter() {
                 </p>
               </div>
 
+              {/* Heading */}
               <h2
                 className="
                   mt-6 text-5xl font-black leading-[0.9]
@@ -98,7 +101,9 @@ export default function ContactFooter() {
                 campaign.
               </p>
 
-              {/* Contact Details */}
+              {/* =====================================================
+                  CONTACT DETAILS
+              ====================================================== */}
               <div className="mt-10 space-y-4">
                 {/* Phone */}
                 <a
@@ -198,11 +203,14 @@ export default function ContactFooter() {
                 "
               >
                 Chat on WhatsApp
+
                 <ArrowRight size={15} />
               </a>
             </motion.div>
 
-            {/* FORM */}
+            {/* =====================================================
+                FORM
+            ====================================================== */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -252,6 +260,7 @@ export default function ContactFooter() {
                 </div>
               ) : (
                 <form onSubmit={submitForm}>
+                  {/* Form Header */}
                   <div className="mb-8">
                     <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#D1007F]">
                       Request a Quote
@@ -267,6 +276,7 @@ export default function ContactFooter() {
                     </p>
                   </div>
 
+                  {/* Inputs */}
                   <div className="grid gap-4 sm:grid-cols-2">
                     <input
                       required
@@ -303,6 +313,7 @@ export default function ContactFooter() {
                       <option value="" disabled>
                         Select Advertising Service
                       </option>
+
                       <option>Hoarding</option>
                       <option>Mini Hoarding</option>
                       <option>Moving Media</option>
@@ -332,6 +343,7 @@ export default function ContactFooter() {
                     />
                   </div>
 
+                  {/* Submit */}
                   <button
                     type="submit"
                     className="
@@ -357,7 +369,9 @@ export default function ContactFooter() {
             </motion.div>
           </div>
 
-          {/* FINAL CTA */}
+          {/* =====================================================
+              FINAL CTA
+          ====================================================== */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -456,7 +470,11 @@ export default function ContactFooter() {
                 powerful advertising and media solutions.
               </p>
 
-              {/* SOCIAL */}
+              {/* =====================================================
+                  SOCIAL ICONS
+                  Inline SVGs are used instead of lucide-react
+                  social icons for maximum Vercel compatibility.
+              ====================================================== */}
               <div className="mt-6 flex gap-2">
                 {/* Instagram */}
                 <a
@@ -470,7 +488,26 @@ export default function ContactFooter() {
                     hover:bg-[#D1007F] hover:text-white
                   "
                 >
-                  <Instagram size={16} />
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="h-5 w-5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle
+                      cx="17.5"
+                      cy="6.5"
+                      r="1"
+                      fill="currentColor"
+                      stroke="none"
+                    />
+                  </svg>
                 </a>
 
                 {/* Facebook */}
@@ -480,16 +517,22 @@ export default function ContactFooter() {
                   className="
                     flex h-10 w-10 items-center justify-center
                     rounded-full border border-[#F3B4D8]
-                    bg-[#FFF3F9] text-sm font-black
-                    text-[#D1007F]
+                    bg-[#FFF3F9] text-[#D1007F]
                     transition-all hover:border-[#D1007F]
                     hover:bg-[#D1007F] hover:text-white
                   "
                 >
-                  f
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="h-5 w-5"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.7V4a22 22 0 0 0-2.4-.1c-2.4 0-4 1.5-4 4.1V10H8v3h2.4v8h3.1Z" />
+                  </svg>
                 </a>
 
-                {/* YouTube - Inline SVG */}
+                {/* YouTube */}
                 <a
                   href="#"
                   aria-label="YouTube"
@@ -503,7 +546,7 @@ export default function ContactFooter() {
                 >
                   <svg
                     viewBox="0 0 24 24"
-                    className="h-4 w-4"
+                    className="h-5 w-5"
                     fill="currentColor"
                     aria-hidden="true"
                   >
