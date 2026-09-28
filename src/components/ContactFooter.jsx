@@ -12,9 +12,6 @@ import {
   Sparkles,
 } from "lucide-react";
 
-const PRIMARY = "#D1007F";
-const HOVER = "#F2299A";
-
 export default function ContactFooter() {
   const [submitted, setSubmitted] = useState(false);
 
@@ -42,55 +39,29 @@ export default function ContactFooter() {
       <section
         id="contact"
         className="
-          relative
-          overflow-hidden
-          bg-white
-          px-5
-          py-24
-          text-[#1A1A1A]
-          sm:px-6
-          md:px-10
-          lg:px-16
-          lg:py-32
+          relative overflow-hidden bg-white px-5 py-24
+          text-[#1A1A1A] sm:px-6 md:px-10 lg:px-16 lg:py-32
         "
       >
         {/* Background Effects */}
         <div
           className="
-            pointer-events-none
-            absolute
-            left-1/2
-            top-1/2
-            h-[420px]
-            w-[420px]
-            -translate-x-1/2
-            -translate-y-1/2
-            rounded-full
-            bg-[#D1007F]/5
-            blur-[130px]
-            md:h-[600px]
-            md:w-[600px]
+            pointer-events-none absolute left-1/2 top-1/2
+            h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2
+            rounded-full bg-[#D1007F]/5 blur-[130px]
+            md:h-[600px] md:w-[600px]
           "
         />
 
         <div
           className="
-            pointer-events-none
-            absolute
-            -bottom-40
-            -left-40
-            h-96
-            w-96
-            rounded-full
-            bg-[#F2299A]/5
-            blur-[120px]
+            pointer-events-none absolute -bottom-40 -left-40
+            h-96 w-96 rounded-full bg-[#F2299A]/5 blur-[120px]
           "
         />
 
         <div className="relative mx-auto max-w-7xl">
-          {/* =====================================================
-              CONTACT CONTENT
-          ====================================================== */}
+          {/* Contact Content */}
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
             {/* LEFT CONTENT */}
             <motion.div
@@ -99,7 +70,6 @@ export default function ContactFooter() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7 }}
             >
-              {/* Section Label */}
               <div className="flex items-center gap-3">
                 <span className="h-[2px] w-8 bg-[#D1007F]" />
 
@@ -108,18 +78,11 @@ export default function ContactFooter() {
                 </p>
               </div>
 
-              {/* Heading */}
               <h2
                 className="
-                  mt-6
-                  text-5xl
-                  font-black
-                  leading-[0.9]
-                  tracking-[-0.05em]
-                  text-[#1A1A1A]
-                  sm:text-6xl
-                  md:text-7xl
-                  lg:text-8xl
+                  mt-6 text-5xl font-black leading-[0.9]
+                  tracking-[-0.05em] text-[#1A1A1A]
+                  sm:text-6xl md:text-7xl lg:text-8xl
                 "
               >
                 Let's make
@@ -135,9 +98,7 @@ export default function ContactFooter() {
                 campaign.
               </p>
 
-              {/* =====================================================
-                  CONTACT DETAILS
-              ====================================================== */}
+              {/* Contact Details */}
               <div className="mt-10 space-y-4">
                 {/* Phone */}
                 <a
@@ -146,19 +107,10 @@ export default function ContactFooter() {
                 >
                   <span
                     className="
-                      flex
-                      h-12
-                      w-12
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      border
-                      border-[#F3B4D8]
-                      bg-[#FFF3F9]
-                      text-[#D1007F]
-                      transition-all
-                      duration-300
+                      flex h-12 w-12 shrink-0 items-center justify-center
+                      rounded-full border border-[#F3B4D8]
+                      bg-[#FFF3F9] text-[#D1007F]
+                      transition-all duration-300
                       group-hover:border-[#D1007F]
                       group-hover:bg-[#D1007F]
                       group-hover:text-white
@@ -185,19 +137,10 @@ export default function ContactFooter() {
                 >
                   <span
                     className="
-                      flex
-                      h-12
-                      w-12
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      border
-                      border-[#F3B4D8]
-                      bg-[#FFF3F9]
-                      text-[#D1007F]
-                      transition-all
-                      duration-300
+                      flex h-12 w-12 shrink-0 items-center justify-center
+                      rounded-full border border-[#F3B4D8]
+                      bg-[#FFF3F9] text-[#D1007F]
+                      transition-all duration-300
                       group-hover:border-[#D1007F]
                       group-hover:bg-[#D1007F]
                       group-hover:text-white
@@ -221,17 +164,9 @@ export default function ContactFooter() {
                 <div className="flex items-center gap-4">
                   <span
                     className="
-                      flex
-                      h-12
-                      w-12
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      border
-                      border-[#F3B4D8]
-                      bg-[#FFF3F9]
-                      text-[#D1007F]
+                      flex h-12 w-12 shrink-0 items-center justify-center
+                      rounded-full border border-[#F3B4D8]
+                      bg-[#FFF3F9] text-[#D1007F]
                     "
                   >
                     <MapPin size={17} />
@@ -255,64 +190,37 @@ export default function ContactFooter() {
                 target="_blank"
                 rel="noreferrer"
                 className="
-                  mt-8
-                  inline-flex
-                  items-center
-                  gap-3
-                  rounded-full
-                  border-2
-                  border-[#D1007F]
-                  bg-white
-                  px-5
-                  py-3
-                  text-xs
-                  font-bold
-                  uppercase
-                  tracking-wider
-                  text-[#D1007F]
-                  transition-all
-                  duration-300
-                  hover:bg-[#D1007F]
-                  hover:text-white
+                  mt-8 inline-flex items-center gap-3 rounded-full
+                  border-2 border-[#D1007F] bg-white px-5 py-3
+                  text-xs font-bold uppercase tracking-wider
+                  text-[#D1007F] transition-all duration-300
+                  hover:bg-[#D1007F] hover:text-white
                 "
               >
                 Chat on WhatsApp
-
                 <ArrowRight size={15} />
               </a>
             </motion.div>
 
-            {/* =====================================================
-                FORM
-            ====================================================== */}
+            {/* FORM */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7 }}
               className="
-                rounded-[2rem]
-                border-2
-                border-[#F3B4D8]
-                bg-[#FFF3F9]
-                p-5
+                rounded-[2rem] border-2 border-[#F3B4D8]
+                bg-[#FFF3F9] p-5
                 shadow-[0_15px_50px_rgba(209,0,127,0.08)]
-                sm:p-7
-                md:p-9
+                sm:p-7 md:p-9
               "
             >
               {submitted ? (
                 <div className="flex min-h-[500px] flex-col items-center justify-center px-5 text-center">
                   <div
                     className="
-                      flex
-                      h-16
-                      w-16
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-[#D1007F]
-                      text-white
+                      flex h-16 w-16 items-center justify-center
+                      rounded-full bg-[#D1007F] text-white
                       shadow-[0_10px_30px_rgba(209,0,127,0.25)]
                     "
                   >
@@ -329,21 +237,13 @@ export default function ContactFooter() {
                   </p>
 
                   <button
+                    type="button"
                     onClick={() => setSubmitted(false)}
                     className="
-                      mt-8
-                      rounded-full
-                      border-2
-                      border-[#D1007F]
-                      px-6
-                      py-3
-                      text-xs
-                      font-bold
-                      uppercase
-                      tracking-widest
-                      text-[#D1007F]
-                      transition-all
-                      hover:bg-[#D1007F]
+                      mt-8 rounded-full border-2 border-[#D1007F]
+                      px-6 py-3 text-xs font-bold uppercase
+                      tracking-widest text-[#D1007F]
+                      transition-all hover:bg-[#D1007F]
                       hover:text-white
                     "
                   >
@@ -352,7 +252,6 @@ export default function ContactFooter() {
                 </div>
               ) : (
                 <form onSubmit={submitForm}>
-                  {/* Form Header */}
                   <div className="mb-8">
                     <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#D1007F]">
                       Request a Quote
@@ -368,7 +267,6 @@ export default function ContactFooter() {
                     </p>
                   </div>
 
-                  {/* Inputs */}
                   <div className="grid gap-4 sm:grid-cols-2">
                     <input
                       required
@@ -405,7 +303,6 @@ export default function ContactFooter() {
                       <option value="" disabled>
                         Select Advertising Service
                       </option>
-
                       <option>Hoarding</option>
                       <option>Mini Hoarding</option>
                       <option>Moving Media</option>
@@ -435,27 +332,15 @@ export default function ContactFooter() {
                     />
                   </div>
 
-                  {/* Submit */}
                   <button
                     type="submit"
                     className="
-                      group
-                      mt-5
-                      flex
-                      w-full
-                      items-center
-                      justify-center
-                      gap-3
-                      rounded-full
-                      bg-[#D1007F]
-                      px-7
-                      py-4
-                      text-sm
-                      font-bold
-                      text-white
+                      group mt-5 flex w-full items-center
+                      justify-center gap-3 rounded-full
+                      bg-[#D1007F] px-7 py-4 text-sm
+                      font-bold text-white
                       shadow-[0_10px_30px_rgba(209,0,127,0.2)]
-                      transition-all
-                      duration-300
+                      transition-all duration-300
                       hover:bg-[#F2299A]
                       hover:shadow-[0_15px_35px_rgba(209,0,127,0.3)]
                     "
@@ -472,42 +357,24 @@ export default function ContactFooter() {
             </motion.div>
           </div>
 
-          {/* =====================================================
-              FINAL CTA
-          ====================================================== */}
+          {/* FINAL CTA */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
             className="
-              relative
-              mt-24
-              overflow-hidden
-              rounded-[2.5rem]
-              border-2
-              border-[#F3B4D8]
-              bg-gradient-to-br
-              from-[#FFF3F9]
-              via-white
-              to-[#FDE5F1]
-              p-8
-              shadow-[0_15px_50px_rgba(209,0,127,0.06)]
-              sm:p-10
-              md:mt-28
-              md:p-14
+              relative mt-24 overflow-hidden rounded-[2.5rem]
+              border-2 border-[#F3B4D8]
+              bg-gradient-to-br from-[#FFF3F9] via-white to-[#FDE5F1]
+              p-8 shadow-[0_15px_50px_rgba(209,0,127,0.06)]
+              sm:p-10 md:mt-28 md:p-14
             "
           >
             <div
               className="
-                absolute
-                -right-20
-                -top-20
-                h-64
-                w-64
-                rounded-full
-                bg-[#D1007F]/10
-                blur-[100px]
+                absolute -right-20 -top-20 h-64 w-64
+                rounded-full bg-[#D1007F]/10 blur-[100px]
               "
             />
 
@@ -535,23 +402,13 @@ export default function ContactFooter() {
               </p>
 
               <button
+                type="button"
                 onClick={() => scrollTo("services-ticker")}
                 className="
-                  group
-                  mt-8
-                  flex
-                  items-center
-                  gap-3
-                  rounded-full
-                  bg-[#D1007F]
-                  px-7
-                  py-4
-                  text-sm
-                  font-bold
-                  text-white
+                  group mt-8 flex items-center gap-3 rounded-full
+                  bg-[#D1007F] px-7 py-4 text-sm font-bold text-white
                   shadow-[0_10px_30px_rgba(209,0,127,0.2)]
-                  transition-all
-                  hover:bg-[#F2299A]
+                  transition-all hover:bg-[#F2299A]
                 "
               >
                 Explore Our Services
@@ -571,24 +428,17 @@ export default function ContactFooter() {
       ====================================================== */}
       <footer
         className="
-          border-t-2
-          border-[#F3B4D8]
-          bg-white
-          px-5
-          py-12
-          text-[#1A1A1A]
-          sm:px-6
-          md:px-10
-          lg:px-16
+          border-t-2 border-[#F3B4D8] bg-white
+          px-5 py-12 text-[#1A1A1A]
+          sm:px-6 md:px-10 lg:px-16
         "
       >
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-            {/* =====================================================
-                BRAND
-            ====================================================== */}
+            {/* BRAND */}
             <div className="lg:col-span-2">
               <button
+                type="button"
                 onClick={() => scrollTo("home")}
                 className="text-left"
               >
@@ -606,27 +456,18 @@ export default function ContactFooter() {
                 powerful advertising and media solutions.
               </p>
 
-              {/* Social */}
+              {/* SOCIAL */}
               <div className="mt-6 flex gap-2">
                 {/* Instagram */}
                 <a
                   href="#"
                   aria-label="Instagram"
                   className="
-                    flex
-                    h-10
-                    w-10
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                    border-[#F3B4D8]
-                    bg-[#FFF3F9]
-                    text-[#D1007F]
-                    transition-all
-                    hover:border-[#D1007F]
-                    hover:bg-[#D1007F]
-                    hover:text-white
+                    flex h-10 w-10 items-center justify-center
+                    rounded-full border border-[#F3B4D8]
+                    bg-[#FFF3F9] text-[#D1007F]
+                    transition-all hover:border-[#D1007F]
+                    hover:bg-[#D1007F] hover:text-white
                   "
                 >
                   <Instagram size={16} />
@@ -637,46 +478,27 @@ export default function ContactFooter() {
                   href="#"
                   aria-label="Facebook"
                   className="
-                    flex
-                    h-10
-                    w-10
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                    border-[#F3B4D8]
-                    bg-[#FFF3F9]
-                    text-sm
-                    font-black
+                    flex h-10 w-10 items-center justify-center
+                    rounded-full border border-[#F3B4D8]
+                    bg-[#FFF3F9] text-sm font-black
                     text-[#D1007F]
-                    transition-all
-                    hover:border-[#D1007F]
-                    hover:bg-[#D1007F]
-                    hover:text-white
+                    transition-all hover:border-[#D1007F]
+                    hover:bg-[#D1007F] hover:text-white
                   "
                 >
                   f
                 </a>
 
-                {/* YouTube */}
+                {/* YouTube - Inline SVG */}
                 <a
                   href="#"
                   aria-label="YouTube"
                   className="
-                    flex
-                    h-10
-                    w-10
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                    border-[#F3B4D8]
-                    bg-[#FFF3F9]
-                    text-[#D1007F]
-                    transition-all
-                    hover:border-[#D1007F]
-                    hover:bg-[#D1007F]
-                    hover:text-white
+                    flex h-10 w-10 items-center justify-center
+                    rounded-full border border-[#F3B4D8]
+                    bg-[#FFF3F9] text-[#D1007F]
+                    transition-all hover:border-[#D1007F]
+                    hover:bg-[#D1007F] hover:text-white
                   "
                 >
                   <svg
@@ -691,9 +513,7 @@ export default function ContactFooter() {
               </div>
             </div>
 
-            {/* =====================================================
-                NAVIGATION
-            ====================================================== */}
+            {/* NAVIGATION */}
             <div>
               <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-[#1A1A1A]">
                 Navigation
@@ -710,14 +530,12 @@ export default function ContactFooter() {
                   ["contact", "Contact"],
                 ].map(([id, label]) => (
                   <button
+                    type="button"
                     key={id}
                     onClick={() => scrollTo(id)}
                     className="
-                      block
-                      text-sm
-                      text-neutral-500
-                      transition
-                      hover:text-[#D1007F]
+                      block text-sm text-neutral-500
+                      transition hover:text-[#D1007F]
                     "
                   >
                     {label}
@@ -726,9 +544,7 @@ export default function ContactFooter() {
               </div>
             </div>
 
-            {/* =====================================================
-                SERVICES
-            ====================================================== */}
+            {/* SERVICES */}
             <div>
               <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-[#1A1A1A]">
                 Services
@@ -748,22 +564,12 @@ export default function ContactFooter() {
             </div>
           </div>
 
-          {/* =====================================================
-              FOOTER BOTTOM
-          ====================================================== */}
+          {/* FOOTER BOTTOM */}
           <div
             className="
-              mt-12
-              flex
-              flex-col
-              justify-between
-              gap-4
-              border-t
-              border-[#F3B4D8]
-              pt-7
-              text-xs
-              text-neutral-400
-              md:flex-row
+              mt-12 flex flex-col justify-between gap-4
+              border-t border-[#F3B4D8] pt-7
+              text-xs text-neutral-400 md:flex-row
             "
           >
             <p>© 2026 Quilonad MEDIA. All Rights Reserved.</p>
