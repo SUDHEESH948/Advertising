@@ -1,11 +1,16 @@
 @import "tailwindcss";
 
-:root {
+@theme {
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Outfit", "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  color: #111820;
-  background: #ffffff;
+  --color-brand-pink: #FD3DB5;
+  --color-brand-magenta: #E00087;
+  --color-brand-dark: #080812;
+}
+
+:root {
+  font-family: var(--font-sans);
+  color-scheme: dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
@@ -17,24 +22,32 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  background-color: #080812;
 }
 
 body {
   margin: 0;
   min-width: 320px;
-  background: #ffffff;
+  background-color: #080812;
+  color: #f4f4f5;
   overflow-x: hidden;
 }
 
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.035em;
+}
+
+/* Scrollbar Utility */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
-
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
+/* Focus States & Accessibility */
 button,
 a,
 input,
@@ -46,18 +59,13 @@ button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid #FD3DB5;
+  outline: 2px solid var(--color-brand-pink);
   outline-offset: 3px;
 }
 
 ::selection {
-  background: #FD3DB5;
-  color: #fff;
-}
-
-.font-display {
-  font-family: "Outfit", "Space Grotesk", sans-serif;
-  letter-spacing: -0.035em;
+  background: var(--color-brand-pink);
+  color: #ffffff;
 }
 
 @media (prefers-reduced-motion: reduce) {

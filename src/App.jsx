@@ -1,28 +1,25 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Page from "./components/Page";
-import Home from "./pages/Home";
-import Services from "./pages/Services";
-import About from "./pages/About";
-import Gallery from "./pages/Gallery";
-import Contact from "./pages/Contact";
+
+import IntroHero from "./components/IntroHero";
+import AboutServices from "./components/AboutServices";
+import MediaShowcase from "./components/MediaShowcase";
+import GalleryNews from "./components/GalleryNews";
+import ContactFooter from "./components/ContactFooter";
+import Media from "./components/media";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Page>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<Home />} />
-        </Routes>
-      </Page>
-      <Footer />
-    </BrowserRouter>
+    <div className="min-h-screen overflow-x-hidden bg-[#050505] text-white">
+      <IntroHero />
+
+      <Media />
+
+      <AboutServices />
+
+      <MediaShowcase />
+
+      <GalleryNews />
+
+      <ContactFooter />
+    </div>
   );
 }
