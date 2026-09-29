@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 
 import asianetLogo from "../assets/medialogo/asianet.png";
@@ -31,9 +30,9 @@ export default function InfiniteLogoTicker() {
 
   return (
     <section
-  id="media"
-  className="relative w-full overflow-hidden bg-white py-12 border-y border-[#D1007F]"
->
+      id="media"
+      className="relative w-full overflow-hidden bg-white py-8 sm:py-10 md:py-12 border-y border-[#D1007F]"
+    >
       {/* =====================================================
           LEFT GRADIENT FADE
       ====================================================== */}
@@ -45,11 +44,13 @@ export default function InfiniteLogoTicker() {
           top-0
           bottom-0
           z-20
-          w-24
-          bg-gradient-to-r
-          from-transparent
-          to-transparent
+          w-16
+          sm:w-24
           md:w-36
+          bg-gradient-to-r
+          from-white
+          via-white/80
+          to-transparent
         "
       />
 
@@ -64,11 +65,13 @@ export default function InfiniteLogoTicker() {
           top-0
           bottom-0
           z-20
-          w-24
-          bg-gradient-to-l
-          from-transparent
-          to-transparent
+          w-16
+          sm:w-24
           md:w-36
+          bg-gradient-to-l
+          from-white
+          via-white/80
+          to-transparent
         "
       />
 
@@ -76,7 +79,7 @@ export default function InfiniteLogoTicker() {
           CONTINUOUS LOGO TRACK
       ====================================================== */}
       <motion.div
-        className="flex w-max items-center gap-8"
+        className="flex w-max items-center gap-4 sm:gap-6 md:gap-8"
         animate={{
           x: ["-50%", "0%"],
         }}
@@ -93,17 +96,23 @@ export default function InfiniteLogoTicker() {
               group
               relative
               flex
-              h-68
-              w-48
+              h-28
+              w-36
+              sm:h-36
+              sm:w-44
+              md:h-44
+              md:w-52
               shrink-0
               items-center
               justify-center
               overflow-hidden
-              rounded-2xl
+              rounded-xl
+              sm:rounded-2xl
               border-2
               border-[#D1007F]
               bg-transparent
-              p-4
+              p-3
+              sm:p-4
               transition-all
               duration-300
               hover:border-[#F2299A]
@@ -114,8 +123,10 @@ export default function InfiniteLogoTicker() {
               src={logo.src}
               alt={logo.alt}
               className={`
-                max-h-full
-                max-w-full
+                max-h-16
+                sm:max-h-20
+                md:max-h-24
+                max-w-[85%]
                 object-contain
                 opacity-90
                 transition-all

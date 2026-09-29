@@ -47,18 +47,69 @@ body {
   scrollbar-width: none;
 }
 
+/* Form Input Utility */
+.form-input {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1.5px solid #F3B4D8;
+  background-color: #ffffff;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: #1a1a1a;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+@media (min-width: 640px) {
+  .form-input {
+    border-radius: 1.25rem;
+    padding: 0.875rem 1.25rem;
+  }
+}
+
+.form-input::placeholder {
+  color: #9ca3af;
+}
+
+.form-input:focus {
+  border-color: #D1007F;
+  box-shadow: 0 0 0 3px rgba(209, 0, 127, 0.15);
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
 /* Focus States & Accessibility */
 button,
 a,
 input,
-textarea {
+textarea,
+select {
   -webkit-tap-highlight-color: transparent;
 }
 
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
-textarea:focus-visible {
+textarea:focus-visible,
+select:focus-visible {
   outline: 2px solid var(--color-brand-pink);
   outline-offset: 3px;
 }

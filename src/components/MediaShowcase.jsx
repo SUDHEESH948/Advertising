@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 
 // Service Images
@@ -8,9 +7,6 @@ import busBrandingImg from "../assets/services/bus-branding.png";
 import printingImg from "../assets/services/highquality-printing.png";
 import highEndMediaImg from "../assets/services/electronic-media.png";
 import signBoardImg from "../assets/services/sign-board.png";
-
-// If you have a separate retail platform image, replace this import
-// with your actual image path.
 import retailPlatformImg from "../assets/services/retail-platform.png";
 
 const services = [
@@ -76,7 +72,8 @@ export default function InfiniteServiceTicker() {
         border-y-2
         border-[#D1007F]
         bg-white
-        py-14
+        py-10
+        sm:py-14
       "
     >
       {/* =====================================================
@@ -90,12 +87,13 @@ export default function InfiniteServiceTicker() {
           top-0
           bottom-0
           z-20
-          w-24
+          w-16
+          sm:w-28
+          md:w-40
           bg-gradient-to-r
           from-white
           via-white/80
           to-transparent
-          md:w-40
         "
       />
 
@@ -110,25 +108,27 @@ export default function InfiniteServiceTicker() {
           top-0
           bottom-0
           z-20
-          w-24
+          w-16
+          sm:w-28
+          md:w-40
           bg-gradient-to-l
           from-white
           via-white/80
           to-transparent
-          md:w-40
         "
       />
 
       {/* =====================================================
           SECTION LABEL
       ====================================================== */}
-      <div className="relative z-10 mx-auto mb-8 max-w-7xl px-6 md:px-10 lg:px-16">
+      <div className="relative z-10 mx-auto mb-6 sm:mb-8 max-w-7xl px-4 sm:px-6 md:px-10 lg:px-16">
         <div className="flex items-center gap-3">
-          <span className="h-[2px] w-10 bg-[#D1007F]" />
+          <span className="h-[2px] w-8 sm:w-10 bg-[#D1007F]" />
 
           <span
             className="
-              text-xs
+              text-[11px]
+              sm:text-xs
               font-bold
               uppercase
               tracking-[0.3em]
@@ -144,7 +144,7 @@ export default function InfiniteServiceTicker() {
           MOVING TRACK
       ====================================================== */}
       <motion.div
-        className="flex w-max items-center gap-6"
+        className="flex w-max items-center gap-4 sm:gap-6"
         animate={{
           x: ["0%", "-50%"],
         }}
@@ -161,27 +161,30 @@ export default function InfiniteServiceTicker() {
               group
               relative
               flex
-              h-[160px]
-              w-[280px]
+              h-28
+              w-[270px]
+              sm:h-36
+              sm:w-[360px]
+              lg:h-44
+              lg:w-[460px]
               shrink-0
               items-center
-              gap-4
+              gap-3.5
+              sm:gap-4
               overflow-hidden
-              rounded-2xl
+              rounded-xl
+              sm:rounded-2xl
               border-2
               border-[#D1007F]
               bg-white
-              p-4
+              p-3
+              sm:p-4
+              lg:p-5
               shadow-[0_6px_25px_rgba(209,0,127,0.08)]
               transition-all
               duration-300
               hover:border-[#F2299A]
               hover:shadow-[0_10px_35px_rgba(209,0,127,0.18)]
-              sm:h-[340px]
-              sm:w-[350px]
-              sm:p-5
-              lg:h-[400px]
-              lg:w-[570px]
             "
           >
             {/* =================================================
@@ -208,13 +211,18 @@ export default function InfiniteServiceTicker() {
             <div
               className="
                 flex
-                h-100
-                w-100
+                h-20
+                w-20
+                sm:h-26
+                sm:w-26
+                lg:h-32
+                lg:w-32
                 shrink-0
                 items-center
                 justify-center
                 overflow-hidden
-                rounded-xl
+                rounded-lg
+                sm:rounded-xl
                 border
                 border-[#F3B4D8]
                 bg-[#FFF3F9]
@@ -223,10 +231,6 @@ export default function InfiniteServiceTicker() {
                 duration-300
                 group-hover:border-[#D1007F]
                 group-hover:bg-[#FDE5F1]
-                sm:h-50
-                sm:w-50
-                lg:h-100
-                lg:w-100
               "
             >
               <img
@@ -249,8 +253,10 @@ export default function InfiniteServiceTicker() {
             <div className="flex min-w-0 flex-1 flex-col justify-center">
               <span
                 className="
-                  mb-2
-                  text-[9px]
+                  mb-1
+                  sm:mb-2
+                  text-[8px]
+                  sm:text-[9px]
                   font-bold
                   uppercase
                   tracking-[0.25em]
@@ -263,13 +269,15 @@ export default function InfiniteServiceTicker() {
               <h3
                 className="
                   text-xs
+                  sm:text-sm
+                  lg:text-base
                   font-bold
                   leading-snug
                   text-[#1A1A1A]
                   transition-colors
                   duration-300
                   group-hover:text-[#D1007F]
-                  sm:text-sm
+                  line-clamp-2
                 "
               >
                 {item.title}
@@ -278,13 +286,15 @@ export default function InfiniteServiceTicker() {
               {/* Bottom Accent */}
               <div
                 className="
-                  mt-3
+                  mt-2
+                  sm:mt-3
                   h-[2px]
-                  w-8
+                  w-6
+                  sm:w-8
                   bg-[#D1007F]
                   transition-all
                   duration-300
-                  group-hover:w-14
+                  group-hover:w-12
                   group-hover:bg-[#F2299A]
                 "
               />
@@ -296,11 +306,12 @@ export default function InfiniteServiceTicker() {
       {/* =====================================================
           BOTTOM ACCENT
       ====================================================== */}
-      <div className="relative mx-auto mt-8 max-w-7xl px-6 md:px-10 lg:px-16">
-        <div className="flex items-center justify-between">
+      <div className="relative mx-auto mt-6 sm:mt-8 max-w-7xl px-4 sm:px-6 md:px-10 lg:px-16">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
           <span
             className="
-              text-[9px]
+              text-[8px]
+              sm:text-[9px]
               font-semibold
               uppercase
               tracking-[0.25em]
@@ -315,14 +326,15 @@ export default function InfiniteServiceTicker() {
               flex
               items-center
               gap-2
-              text-[9px]
+              text-[8px]
+              sm:text-[9px]
               font-semibold
               uppercase
               tracking-[0.2em]
               text-neutral-400
             "
           >
-            <span className="h-2 w-2 rounded-full bg-[#D1007F]" />
+            <span className="h-1.5 w-1.5 rounded-full bg-[#D1007F]" />
             Complete Media Solutions
           </span>
         </div>

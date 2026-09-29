@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -38,8 +37,8 @@ export default function ContactFooter() {
       <section
         id="contact"
         className="
-          relative overflow-hidden bg-white px-5 py-24
-          text-[#1A1A1A] sm:px-6 md:px-10 lg:px-16 lg:py-32
+          relative overflow-hidden bg-white px-4 py-16
+          text-[#1A1A1A] sm:px-6 sm:py-20 md:px-10 lg:px-16 lg:py-28
         "
       >
         {/* Background Effects */}
@@ -63,7 +62,7 @@ export default function ContactFooter() {
           {/* =====================================================
               CONTACT CONTENT
           ====================================================== */}
-          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
             {/* LEFT CONTENT */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -83,8 +82,8 @@ export default function ContactFooter() {
               {/* Heading */}
               <h2
                 className="
-                  mt-6 text-5xl font-black leading-[0.9]
-                  tracking-[-0.05em] text-[#1A1A1A]
+                  mt-4 sm:mt-6 text-4xl font-black leading-[0.95]
+                  tracking-[-0.04em] text-[#1A1A1A]
                   sm:text-6xl md:text-7xl lg:text-8xl
                 "
               >
@@ -94,7 +93,7 @@ export default function ContactFooter() {
                 </span>
               </h2>
 
-              <p className="mt-7 max-w-lg text-sm leading-7 text-neutral-500 sm:text-base">
+              <p className="mt-5 sm:mt-7 max-w-lg text-sm leading-relaxed text-neutral-500 sm:text-base">
                 Tell us about your campaign. From outdoor advertising and
                 transit branding to LED displays, printing and electronic
                 media, our team can help turn your idea into a powerful
@@ -104,15 +103,15 @@ export default function ContactFooter() {
               {/* =====================================================
                   CONTACT DETAILS
               ====================================================== */}
-              <div className="mt-10 space-y-4">
+              <div className="mt-8 sm:mt-10 space-y-3.5 sm:space-y-4">
                 {/* Phone */}
                 <a
                   href="tel:+919999999999"
-                  className="group flex items-center gap-4"
+                  className="group flex items-center gap-3.5 sm:gap-4"
                 >
                   <span
                     className="
-                      flex h-12 w-12 shrink-0 items-center justify-center
+                      flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center
                       rounded-full border border-[#F3B4D8]
                       bg-[#FFF3F9] text-[#D1007F]
                       transition-all duration-300
@@ -121,7 +120,7 @@ export default function ContactFooter() {
                       group-hover:text-white
                     "
                   >
-                    <Phone size={17} />
+                    <Phone className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
                   </span>
 
                   <div>
@@ -129,7 +128,7 @@ export default function ContactFooter() {
                       Call Us
                     </p>
 
-                    <p className="mt-1 text-sm text-neutral-700 transition group-hover:text-[#D1007F]">
+                    <p className="mt-0.5 text-sm text-neutral-700 transition group-hover:text-[#D1007F]">
                       +91 99999 99999
                     </p>
                   </div>
@@ -138,11 +137,11 @@ export default function ContactFooter() {
                 {/* Email */}
                 <a
                   href="mailto:hello@quilonadmedia.com"
-                  className="group flex items-center gap-4"
+                  className="group flex items-center gap-3.5 sm:gap-4"
                 >
                   <span
                     className="
-                      flex h-12 w-12 shrink-0 items-center justify-center
+                      flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center
                       rounded-full border border-[#F3B4D8]
                       bg-[#FFF3F9] text-[#D1007F]
                       transition-all duration-300
@@ -151,7 +150,7 @@ export default function ContactFooter() {
                       group-hover:text-white
                     "
                   >
-                    <Mail size={17} />
+                    <Mail className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
                   </span>
 
                   <div>
@@ -159,22 +158,22 @@ export default function ContactFooter() {
                       Email Us
                     </p>
 
-                    <p className="mt-1 text-sm text-neutral-700 transition group-hover:text-[#D1007F]">
+                    <p className="mt-0.5 text-sm text-neutral-700 transition group-hover:text-[#D1007F]">
                       hello@quilonadmedia.com
                     </p>
                   </div>
                 </a>
 
                 {/* Location */}
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3.5 sm:gap-4">
                   <span
                     className="
-                      flex h-12 w-12 shrink-0 items-center justify-center
+                      flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center
                       rounded-full border border-[#F3B4D8]
                       bg-[#FFF3F9] text-[#D1007F]
                     "
                   >
-                    <MapPin size={17} />
+                    <MapPin className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
                   </span>
 
                   <div>
@@ -182,7 +181,7 @@ export default function ContactFooter() {
                       Location
                     </p>
 
-                    <p className="mt-1 text-sm text-neutral-700">
+                    <p className="mt-0.5 text-sm text-neutral-700">
                       Kerala, India
                     </p>
                   </div>
@@ -195,11 +194,12 @@ export default function ContactFooter() {
                 target="_blank"
                 rel="noreferrer"
                 className="
-                  mt-8 inline-flex items-center gap-3 rounded-full
-                  border-2 border-[#D1007F] bg-white px-5 py-3
+                  mt-7 sm:mt-8 inline-flex items-center justify-center gap-2.5 sm:gap-3 rounded-full
+                  border-2 border-[#D1007F] bg-white px-5 py-3 sm:px-6 sm:py-3.5
                   text-xs font-bold uppercase tracking-wider
                   text-[#D1007F] transition-all duration-300
                   hover:bg-[#D1007F] hover:text-white
+                  w-full sm:w-auto text-center
                 "
               >
                 Chat on WhatsApp
@@ -217,29 +217,28 @@ export default function ContactFooter() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7 }}
               className="
-                rounded-[2rem] border-2 border-[#F3B4D8]
-                bg-[#FFF3F9] p-5
+                rounded-2xl sm:rounded-[2rem] border-2 border-[#F3B4D8]
+                bg-[#FFF3F9] p-4 sm:p-7 md:p-9
                 shadow-[0_15px_50px_rgba(209,0,127,0.08)]
-                sm:p-7 md:p-9
               "
             >
               {submitted ? (
-                <div className="flex min-h-[500px] flex-col items-center justify-center px-5 text-center">
+                <div className="flex min-h-[420px] sm:min-h-[500px] flex-col items-center justify-center px-4 text-center">
                   <div
                     className="
-                      flex h-16 w-16 items-center justify-center
+                      flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center
                       rounded-full bg-[#D1007F] text-white
                       shadow-[0_10px_30px_rgba(209,0,127,0.25)]
                     "
                   >
-                    <CheckCircle2 size={30} />
+                    <CheckCircle2 size={28} />
                   </div>
 
-                  <h3 className="mt-7 text-3xl font-black text-[#1A1A1A]">
+                  <h3 className="mt-5 sm:mt-7 text-2xl sm:text-3xl font-black text-[#1A1A1A]">
                     Thank You!
                   </h3>
 
-                  <p className="mt-3 max-w-md text-sm leading-7 text-neutral-500">
+                  <p className="mt-2 sm:mt-3 max-w-md text-xs sm:text-sm leading-relaxed text-neutral-500">
                     Your enquiry has been received. Our media team will
                     contact you shortly.
                   </p>
@@ -248,8 +247,8 @@ export default function ContactFooter() {
                     type="button"
                     onClick={() => setSubmitted(false)}
                     className="
-                      mt-8 rounded-full border-2 border-[#D1007F]
-                      px-6 py-3 text-xs font-bold uppercase
+                      mt-6 sm:mt-8 rounded-full border-2 border-[#D1007F]
+                      px-6 py-2.5 sm:py-3 text-xs font-bold uppercase
                       tracking-widest text-[#D1007F]
                       transition-all hover:bg-[#D1007F]
                       hover:text-white
@@ -261,23 +260,23 @@ export default function ContactFooter() {
               ) : (
                 <form onSubmit={submitForm}>
                   {/* Form Header */}
-                  <div className="mb-8">
+                  <div className="mb-6 sm:mb-8">
                     <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#D1007F]">
                       Request a Quote
                     </p>
 
-                    <h3 className="mt-3 text-2xl font-black text-[#1A1A1A] sm:text-3xl">
+                    <h3 className="mt-2 sm:mt-3 text-xl font-black text-[#1A1A1A] sm:text-2xl md:text-3xl">
                       Tell us about your campaign.
                     </h3>
 
-                    <p className="mt-3 text-sm leading-6 text-neutral-500">
+                    <p className="mt-2 text-xs sm:text-sm leading-relaxed text-neutral-500">
                       Share your requirements and our team will get back to
                       you.
                     </p>
                   </div>
 
                   {/* Inputs */}
-                  <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                     <input
                       required
                       type="text"
@@ -308,7 +307,7 @@ export default function ContactFooter() {
                     <select
                       required
                       defaultValue=""
-                      className="form-input sm:col-span-2"
+                      className="form-input sm:col-span-2 cursor-pointer"
                     >
                       <option value="" disabled>
                         Select Advertising Service
@@ -337,7 +336,7 @@ export default function ContactFooter() {
 
                     <textarea
                       required
-                      rows="5"
+                      rows="4"
                       placeholder="Tell us about your requirements..."
                       className="form-input resize-none sm:col-span-2"
                     />
@@ -347,9 +346,9 @@ export default function ContactFooter() {
                   <button
                     type="submit"
                     className="
-                      group mt-5 flex w-full items-center
-                      justify-center gap-3 rounded-full
-                      bg-[#D1007F] px-7 py-4 text-sm
+                      group mt-4 sm:mt-5 flex w-full items-center
+                      justify-center gap-2.5 sm:gap-3 rounded-full
+                      bg-[#D1007F] px-6 py-3.5 sm:px-7 sm:py-4 text-xs sm:text-sm
                       font-bold text-white
                       shadow-[0_10px_30px_rgba(209,0,127,0.2)]
                       transition-all duration-300
@@ -360,7 +359,7 @@ export default function ContactFooter() {
                     Send Enquiry
 
                     <Send
-                      size={16}
+                      size={15}
                       className="transition group-hover:translate-x-1"
                     />
                   </button>
@@ -378,11 +377,10 @@ export default function ContactFooter() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
             className="
-              relative mt-24 overflow-hidden rounded-[2.5rem]
+              relative mt-16 sm:mt-24 md:mt-28 overflow-hidden rounded-2xl sm:rounded-[2.5rem]
               border-2 border-[#F3B4D8]
               bg-gradient-to-br from-[#FFF3F9] via-white to-[#FDE5F1]
-              p-8 shadow-[0_15px_50px_rgba(209,0,127,0.06)]
-              sm:p-10 md:mt-28 md:p-14
+              p-6 sm:p-10 md:p-14 shadow-[0_15px_50px_rgba(209,0,127,0.06)]
             "
           >
             <div
@@ -393,15 +391,15 @@ export default function ContactFooter() {
             />
 
             <div className="relative z-10 max-w-4xl">
-              <div className="flex items-center gap-3 text-[#D1007F]">
-                <Sparkles size={18} />
+              <div className="flex items-center gap-2.5 sm:gap-3 text-[#D1007F]">
+                <Sparkles size={16} />
 
                 <span className="text-[10px] font-bold uppercase tracking-[0.3em] sm:text-xs">
                   QUILONAD MEDIA
                 </span>
               </div>
 
-              <h3 className="mt-5 text-4xl font-black tracking-tight text-[#1A1A1A] sm:text-5xl md:text-6xl">
+              <h3 className="mt-3 sm:mt-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-[#1A1A1A]">
                 Make your brand
                 <span className="text-[#D1007F]">
                   {" "}
@@ -409,7 +407,7 @@ export default function ContactFooter() {
                 </span>
               </h3>
 
-              <p className="mt-5 max-w-2xl text-sm leading-7 text-neutral-500 sm:text-base">
+              <p className="mt-3 sm:mt-5 max-w-2xl text-xs sm:text-sm md:text-base leading-relaxed text-neutral-500">
                 Outdoor advertising, moving media, LED displays, printing,
                 FM marketing, electronic media, retail platform advertising
                 and professional signage.
@@ -419,16 +417,17 @@ export default function ContactFooter() {
                 type="button"
                 onClick={() => scrollTo("services-ticker")}
                 className="
-                  group mt-8 flex items-center gap-3 rounded-full
-                  bg-[#D1007F] px-7 py-4 text-sm font-bold text-white
+                  group mt-6 sm:mt-8 inline-flex items-center justify-center gap-2.5 sm:gap-3 rounded-full
+                  bg-[#D1007F] px-6 py-3.5 sm:px-7 sm:py-4 text-xs sm:text-sm font-bold text-white
                   shadow-[0_10px_30px_rgba(209,0,127,0.2)]
                   transition-all hover:bg-[#F2299A]
+                  w-full sm:w-auto text-center
                 "
               >
                 Explore Our Services
 
                 <ArrowRight
-                  size={17}
+                  size={15}
                   className="transition group-hover:translate-x-1"
                 />
               </button>
@@ -443,45 +442,43 @@ export default function ContactFooter() {
       <footer
         className="
           border-t-2 border-[#F3B4D8] bg-white
-          px-5 py-12 text-[#1A1A1A]
-          sm:px-6 md:px-10 lg:px-16
+          px-4 py-10 text-[#1A1A1A]
+          sm:px-6 sm:py-12 md:px-10 lg:px-16
         "
       >
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
             {/* BRAND */}
-            <div className="lg:col-span-2">
+            <div className="sm:col-span-2">
               <button
                 type="button"
                 onClick={() => scrollTo("home")}
                 className="text-left"
               >
-                <div className="text-2xl font-black tracking-[0.18em] text-[#D1007F]">
+                <div className="text-xl sm:text-2xl font-black tracking-[0.18em] text-[#D1007F]">
                   QUILONAD
                 </div>
 
-                <div className="text-[9px] font-medium tracking-[0.45em] text-neutral-400">
+                <div className="text-[8px] sm:text-[9px] font-medium tracking-[0.45em] text-neutral-400">
                   MEDIA
                 </div>
               </button>
 
-              <p className="mt-5 max-w-sm text-sm leading-7 text-neutral-500">
+              <p className="mt-4 sm:mt-5 max-w-sm text-xs sm:text-sm leading-relaxed text-neutral-500">
                 For Complete Media Promotion. Building visibility through
                 powerful advertising and media solutions.
               </p>
 
               {/* =====================================================
                   SOCIAL ICONS
-                  Inline SVGs are used instead of lucide-react
-                  social icons for maximum Vercel compatibility.
               ====================================================== */}
-              <div className="mt-6 flex gap-2">
+              <div className="mt-5 sm:mt-6 flex gap-2">
                 {/* Instagram */}
                 <a
                   href="#"
                   aria-label="Instagram"
                   className="
-                    flex h-10 w-10 items-center justify-center
+                    flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center
                     rounded-full border border-[#F3B4D8]
                     bg-[#FFF3F9] text-[#D1007F]
                     transition-all hover:border-[#D1007F]
@@ -490,7 +487,7 @@ export default function ContactFooter() {
                 >
                   <svg
                     viewBox="0 0 24 24"
-                    className="h-5 w-5"
+                    className="h-4 w-4 sm:h-5 sm:w-5"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="1.8"
@@ -515,7 +512,7 @@ export default function ContactFooter() {
                   href="#"
                   aria-label="Facebook"
                   className="
-                    flex h-10 w-10 items-center justify-center
+                    flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center
                     rounded-full border border-[#F3B4D8]
                     bg-[#FFF3F9] text-[#D1007F]
                     transition-all hover:border-[#D1007F]
@@ -524,7 +521,7 @@ export default function ContactFooter() {
                 >
                   <svg
                     viewBox="0 0 24 24"
-                    className="h-5 w-5"
+                    className="h-4 w-4 sm:h-5 sm:w-5"
                     fill="currentColor"
                     aria-hidden="true"
                   >
@@ -537,7 +534,7 @@ export default function ContactFooter() {
                   href="#"
                   aria-label="YouTube"
                   className="
-                    flex h-10 w-10 items-center justify-center
+                    flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center
                     rounded-full border border-[#F3B4D8]
                     bg-[#FFF3F9] text-[#D1007F]
                     transition-all hover:border-[#D1007F]
@@ -546,7 +543,7 @@ export default function ContactFooter() {
                 >
                   <svg
                     viewBox="0 0 24 24"
-                    className="h-5 w-5"
+                    className="h-4 w-4 sm:h-5 sm:w-5"
                     fill="currentColor"
                     aria-hidden="true"
                   >
@@ -562,7 +559,7 @@ export default function ContactFooter() {
                 Navigation
               </h4>
 
-              <div className="mt-5 space-y-3">
+              <div className="mt-4 sm:mt-5 space-y-2.5 sm:space-y-3">
                 {[
                   ["home", "Home"],
                   ["about", "About"],
@@ -577,7 +574,7 @@ export default function ContactFooter() {
                     key={id}
                     onClick={() => scrollTo(id)}
                     className="
-                      block text-sm text-neutral-500
+                      block text-xs sm:text-sm text-neutral-500
                       transition hover:text-[#D1007F]
                     "
                   >
@@ -593,7 +590,7 @@ export default function ContactFooter() {
                 Services
               </h4>
 
-              <div className="mt-5 space-y-3 text-sm text-neutral-500">
+              <div className="mt-4 sm:mt-5 space-y-2.5 sm:space-y-3 text-xs sm:text-sm text-neutral-500">
                 <p>Outdoor Advertising</p>
                 <p>Bus Branding</p>
                 <p>KSRTC Branding</p>
@@ -610,9 +607,9 @@ export default function ContactFooter() {
           {/* FOOTER BOTTOM */}
           <div
             className="
-              mt-12 flex flex-col justify-between gap-4
-              border-t border-[#F3B4D8] pt-7
-              text-xs text-neutral-400 md:flex-row
+              mt-10 sm:mt-12 flex flex-col sm:flex-row items-center justify-between gap-3
+              border-t border-[#F3B4D8] pt-6 sm:pt-7
+              text-xs text-neutral-400 text-center sm:text-left
             "
           >
             <p>© 2026 Quilonad MEDIA. All Rights Reserved.</p>

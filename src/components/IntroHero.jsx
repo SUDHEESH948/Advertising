@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -10,7 +9,7 @@ import {
   VolumeX,
 } from "lucide-react";
 
-import heroBackground from "../assets/background.png";
+import heroBackground from "../assets/banar.jpeg";
 
 const navItems = [
   ["About", "about"],
@@ -81,18 +80,18 @@ export default function IntroHero() {
             <div className="absolute inset-0 bg-[#D1007F]/5 mix-blend-screen" />
 
             {/* Intro Controls */}
-            <div className="absolute right-6 top-6 z-50 flex items-center gap-3">
+            <div className="absolute right-4 top-4 sm:right-6 sm:top-6 z-50 flex items-center gap-2 sm:gap-3">
               {/* Volume */}
               <button
                 type="button"
                 onClick={() => setMuted((val) => !val)}
                 aria-label={muted ? "Unmute video" : "Mute video"}
-                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-black/40 text-white backdrop-blur-md transition-all duration-300 hover:border-[#D1007F] hover:bg-[#D1007F]/20"
+                className="flex h-9 w-9 sm:h-10 sm:w-10 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-black/40 text-white backdrop-blur-md transition-all duration-300 hover:border-[#D1007F] hover:bg-[#D1007F]/20"
               >
                 {muted ? (
-                  <VolumeX size={16} />
+                  <VolumeX className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 ) : (
-                  <Volume2 size={16} />
+                  <Volume2 className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 )}
               </button>
 
@@ -100,9 +99,9 @@ export default function IntroHero() {
               <button
                 type="button"
                 onClick={() => setIntroFinished(true)}
-                className="flex cursor-pointer items-center gap-2 rounded-full border border-white/20 bg-black/40 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white backdrop-blur-md transition-all duration-300 hover:border-[#D1007F] hover:bg-[#D1007F]"
+                className="flex cursor-pointer items-center gap-1.5 sm:gap-2 rounded-full border border-white/20 bg-black/40 px-3 py-1.5 sm:px-4 sm:py-2 text-[11px] sm:text-xs font-semibold uppercase tracking-wider sm:tracking-widest text-white backdrop-blur-md transition-all duration-300 hover:border-[#D1007F] hover:bg-[#D1007F]"
               >
-                <Play size={12} fill="currentColor" />
+                <Play className="h-2.5 w-2.5 sm:h-3 sm:w-3" fill="currentColor" />
                 Skip Intro
               </button>
             </div>
@@ -143,7 +142,7 @@ export default function IntroHero() {
         {/* ===================================================
             NAVIGATION
         ==================================================== */}
-        <header className="relative z-50 w-full px-6 py-6 md:px-10 lg:px-16">
+        <header className="relative z-50 w-full px-4 py-4 sm:px-6 sm:py-5 md:px-10 lg:px-16">
           <div className="mx-auto flex max-w-7xl items-center justify-between">
             {/* Logo */}
             <button
@@ -151,11 +150,11 @@ export default function IntroHero() {
               onClick={() => scrollTo("home")}
               className="group flex cursor-pointer flex-col text-left"
             >
-              <span className="text-xl font-black tracking-[0.2em] text-white transition-colors duration-300 group-hover:text-[#F2299A]">
+              <span className="text-lg sm:text-xl font-black tracking-[0.18em] sm:tracking-[0.2em] text-white transition-colors duration-300 group-hover:text-[#F2299A]">
                 QUILONAD
               </span>
 
-              <span className="-mt-0.5 text-[9px] font-bold uppercase tracking-[0.45em] text-[#D1007F]">
+              <span className="-mt-0.5 text-[8px] sm:text-[9px] font-bold uppercase tracking-[0.4em] sm:tracking-[0.45em] text-[#D1007F]">
                 MEDIA
               </span>
             </button>
@@ -192,10 +191,10 @@ export default function IntroHero() {
             <button
               type="button"
               onClick={() => setMenuOpen((val) => !val)}
-              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-black/25 text-white backdrop-blur-md transition-all duration-300 hover:border-[#D1007F] hover:bg-[#D1007F]/20 lg:hidden"
+              className="flex h-9 w-9 sm:h-10 sm:w-10 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-black/25 text-white backdrop-blur-md transition-all duration-300 hover:border-[#D1007F] hover:bg-[#D1007F]/20 lg:hidden"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
             >
-              {menuOpen ? <X size={20} /> : <Menu size={20} />}
+              {menuOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
           </div>
 
@@ -204,34 +203,43 @@ export default function IntroHero() {
           ================================================== */}
           <AnimatePresence>
             {menuOpen && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.25 }}
-                className="absolute left-6 right-6 top-20 rounded-2xl border border-[#D1007F]/30 bg-[#070206]/95 p-6 shadow-2xl backdrop-blur-xl lg:hidden"
-              >
-                <div className="flex flex-col gap-4">
-                  {navItems.map(([label, id]) => (
+              <>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={() => setMenuOpen(false)}
+                  className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
+                />
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.25 }}
+                  className="absolute left-4 right-4 sm:left-6 sm:right-6 top-[4.25rem] sm:top-20 z-50 rounded-2xl border border-[#D1007F]/30 bg-[#070206]/95 p-5 sm:p-6 shadow-2xl backdrop-blur-xl lg:hidden"
+                >
+                  <div className="flex flex-col gap-2">
+                    {navItems.map(([label, id]) => (
+                      <button
+                        type="button"
+                        key={id}
+                        onClick={() => scrollTo(id)}
+                        className="cursor-pointer text-left text-sm font-semibold uppercase tracking-wider text-zinc-300 py-2.5 px-3 rounded-xl transition-colors hover:text-white hover:bg-white/5 active:bg-[#D1007F]/20"
+                      >
+                        {label}
+                      </button>
+                    ))}
+
                     <button
                       type="button"
-                      key={id}
-                      onClick={() => scrollTo(id)}
-                      className="cursor-pointer text-left text-sm font-semibold uppercase tracking-wider text-zinc-300 transition-colors hover:text-[#F2299A]"
+                      onClick={() => scrollTo("contact")}
+                      className="mt-3 w-full cursor-pointer rounded-full bg-[#D1007F] py-3 text-center text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#F2299A]"
                     >
-                      {label}
+                      Get a Quote
                     </button>
-                  ))}
-
-                  <button
-                    type="button"
-                    onClick={() => scrollTo("contact")}
-                    className="mt-2 w-full cursor-pointer rounded-full bg-[#D1007F] py-3 text-center text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#F2299A]"
-                  >
-                    Get a Quote
-                  </button>
-                </div>
-              </motion.div>
+                  </div>
+                </motion.div>
+              </>
             )}
           </AnimatePresence>
         </header>
@@ -239,20 +247,20 @@ export default function IntroHero() {
         {/* ===================================================
             HERO CONTENT
         ==================================================== */}
-        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 items-center px-6 py-12 md:px-10 md:py-16 lg:px-16">
+        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 items-center px-4 py-8 sm:px-6 sm:py-12 md:px-10 md:py-16 lg:px-16">
           <div className="max-w-2xl lg:max-w-3xl">
             {/* Heading */}
             <motion.h2
               initial={{ opacity: 0, y: 35 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.15 }}
-              className="font-black leading-[0.9] tracking-[-0.035em]"
+              className="font-black leading-[0.95] sm:leading-[0.9] tracking-[-0.035em]"
             >
-              <span className="block text-4xl text-[#F2299A] sm:text-5xl md:text-6xl lg:text-7xl">
+              <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-[#F2299A]">
                 QUILONAD
               </span>
 
-              <span className="block text-4xl text-white sm:text-5xl md:text-6xl lg:text-7xl">
+              <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white">
                 MEDIA
               </span>
             </motion.h2>
@@ -262,7 +270,7 @@ export default function IntroHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="mt-6 max-w-xl text-sm font-normal leading-relaxed text-zinc-200 sm:text-base md:text-lg"
+              className="mt-4 sm:mt-6 max-w-xl text-sm sm:text-base md:text-lg font-normal leading-relaxed text-zinc-200"
             >
               Powerful advertising and media solutions that make your brand
               visible, memorable, and impossible to miss.
@@ -275,7 +283,7 @@ export default function IntroHero() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mt-6 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-semibold uppercase tracking-wider text-zinc-300"
+              className="mt-5 sm:mt-6 flex flex-wrap items-center gap-x-2 sm:gap-x-2.5 gap-y-1.5 text-[10px] sm:text-[11px] md:text-xs font-semibold uppercase tracking-wider text-zinc-300"
             >
               {servicePills.map((item, index) => (
                 <div
@@ -302,13 +310,13 @@ export default function IntroHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="mt-8 flex flex-wrap items-center gap-4"
+              className="mt-7 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto"
             >
               {/* Primary CTA */}
               <button
                 type="button"
                 onClick={() => scrollTo("services")}
-                className="group flex cursor-pointer items-center gap-2.5 rounded-full bg-[#D1007F] px-7 py-3.5 text-xs font-bold text-white shadow-lg shadow-[#D1007F]/25 transition-all duration-300 hover:bg-[#F2299A] hover:shadow-[#F2299A]/25 sm:text-sm"
+                className="group flex cursor-pointer items-center justify-center gap-2.5 rounded-full bg-[#D1007F] px-6 py-3.5 sm:px-7 sm:py-3.5 text-xs sm:text-sm font-bold text-white shadow-lg shadow-[#D1007F]/25 transition-all duration-300 hover:bg-[#F2299A] hover:shadow-[#F2299A]/25"
               >
                 Explore Services
 
@@ -322,7 +330,7 @@ export default function IntroHero() {
               <button
                 type="button"
                 onClick={() => scrollTo("contact")}
-                className="cursor-pointer rounded-full border border-white/30 bg-white/10 px-7 py-3.5 text-xs font-bold text-white backdrop-blur-sm transition-all duration-300 hover:border-[#F2299A] hover:bg-[#D1007F]/20 sm:text-sm"
+                className="flex cursor-pointer items-center justify-center rounded-full border border-white/30 bg-white/10 px-6 py-3.5 sm:px-7 sm:py-3.5 text-xs sm:text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:border-[#F2299A] hover:bg-[#D1007F]/20"
               >
                 Get a Quote
               </button>
