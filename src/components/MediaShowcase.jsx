@@ -72,7 +72,7 @@ export default function InfiniteServiceTicker() {
         border-y-2
         border-[#D1007F]
         bg-white
-        py-10
+        py-8
         sm:py-14
       "
     >
@@ -87,7 +87,7 @@ export default function InfiniteServiceTicker() {
           top-0
           bottom-0
           z-20
-          w-16
+          w-8
           sm:w-28
           md:w-40
           bg-gradient-to-r
@@ -108,7 +108,7 @@ export default function InfiniteServiceTicker() {
           top-0
           bottom-0
           z-20
-          w-16
+          w-8
           sm:w-28
           md:w-40
           bg-gradient-to-l
@@ -121,17 +121,18 @@ export default function InfiniteServiceTicker() {
       {/* =====================================================
           SECTION LABEL
       ====================================================== */}
-      <div className="relative z-10 mx-auto mb-6 sm:mb-8 max-w-7xl px-4 sm:px-6 md:px-10 lg:px-16">
-        <div className="flex items-center gap-3">
-          <span className="h-[2px] w-8 sm:w-10 bg-[#D1007F]" />
+      <div className="relative z-10 mx-auto mb-4 sm:mb-8 max-w-7xl px-3.5 sm:px-6 md:px-10 lg:px-16">
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          <span className="h-[2px] w-6 sm:w-10 bg-[#D1007F]" />
 
           <span
             className="
-              text-[11px]
+              text-[10px]
               sm:text-xs
               font-bold
               uppercase
-              tracking-[0.3em]
+              tracking-[0.25em]
+              sm:tracking-[0.3em]
               text-[#D1007F]
             "
           >
@@ -144,7 +145,7 @@ export default function InfiniteServiceTicker() {
           MOVING TRACK
       ====================================================== */}
       <motion.div
-        className="flex w-max items-center gap-4 sm:gap-6"
+        className="flex w-max items-center gap-3.5 sm:gap-6"
         animate={{
           x: ["0%", "-50%"],
         }}
@@ -161,15 +162,15 @@ export default function InfiniteServiceTicker() {
               group
               relative
               flex
-              h-28
-              w-[270px]
+              h-24
+              w-[245px]
               sm:h-36
               sm:w-[360px]
               lg:h-44
               lg:w-[460px]
               shrink-0
               items-center
-              gap-3.5
+              gap-2.5
               sm:gap-4
               overflow-hidden
               rounded-xl
@@ -177,7 +178,7 @@ export default function InfiniteServiceTicker() {
               border-2
               border-[#D1007F]
               bg-white
-              p-3
+              p-2.5
               sm:p-4
               lg:p-5
               shadow-[0_6px_25px_rgba(209,0,127,0.08)]
@@ -211,8 +212,8 @@ export default function InfiniteServiceTicker() {
             <div
               className="
                 flex
-                h-20
-                w-20
+                h-16
+                w-16
                 sm:h-26
                 sm:w-26
                 lg:h-32
@@ -226,7 +227,8 @@ export default function InfiniteServiceTicker() {
                 border
                 border-[#F3B4D8]
                 bg-[#FFF3F9]
-                p-2
+                p-1.5
+                sm:p-2
                 transition-all
                 duration-300
                 group-hover:border-[#D1007F]
@@ -253,13 +255,14 @@ export default function InfiniteServiceTicker() {
             <div className="flex min-w-0 flex-1 flex-col justify-center">
               <span
                 className="
-                  mb-1
+                  mb-0.5
                   sm:mb-2
-                  text-[8px]
+                  text-[7.5px]
                   sm:text-[9px]
                   font-bold
                   uppercase
-                  tracking-[0.25em]
+                  tracking-[0.2em]
+                  sm:tracking-[0.25em]
                   text-[#D1007F]
                 "
               >
@@ -268,7 +271,7 @@ export default function InfiniteServiceTicker() {
 
               <h3
                 className="
-                  text-xs
+                  text-[11px]
                   sm:text-sm
                   lg:text-base
                   font-bold
@@ -286,10 +289,10 @@ export default function InfiniteServiceTicker() {
               {/* Bottom Accent */}
               <div
                 className="
-                  mt-2
+                  mt-1.5
                   sm:mt-3
                   h-[2px]
-                  w-6
+                  w-5
                   sm:w-8
                   bg-[#D1007F]
                   transition-all
@@ -306,15 +309,16 @@ export default function InfiniteServiceTicker() {
       {/* =====================================================
           BOTTOM ACCENT
       ====================================================== */}
-      <div className="relative mx-auto mt-6 sm:mt-8 max-w-7xl px-4 sm:px-6 md:px-10 lg:px-16">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+      <div className="relative mx-auto mt-4 sm:mt-8 max-w-7xl px-3.5 sm:px-6 md:px-10 lg:px-16">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-1.5 sm:gap-2 text-center sm:text-left">
           <span
             className="
-              text-[8px]
+              text-[7.5px]
               sm:text-[9px]
               font-semibold
               uppercase
-              tracking-[0.25em]
+              tracking-[0.2em]
+              sm:tracking-[0.25em]
               text-neutral-400
             "
           >
@@ -325,12 +329,14 @@ export default function InfiniteServiceTicker() {
             className="
               flex
               items-center
-              gap-2
-              text-[8px]
+              gap-1.5
+              sm:gap-2
+              text-[7.5px]
               sm:text-[9px]
               font-semibold
               uppercase
-              tracking-[0.2em]
+              tracking-[0.18em]
+              sm:tracking-[0.2em]
               text-neutral-400
             "
           >

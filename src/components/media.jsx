@@ -31,7 +31,7 @@ export default function InfiniteLogoTicker() {
   return (
     <section
       id="media"
-      className="relative w-full overflow-hidden bg-white py-8 sm:py-10 md:py-12 border-y border-[#D1007F]"
+      className="relative w-full overflow-hidden bg-white py-6 sm:py-10 md:py-12 border-y border-[#D1007F]"
     >
       {/* =====================================================
           LEFT GRADIENT FADE
@@ -44,7 +44,7 @@ export default function InfiniteLogoTicker() {
           top-0
           bottom-0
           z-20
-          w-16
+          w-8
           sm:w-24
           md:w-36
           bg-gradient-to-r
@@ -65,7 +65,7 @@ export default function InfiniteLogoTicker() {
           top-0
           bottom-0
           z-20
-          w-16
+          w-8
           sm:w-24
           md:w-36
           bg-gradient-to-l
@@ -79,7 +79,7 @@ export default function InfiniteLogoTicker() {
           CONTINUOUS LOGO TRACK
       ====================================================== */}
       <motion.div
-        className="flex w-max items-center gap-4 sm:gap-6 md:gap-8"
+        className="flex w-max items-center gap-3 sm:gap-6 md:gap-8"
         animate={{
           x: ["-50%", "0%"],
         }}
@@ -96,8 +96,8 @@ export default function InfiniteLogoTicker() {
               group
               relative
               flex
-              h-28
-              w-36
+              h-24
+              w-32
               sm:h-36
               sm:w-44
               md:h-44
@@ -111,7 +111,7 @@ export default function InfiniteLogoTicker() {
               border-2
               border-[#D1007F]
               bg-transparent
-              p-3
+              p-2.5
               sm:p-4
               transition-all
               duration-300
@@ -123,7 +123,7 @@ export default function InfiniteLogoTicker() {
               src={logo.src}
               alt={logo.alt}
               className={`
-                max-h-16
+                max-h-12
                 sm:max-h-20
                 md:max-h-24
                 max-w-[85%]

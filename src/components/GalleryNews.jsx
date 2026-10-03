@@ -106,7 +106,7 @@ export default function GalleryNews() {
   return (
     <section
       id="work"
-      className="relative overflow-hidden bg-white px-4 py-16 sm:px-6 sm:py-20 md:px-10 md:py-24 lg:px-16 text-[#1A1A1A]"
+      className="relative overflow-hidden bg-white px-3.5 py-12 sm:px-6 sm:py-20 md:px-10 md:py-24 lg:px-16 text-[#1A1A1A]"
     >
       {/* Decorative background */}
       <div className="pointer-events-none absolute left-0 top-0 h-96 w-96 rounded-full bg-[#D1007F]/5 blur-3xl" />
@@ -116,17 +116,17 @@ export default function GalleryNews() {
         {/* =====================================================
             SECTION HEADER
         ====================================================== */}
-        <div className="mb-8 sm:mb-12 flex flex-col justify-between gap-4 sm:gap-6 md:flex-row md:items-end">
+        <div className="mb-6 sm:mb-12 flex flex-col justify-between gap-3 sm:gap-6 md:flex-row md:items-end">
           <div>
-            <div className="mb-3 sm:mb-4 flex items-center gap-3">
-              <span className="h-[2px] w-8 sm:w-10 bg-[#D1007F]" />
+            <div className="mb-2 sm:mb-4 flex items-center gap-2.5 sm:gap-3">
+              <span className="h-[2px] w-6 sm:w-10 bg-[#D1007F]" />
 
-              <p className="text-xs font-bold uppercase tracking-[0.35em] text-[#D1007F]">
+              <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] sm:tracking-[0.35em] text-[#D1007F]">
                 Selected Work
               </p>
             </div>
 
-            <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-[#1A1A1A]">
+            <h2 className="text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-[#1A1A1A]">
               Campaigns that
               <span className="block text-[#D1007F]">
                 get noticed.
@@ -143,7 +143,7 @@ export default function GalleryNews() {
         {/* =====================================================
             CATEGORY FILTERS
         ====================================================== */}
-        <div className="mb-8 sm:mb-10 flex gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 no-scrollbar">
+        <div className="mb-6 sm:mb-10 flex gap-1.5 sm:gap-2 overflow-x-auto pb-2 -mx-3.5 px-3.5 sm:mx-0 sm:px-0 no-scrollbar">
           {categories.map((category) => (
             <button
               key={category}
@@ -152,8 +152,8 @@ export default function GalleryNews() {
                 setSelectedIndex(null);
               }}
               className={`
-                shrink-0 whitespace-nowrap rounded-full px-4 py-2 sm:px-5 sm:py-2.5
-                text-[11px] sm:text-xs font-bold uppercase tracking-wider
+                shrink-0 whitespace-nowrap rounded-full px-3.5 py-1.5 sm:px-5 sm:py-2.5
+                text-[10px] sm:text-xs font-bold uppercase tracking-wider
                 transition-all duration-300
                 ${
                   activeCategory === category
@@ -172,7 +172,7 @@ export default function GalleryNews() {
         ====================================================== */}
         <motion.div
           layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5"
         >
           {filtered.map((item, index) => (
             <motion.button
@@ -188,7 +188,7 @@ export default function GalleryNews() {
                 relative
                 aspect-[4/5]
                 overflow-hidden
-                rounded-2xl
+                rounded-xl
                 sm:rounded-3xl
                 border-2
                 border-[#F3B4D8]
@@ -223,18 +223,18 @@ export default function GalleryNews() {
               <div className="absolute left-0 right-0 top-0 h-1 bg-[#D1007F] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
               {/* Content */}
-              <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
-                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#F2299A]">
+              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-7">
+                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#F2299A]">
                   {item.category}
                 </span>
 
-                <h3 className="mt-1.5 sm:mt-2 text-lg sm:text-xl font-bold text-white">
+                <h3 className="mt-1 sm:mt-2 text-base sm:text-xl font-bold text-white">
                   {item.title}
                 </h3>
 
-                <div className="mt-3 sm:mt-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white/60 transition group-hover:text-white">
+                <div className="mt-2.5 sm:mt-4 flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-white/60 transition group-hover:text-white">
                   View Project
-                  <ExternalLink size={13} />
+                  <ExternalLink size={12} />
                 </div>
               </div>
             </motion.button>
@@ -244,17 +244,17 @@ export default function GalleryNews() {
         {/* =====================================================
             TRUSTED BRANDS
         ====================================================== */}
-        <div className="mt-16 sm:mt-24 md:mt-28">
-          <div className="mb-6 sm:mb-8">
-            <div className="flex items-center gap-3">
-              <span className="h-[2px] w-8 sm:w-10 bg-[#D1007F]" />
+        <div className="mt-12 sm:mt-24 md:mt-28">
+          <div className="mb-4 sm:mb-8">
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <span className="h-[2px] w-6 sm:w-10 bg-[#D1007F]" />
 
-              <p className="text-xs font-bold uppercase tracking-[0.35em] text-[#D1007F]">
+              <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] sm:tracking-[0.35em] text-[#D1007F]">
                 Trusted Brands
               </p>
             </div>
 
-            <h2 className="mt-2 sm:mt-3 text-2xl sm:text-3xl md:text-5xl font-black text-[#1A1A1A]">
+            <h2 className="mt-1.5 sm:mt-3 text-xl sm:text-3xl md:text-5xl font-black text-[#1A1A1A]">
               Brands we work with
             </h2>
           </div>
@@ -262,16 +262,16 @@ export default function GalleryNews() {
           <div
             className="
               overflow-hidden
-              rounded-2xl
+              rounded-xl
               sm:rounded-3xl
               border-2
               border-[#F3B4D8]
               bg-[#FFF3F9]
-              py-6
+              py-4
               sm:py-10
             "
           >
-            <div className="animate-marquee items-center gap-10 sm:gap-20 px-6 sm:px-10">
+            <div className="animate-marquee items-center gap-6 sm:gap-20 px-4 sm:px-10">
               {[
                 "NEXORA",
                 "VOLTÉ",
@@ -291,10 +291,10 @@ export default function GalleryNews() {
                 <div
                   key={`${brand}-${index}`}
                   className="
-                    text-base
+                    text-sm
                     sm:text-xl
                     font-black
-                    tracking-[0.15em]
+                    tracking-[0.12em]
                     sm:tracking-[0.2em]
                     text-[#D1007F]/30
                     transition-all
@@ -312,17 +312,17 @@ export default function GalleryNews() {
         {/* =====================================================
             NEWS & UPDATES
         ====================================================== */}
-        <div id="news" className="mt-16 sm:mt-24 md:mt-28 scroll-mt-16 sm:scroll-mt-20">
-          <div className="mb-8 sm:mb-12">
-            <div className="flex items-center gap-3">
-              <span className="h-[2px] w-8 sm:w-10 bg-[#D1007F]" />
+        <div id="news" className="mt-12 sm:mt-24 md:mt-28 scroll-mt-16 sm:scroll-mt-20">
+          <div className="mb-6 sm:mb-12">
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <span className="h-[2px] w-6 sm:w-10 bg-[#D1007F]" />
 
-              <p className="text-xs font-bold uppercase tracking-[0.35em] text-[#D1007F]">
+              <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] sm:tracking-[0.35em] text-[#D1007F]">
                 News & Updates
               </p>
             </div>
 
-            <h2 className="mt-2 sm:mt-3 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#1A1A1A]">
+            <h2 className="mt-1.5 sm:mt-3 text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#1A1A1A]">
               Latest from
               <span className="block text-[#D1007F]">
                 our world.
@@ -330,7 +330,7 @@ export default function GalleryNews() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5">
             {news.map((article, index) => (
               <motion.article
                 key={article.title}
@@ -340,12 +340,12 @@ export default function GalleryNews() {
                 transition={{ delay: index * 0.1 }}
                 className="
                   group
-                  rounded-2xl
+                  rounded-xl
                   sm:rounded-[2rem]
                   border-2
                   border-[#F3B4D8]
                   bg-white
-                  p-5
+                  p-4
                   sm:p-7
                   shadow-[0_8px_30px_rgba(209,0,127,0.05)]
                   transition-all
@@ -355,8 +355,8 @@ export default function GalleryNews() {
                   hover:shadow-[0_15px_40px_rgba(209,0,127,0.12)]
                 "
               >
-                <div className="flex items-center gap-2.5 text-[10px] font-bold uppercase tracking-widest text-[#D1007F]">
-                  <CalendarDays size={13} />
+                <div className="flex items-center gap-2 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider sm:tracking-widest text-[#D1007F]">
+                  <CalendarDays size={12} />
 
                   {article.date}
 
@@ -367,22 +367,24 @@ export default function GalleryNews() {
                   {article.category}
                 </div>
 
-                <h3 className="mt-5 sm:mt-8 text-lg sm:text-xl font-bold leading-snug text-[#1A1A1A] transition-colors group-hover:text-[#D1007F]">
+                <h3 className="mt-3.5 sm:mt-8 text-base sm:text-xl font-bold leading-snug text-[#1A1A1A] transition-colors group-hover:text-[#D1007F]">
                   {article.title}
                 </h3>
 
-                <p className="mt-3 sm:mt-4 text-xs sm:text-sm leading-relaxed text-neutral-500">
+                <p className="mt-2.5 sm:mt-4 text-xs sm:text-sm leading-relaxed text-neutral-500">
                   {article.text}
                 </p>
 
                 <button
                   className="
-                    mt-6
+                    mt-4
                     sm:mt-8
                     flex
                     items-center
-                    gap-2
-                    text-xs
+                    gap-1.5
+                    sm:gap-2
+                    text-[11px]
+                    sm:text-xs
                     font-bold
                     uppercase
                     tracking-widest
@@ -392,10 +394,10 @@ export default function GalleryNews() {
                   "
                 >
                   Read More
-                  <ArrowRight size={14} />
+                  <ArrowRight size={13} />
                 </button>
 
-                <div className="mt-5 sm:mt-6 h-[2px] w-8 bg-[#D1007F] transition-all duration-300 group-hover:w-16" />
+                <div className="mt-4 sm:mt-6 h-[2px] w-8 bg-[#D1007F] transition-all duration-300 group-hover:w-16" />
               </motion.article>
             ))}
           </div>
@@ -404,7 +406,7 @@ export default function GalleryNews() {
 
       {/* =====================================================
           IMAGE LIGHTBOX
-      ====================================================== */}
+        ====================================================== */}
       <AnimatePresence>
         {selected && (
           <motion.div
@@ -419,7 +421,7 @@ export default function GalleryNews() {
               items-center
               justify-center
               bg-black/95
-              p-3
+              p-2.5
               sm:p-5
               backdrop-blur-xl
             "
@@ -430,14 +432,14 @@ export default function GalleryNews() {
               aria-label="Close image preview"
               className="
                 absolute
-                right-3
-                top-3
+                right-2.5
+                top-2.5
                 sm:right-6
                 sm:top-6
                 z-30
                 flex
-                h-9
-                w-9
+                h-8
+                w-8
                 sm:h-12
                 sm:w-12
                 items-center
@@ -451,7 +453,7 @@ export default function GalleryNews() {
                 hover:bg-[#F2299A]
               "
             >
-              <X className="h-4 w-4 sm:h-5 sm:w-5" />
+              <X className="h-3.5 w-3.5 sm:h-5 sm:w-5" />
             </button>
 
             {/* Previous */}
@@ -460,13 +462,13 @@ export default function GalleryNews() {
               aria-label="Previous image"
               className="
                 absolute
-                left-2
+                left-1.5
                 sm:left-5
                 top-1/2
                 z-30
                 flex
-                h-9
-                w-9
+                h-8
+                w-8
                 sm:h-12
                 sm:w-12
                 -translate-y-1/2
@@ -481,7 +483,7 @@ export default function GalleryNews() {
                 hover:bg-[#D1007F]
               "
             >
-              <ChevronLeft className="h-4 w-4 sm:h-6 sm:w-6" />
+              <ChevronLeft className="h-3.5 w-3.5 sm:h-6 sm:w-6" />
             </button>
 
             {/* Next */}
@@ -490,13 +492,13 @@ export default function GalleryNews() {
               aria-label="Next image"
               className="
                 absolute
-                right-2
+                right-1.5
                 sm:right-5
                 top-1/2
                 z-30
                 flex
-                h-9
-                w-9
+                h-8
+                w-8
                 sm:h-12
                 sm:w-12
                 -translate-y-1/2
@@ -511,7 +513,7 @@ export default function GalleryNews() {
                 hover:bg-[#D1007F]
               "
             >
-              <ChevronRight className="h-4 w-4 sm:h-6 sm:w-6" />
+              <ChevronRight className="h-3.5 w-3.5 sm:h-6 sm:w-6" />
             </button>
 
             {/* Lightbox */}
@@ -525,7 +527,7 @@ export default function GalleryNews() {
                 sm:max-w-4xl
                 lg:max-w-6xl
                 overflow-hidden
-                rounded-2xl
+                rounded-xl
                 sm:rounded-3xl
                 border-2
                 border-[#D1007F]
@@ -539,12 +541,12 @@ export default function GalleryNews() {
                 className="max-h-[60vh] sm:max-h-[75vh] w-auto max-w-full object-contain mx-auto"
               />
 
-              <div className="bg-[#0b0b0b] p-3.5 sm:p-5">
-                <p className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#F2299A]">
+              <div className="bg-[#0b0b0b] p-3 sm:p-5">
+                <p className="text-[9px] sm:text-xs font-bold uppercase tracking-widest text-[#F2299A]">
                   {selected.category}
                 </p>
 
-                <h3 className="mt-1 text-base sm:text-xl font-bold text-white">
+                <h3 className="mt-1 text-sm sm:text-xl font-bold text-white">
                   {selected.title}
                 </h3>
               </div>
