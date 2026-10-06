@@ -71,7 +71,7 @@ export default function InfiniteServiceTicker() {
         overflow-hidden
         border-y-2
         border-[#D1007F]
-        bg-white
+        bg-[#F4DC86]
         py-8
         sm:py-14
       "
@@ -91,8 +91,8 @@ export default function InfiniteServiceTicker() {
           sm:w-28
           md:w-40
           bg-gradient-to-r
-          from-white
-          via-white/80
+          from-[#F4DC86]
+          via-[#F4DC86]/80
           to-transparent
         "
       />
@@ -112,8 +112,8 @@ export default function InfiniteServiceTicker() {
           sm:w-28
           md:w-40
           bg-gradient-to-l
-          from-white
-          via-white/80
+          from-[#F4DC86]
+          via-[#F4DC86]/80
           to-transparent
         "
       />

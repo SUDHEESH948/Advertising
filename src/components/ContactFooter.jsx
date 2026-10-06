@@ -37,7 +37,7 @@ export default function ContactFooter() {
       <section
         id="contact"
         className="
-          relative overflow-hidden bg-white px-4 py-16
+          relative overflow-hidden bg-[#F4DC86] px-4 py-16
           text-[#1A1A1A] sm:px-6 sm:py-20 md:px-10 lg:px-16 lg:py-28
         "
       >
@@ -441,7 +441,7 @@ export default function ContactFooter() {
       ====================================================== */}
       <footer
         className="
-          border-t-2 border-[#F3B4D8] bg-white
+          border-t-2 border-[#F3B4D8] bg-[#F4DC86]
           px-4 py-10 text-[#1A1A1A]
           sm:px-6 sm:py-12 md:px-10 lg:px-16
         "

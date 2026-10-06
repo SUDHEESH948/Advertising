@@ -31,7 +31,7 @@ export default function InfiniteLogoTicker() {
   return (
     <section
       id="media"
-      className="relative w-full overflow-hidden bg-white py-6 sm:py-10 md:py-12 border-y border-[#D1007F]"
+      className="relative w-full overflow-hidden bg-[#F4DC86] py-6 sm:py-10 md:py-12 border-y border-[#D1007F]"
     >
       {/* =====================================================
           LEFT GRADIENT FADE
@@ -48,8 +48,8 @@ export default function InfiniteLogoTicker() {
           sm:w-24
           md:w-36
           bg-gradient-to-r
-          from-white
-          via-white/80
+          from-[#F4DC86]
+          via-[#F4DC86]/80
           to-transparent
         "
       />
@@ -69,8 +69,8 @@ export default function InfiniteLogoTicker() {
           sm:w-24
           md:w-36
           bg-gradient-to-l
-          from-white
-          via-white/80
+          from-[#F4DC86]
+          via-[#F4DC86]/80
           to-transparent
         "
       />

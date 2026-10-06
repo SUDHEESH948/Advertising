@@ -86,7 +86,7 @@ export default function AboutServices() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-white px-4 py-16 sm:px-6 sm:py-20 md:px-10 md:py-28 lg:px-16 text-[#171217]"
+      className="relative overflow-hidden bg-[#F4DC86] px-4 py-16 sm:px-6 sm:py-20 md:px-10 md:py-28 lg:px-16 text-[#171217]"
     >
       {/* =====================================================
           BACKGROUND DECORATION

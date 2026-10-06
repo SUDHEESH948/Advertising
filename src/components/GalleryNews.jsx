@@ -106,7 +106,7 @@ export default function GalleryNews() {
   return (
     <section
       id="work"
-      className="relative overflow-hidden bg-white px-3.5 py-12 sm:px-6 sm:py-20 md:px-10 md:py-24 lg:px-16 text-[#1A1A1A]"
+      className="relative overflow-hidden bg-[#F4DC86] px-3.5 py-12 sm:px-6 sm:py-20 md:px-10 md:py-24 lg:px-16 text-[#1A1A1A]"
     >
       {/* Decorative background */}
       <div className="pointer-events-none absolute left-0 top-0 h-96 w-96 rounded-full bg-[#D1007F]/5 blur-3xl" />
