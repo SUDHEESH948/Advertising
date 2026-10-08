@@ -5,6 +5,7 @@ import MediaShowcase from "./components/MediaShowcase";
 import GalleryNews from "./components/GalleryNews";
 import ContactFooter from "./components/ContactFooter";
 import Media from "./components/media";
+import Work from "./components/OurWork";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
       <MediaShowcase />
 
       <GalleryNews />
+      < Work/>
 
       <ContactFooter />
     </div>

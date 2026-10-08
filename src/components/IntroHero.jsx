@@ -145,8 +145,8 @@ export default function IntroHero() {
         {/* ===================================================
             FIXED NAVIGATION (FLOATING PILL NAVBAR)
         ==================================================== */}
-        <header className="fixed left-0 right-0 top-3 z-[1000] w-full px-3 sm:top-5 sm:px-6">
-          <div className="mx-auto flex h-[54px] w-full max-w-md items-center justify-between rounded-full border border-black/5 bg-white/95 px-4 shadow-xl shadow-black/10 backdrop-blur-md sm:h-[60px] sm:max-w-lg sm:px-6 lg:w-fit lg:max-w-none lg:justify-start lg:gap-8 xl:gap-10">
+        <header className="fixed left-0 right-0 top-3 z-[1000] w-full px-3 sm:top-5 sm:px-6 pointer-events-none">
+          <div className="mx-auto flex h-[54px] w-full max-w-md items-center justify-between rounded-full border border-black/5 bg-white/95 px-4 shadow-xl shadow-black/10 backdrop-blur-md sm:h-[60px] sm:max-w-lg sm:px-6 lg:w-fit lg:max-w-none lg:justify-start lg:gap-8 xl:gap-10 pointer-events-auto">
             
             {/* ================= LOGO ================= */}
             <button
@@ -241,7 +241,7 @@ export default function IntroHero() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   onClick={() => setMenuOpen(false)}
-                  className="fixed inset-0 top-[65px] z-40 bg-black/50 backdrop-blur-sm sm:top-[75px] lg:hidden"
+                  className="fixed inset-0 top-[65px] z-40 bg-black/50 backdrop-blur-sm sm:top-[75px] lg:hidden pointer-events-auto"
                 />
 
                 <motion.div
@@ -250,6 +250,7 @@ export default function IntroHero() {
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.25 }}
                   className="
+                    pointer-events-auto
                     absolute
                     left-3
                     right-3
