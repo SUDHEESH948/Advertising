@@ -58,110 +58,111 @@ const categories = [
   "Signage",
 ];
 
-// Esteemed Clients from Quilonad portfolio
+// Esteemed Clients from Quilonad portfolio (served locally to ensure high reliability and zero network failures)
 export const clientBrands = [
   {
-    name: "LuLu Mall",logo: "/lulu.png",
-     },
+    name: "LuLu Mall",
+    logo: "/clients/lulu.png",
+  },
   {
     name: "Chungath Jewellery",
-    logo: "https://chungathjewellery.com/wp-content/uploads/2021/04/chungath-logo.png",
+    logo: "/clients/chungath.png",
   },
   {
     name: "Silks World",
-    logo: "https://images.jdmagicbox.com/comp/kollam/dc/0474px474.x474.1238491873p8d6q4.dc/catalogue/silks-world-chinnakada-kollam-saree-retailers-6qg39.jpg",
+    logo: "/clients/silks-world.svg",
   },
   {
     name: "Bhima Gold",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/d/df/Bhima_Jewellers_Logo.png",
+    logo: "/clients/bhima.svg",
   },
   {
     name: "Meditrina Hospitals",
-    logo: "https://meditrinahospitals.com/wp-content/uploads/2023/04/meditrina-logo.png",
+    logo: "/clients/meditrina.svg",
   },
   {
     name: "M.K. Fabrics",
-    logo: "https://mkfabrics.in/wp-content/uploads/2021/08/logo.png",
+    logo: "/clients/mk-fabrics.svg",
   },
   {
     name: "Yes Bharath",
-    logo: "https://yesbharath.com/wp-content/uploads/2022/09/cropped-yes-bharath-logo.png",
+    logo: "/clients/yes-bharath.svg",
   },
   {
     name: "Jayalakshmi",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Jayalakshmi_Silks_Logo.svg",
+    logo: "/clients/jayalakshmi.svg",
   },
   {
     name: "Ria Money Transfer",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Ria_Money_Transfer_logo.svg",
+    logo: "/clients/ria.svg",
   },
   {
     name: "Ultra Bond",
-    logo: "https://ultrabond.in/wp-content/uploads/2021/06/ultrabond-logo.png",
+    logo: "/clients/ultra-bond.svg",
   },
   {
     name: "GRB",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/0/07/GRB_Dairy_Foods_Logo.png",
+    logo: "/clients/grb.svg",
   },
   {
     name: "RAK Ceramics",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/0/07/RAK_Ceramics_Logo.svg",
+    logo: "/clients/rak-ceramics.svg",
   },
   {
     name: "VKC Group",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/a/ab/VKC_Pride_logo.png",
+    logo: "/clients/vkc.svg",
   },
   {
     name: "Milma",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Milma_Logo.svg",
+    logo: "/clients/milma.svg",
   },
   {
     name: "Rajadhani",
-    logo: "https://rajadhanigroup.com/wp-content/uploads/2021/03/rajadhani-logo.png",
+    logo: "/clients/rajadhani.svg",
   },
   {
     name: "KIMS Healthcare",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/8/87/KIMSHEALTH_logo.png",
+    logo: "/clients/kims.svg",
   },
   {
     name: "Azeezia",
-    logo: "https://azeezia.com/wp-content/uploads/2022/02/azeezia-logo.png",
+    logo: "/clients/azeezia.svg",
   },
   {
     name: "Pulimoottil Silks",
-    logo: "https://pulimoottilonline.com/cdn/shop/files/logo_180x.png",
+    logo: "/clients/pulimoottil.png",
   },
   {
     name: "Wedland Weddings",
-    logo: "https://wedlandsilks.com/wp-content/uploads/2021/07/logo.png",
+    logo: "/clients/wedland.svg",
   },
   {
     name: "Kajaria",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/9/91/Kajaria_Ceramics_Logo.svg",
+    logo: "/clients/kajaria.svg",
   },
   {
     name: "KSACS",
-    logo: "https://ksacs.kerala.gov.in/wp-content/themes/ksacs/images/logo.png",
+    logo: "/clients/ksacs.svg",
   },
   {
     name: "Manappuram Foundation",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/e/eb/Manappuram_Finance_Logo.svg",
+    logo: "/clients/manappuram.svg",
   },
   {
     name: "Malabar Gold & Diamonds",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Malabar_Gold_%26_Diamonds_logo.svg",
+    logo: "/clients/malabar-gold.svg",
   },
   {
     name: "Club Mahindra",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Club_Mahindra_Logo.svg",
+    logo: "/clients/club-mahindra.svg",
   },
   {
     name: "National Health Mission",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/National_Health_Mission_Logo.svg",
+    logo: "/clients/nhm.svg",
   },
   {
     name: "Information & PRD Kerala",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/d/df/Kerala_Government_Emblem.svg",
+    logo: "/clients/kerala-prd.svg",
   },
 ];
 
@@ -185,6 +186,39 @@ const news = [
     text: "Dynamic digital displays are changing how brands communicate in high-traffic locations.",
   },
 ];
+
+function BrandLogo({ logo, name }) {
+  const [hasError, setHasError] = useState(!logo);
+
+  if (hasError || !logo) {
+    const initials = name
+      .split(" ")
+      .map((part) => part[0])
+      .filter(Boolean)
+      .slice(0, 2)
+      .join("")
+      .toUpperCase();
+
+    return (
+      <div
+        className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#D1007F]/15 to-[#D1007F]/30 text-[#D1007F] font-black text-xs sm:text-sm shadow-inner select-none"
+        title={name}
+      >
+        {initials}
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={logo}
+      alt={name}
+      loading="lazy"
+      className="max-h-full max-w-full object-contain filter transition-all duration-300 group-hover:scale-105"
+      onError={() => setHasError(true)}
+    />
+  );
+}
 
 export default function GalleryNews() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -394,14 +428,7 @@ export default function GalleryNews() {
                   className="group flex shrink-0 items-center gap-3 rounded-xl border border-[#D1007F]/20 bg-white px-4 py-2.5 shadow-sm transition-all duration-300 hover:border-[#D1007F] hover:shadow-[0_4px_20px_rgba(209,0,127,0.18)] sm:px-5 sm:py-3"
                 >
                   <div className="flex h-8 w-20 items-center justify-center overflow-hidden sm:h-10 sm:w-28">
-                    <img
-                      src={brand.logo}
-                      alt={brand.name}
-                      className="max-h-full max-w-full object-contain filter transition-all duration-300 group-hover:scale-105"
-                      onError={(e) => {
-                        e.currentTarget.style.display = "none";
-                      }}
-                    />
+                    <BrandLogo logo={brand.logo} name={brand.name} />
                   </div>
 
                   <span className="h-4 w-[1px] bg-neutral-200 transition-colors group-hover:bg-[#D1007F]/40" />

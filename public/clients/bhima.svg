@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B0000"/>
+      <stop offset="100%" stop-color="#4A0000"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE082"/>
+      <stop offset="50%" stop-color="#FFD54F"/>
+      <stop offset="100%" stop-color="#FFB300"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="6" width="196" height="48" rx="8" fill="url(#bg)" stroke="url(#gold)" stroke-width="1.5"/>
+  <circle cx="32" cy="30" r="16" fill="none" stroke="url(#gold)" stroke-width="1.5"/>
+  <polygon points="32,18 35,26 44,26 37,31 40,39 32,34 24,39 27,31 20,26 29,26" fill="url(#gold)"/>
+  <text x="60" y="33" font-family="'Georgia', serif" font-size="20" font-weight="bold" fill="url(#gold)" letter-spacing="1.5">BHIMA</text>
+  <text x="61" y="45" font-family="'Arial', sans-serif" font-size="7.5" font-weight="600" fill="#FFF8E1" letter-spacing="2.5">GOLD &amp; DIAMONDS</text>
+</svg>

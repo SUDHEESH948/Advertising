@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <defs>
+    <linearGradient id="vkcBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#B91C1C"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="12" width="55" height="36" rx="8" fill="url(#vkcBg)"/>
+  <text x="16" y="38" font-family="'Impact', sans-serif" font-size="24" font-style="italic" fill="white" letter-spacing="2">VKC</text>
+  <text x="74" y="32" font-family="'Arial Black', sans-serif" font-size="16" font-weight="900" font-style="italic" fill="#1E3A8A" letter-spacing="1.5">PRIDE</text>
+  <text x="75" y="44" font-family="'Arial', sans-serif" font-size="8" font-weight="700" fill="#64748B" letter-spacing="2.5">FOOTWEAR</text>
+</svg>

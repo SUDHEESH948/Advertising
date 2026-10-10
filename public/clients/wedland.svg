@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <defs>
+    <linearGradient id="wedBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9D174D"/>
+      <stop offset="100%" stop-color="#831843"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="6" width="192" height="48" rx="8" fill="url(#wedBg)" stroke="#F472B6" stroke-width="1.5"/>
+  <circle cx="24" cy="30" r="10" fill="none" stroke="#FBCFE8" stroke-width="2"/>
+  <circle cx="34" cy="30" r="10" fill="none" stroke="#FDE047" stroke-width="2"/>
+  <text x="52" y="32" font-family="'Times New Roman', serif" font-size="16" font-weight="bold" fill="#FFFFFF" letter-spacing="1.5">WEDLAND</text>
+  <text x="53" y="43" font-family="'Arial', sans-serif" font-size="7.5" font-weight="600" fill="#FCE7F3" letter-spacing="3.5">SILKS &amp; WEDDINGS</text>
+</svg>

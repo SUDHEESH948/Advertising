@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -10,6 +11,7 @@ import {
 
 import heroBackground from "../assets/hroicce.png";
 import logoImg from "../assets/logo-clean.png";
+import introVideo from "../assets/medialogo/errrrrrr.mp4";
 
 const navItems = [
   ["About", "about"],
@@ -53,28 +55,19 @@ export default function IntroHero() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.9 }}
-            className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden bg-[#020805]"
+            className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden bg-black"
           >
-            {/* Blurred Mobile Background */}
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-35 blur-2xl md:hidden"
-            >
-              <source src="/videos/videee.mp4" type="video/mp4" />
-            </video>
-
-            {/* Main Intro Video */}
+            {/* Main Intro Video - No Blurred Background */}
             <video
               autoPlay
               muted={muted}
               playsInline
+              preload="auto"
               onEnded={() => setIntroFinished(true)}
-              className="relative z-10 max-h-full w-full object-contain md:h-full md:object-cover"
+              className="relative z-10 h-full w-full object-contain md:object-cover"
             >
-              <source src="/videos/videee.mp4" type="video/mp4" />
+              <source src={introVideo} type="video/mp4" />
+              Your browser does not support the video tag.
             </video>
 
             {/* Video Overlay */}
@@ -83,6 +76,7 @@ export default function IntroHero() {
 
             {/* Intro Controls */}
             <div className="absolute right-3 top-3 z-50 flex items-center gap-2 sm:right-6 sm:top-6 sm:gap-3">
+              {/* Mute / Unmute */}
               <button
                 type="button"
                 onClick={() => setMuted((value) => !value)}
@@ -96,6 +90,7 @@ export default function IntroHero() {
                 )}
               </button>
 
+              {/* Skip Intro */}
               <button
                 type="button"
                 onClick={() => setIntroFinished(true)}
@@ -126,12 +121,7 @@ export default function IntroHero() {
           <img
             src={heroBackground}
             alt="Quilonad Media Billboard Network"
-            className="
-              absolute inset-0
-              h-full w-full
-              object-cover
-              object-left-top
-            "
+            className="absolute inset-0 h-full w-full object-cover object-left-top"
           />
 
           {/* Desktop Gradient */}
@@ -143,87 +133,46 @@ export default function IntroHero() {
         </div>
 
         {/* ===================================================
-            FIXED NAVIGATION (FLOATING PILL NAVBAR)
+            FIXED NAVIGATION
         ==================================================== */}
-        <header className="fixed left-0 right-0 top-3 z-[1000] w-full px-3 sm:top-5 sm:px-6 pointer-events-none">
-          <div className="mx-auto flex h-[54px] w-full max-w-md items-center justify-between rounded-full border border-black/5 bg-white/95 px-4 shadow-xl shadow-black/10 backdrop-blur-md sm:h-[60px] sm:max-w-lg sm:px-6 lg:w-fit lg:max-w-none lg:justify-start lg:gap-8 xl:gap-10 pointer-events-auto">
-            
-            {/* ================= LOGO ================= */}
+        <header className="pointer-events-none fixed left-0 right-0 top-3 z-[1000] w-full px-3 sm:top-5 sm:px-6">
+          <div className="pointer-events-auto mx-auto flex h-[54px] w-full max-w-md items-center justify-between rounded-full border border-black/5 bg-white/95 px-4 shadow-xl shadow-black/10 backdrop-blur-md sm:h-[60px] sm:max-w-lg sm:px-6 lg:w-fit lg:max-w-none lg:justify-start lg:gap-8 xl:gap-10">
+            {/* Logo */}
             <button
               type="button"
               onClick={() => scrollTo("home")}
-              className="group flex cursor-pointer items-center shrink-0"
+              className="group flex shrink-0 cursor-pointer items-center"
               aria-label="Quilonad Media Home"
             >
               <img
                 src={logoImg}
                 alt="Quilonad Media"
-                className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                className="h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105 sm:h-9 md:h-10"
               />
             </button>
 
-            {/* ================= CENTER NAVIGATION ================= */}
+            {/* Desktop Navigation */}
             <nav className="hidden items-center justify-center gap-5 lg:flex xl:gap-7">
               {navItems.map(([label, id]) => (
                 <button
                   type="button"
                   key={id}
                   onClick={() => scrollTo(id)}
-                  className="
-                    relative
-                    cursor-pointer
-                    text-xs
-                    font-bold
-                    uppercase
-                    tracking-[0.16em]
-                    text-[#cc338B]
-                    transition-all
-                    duration-300
-                    after:absolute
-                    after:-bottom-1.5
-                    after:left-1/2
-                    after:h-[2px]
-                    after:w-0
-                    after:-translate-x-1/2
-                    after:bg-[#cc338B]
-                    after:transition-all
-                    after:duration-300
-                    hover:text-[#a82670]
-                    hover:after:w-full
-                  "
+                  className="relative cursor-pointer text-xs font-bold uppercase tracking-[0.16em] text-[#cc338B] transition-all duration-300 after:absolute after:-bottom-1.5 after:left-1/2 after:h-[2px] after:w-0 after:-translate-x-1/2 after:bg-[#cc338B] after:transition-all after:duration-300 hover:text-[#a82670] hover:after:w-full"
                 >
                   {label}
                 </button>
               ))}
             </nav>
 
-            {/* ================= MOBILE MENU BUTTON ================= */}
+            {/* Mobile Menu Button */}
             <div className="flex items-center lg:hidden">
               <button
                 type="button"
                 onClick={() => setMenuOpen((value) => !value)}
-                className="
-                  flex
-                  h-8
-                  w-8
-                  cursor-pointer
-                  items-center
-                  justify-center
-                  rounded-full
-                  border
-                  border-[#cc338B]/30
-                  bg-white
-                  text-[#cc338B]
-                  shadow-sm
-                  transition-all
-                  duration-300
-                  hover:border-[#cc338B]
-                  hover:bg-[#cc338B]
-                  hover:text-white
-                  sm:h-9
-                  sm:w-9
-                "
+                className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-[#cc338B]/30 bg-white text-[#cc338B] shadow-sm transition-all duration-300 hover:border-[#cc338B] hover:bg-[#cc338B] hover:text-white sm:h-9 sm:w-9"
                 aria-label={menuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={menuOpen}
               >
                 {menuOpen ? <X size={16} /> : <Menu size={16} />}
               </button>
@@ -236,39 +185,22 @@ export default function IntroHero() {
           <AnimatePresence>
             {menuOpen && (
               <>
+                {/* Backdrop */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   onClick={() => setMenuOpen(false)}
-                  className="fixed inset-0 top-[65px] z-40 bg-black/50 backdrop-blur-sm sm:top-[75px] lg:hidden pointer-events-auto"
+                  className="pointer-events-auto fixed inset-0 top-[65px] z-40 bg-black/50 backdrop-blur-sm sm:top-[75px] lg:hidden"
                 />
 
+                {/* Menu Panel */}
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.25 }}
-                  className="
-                    pointer-events-auto
-                    absolute
-                    left-3
-                    right-3
-                    top-[4.25rem]
-                    z-50
-                    rounded-2xl
-                    border
-                    border-[#cc338B]/20
-                    bg-white/95
-                    p-4
-                    shadow-2xl
-                    backdrop-blur-xl
-                    sm:left-6
-                    sm:right-6
-                    sm:top-[4.75rem]
-                    sm:p-6
-                    lg:hidden
-                  "
+                  className="pointer-events-auto absolute left-3 right-3 top-[4.25rem] z-50 rounded-2xl border border-[#cc338B]/20 bg-white/95 p-4 shadow-2xl backdrop-blur-xl sm:left-6 sm:right-6 sm:top-[4.75rem] sm:p-6 lg:hidden"
                 >
                   <div className="flex flex-col gap-1.5 sm:gap-2">
                     {navItems.map(([label, id]) => (
@@ -276,21 +208,7 @@ export default function IntroHero() {
                         type="button"
                         key={id}
                         onClick={() => scrollTo(id)}
-                        className="
-                          cursor-pointer
-                          rounded-xl
-                          px-3
-                          py-2.5
-                          text-left
-                          text-xs
-                          font-bold
-                          uppercase
-                          tracking-wider
-                          text-[#cc338B]
-                          transition-colors
-                          hover:bg-[#cc338B]/10
-                          sm:text-sm
-                        "
+                        className="cursor-pointer rounded-xl px-3 py-2.5 text-left text-xs font-bold uppercase tracking-wider text-[#cc338B] transition-colors hover:bg-[#cc338B]/10 sm:text-sm"
                       >
                         {label}
                       </button>

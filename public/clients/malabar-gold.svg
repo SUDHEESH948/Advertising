@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <defs>
+    <linearGradient id="malBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#831843"/>
+      <stop offset="100%" stop-color="#500724"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="6" width="192" height="48" rx="8" fill="url(#malBg)" stroke="#F59E0B" stroke-width="1.5"/>
+  <circle cx="30" cy="30" r="15" fill="#9D174D" stroke="#FBBF24" stroke-width="1.5"/>
+  <polygon points="30,19 33,26 40,26 35,31 37,38 30,34 23,38 25,31 20,26 27,26" fill="#FDE047"/>
+  <text x="54" y="31" font-family="'Times New Roman', serif" font-size="15" font-weight="bold" fill="#FFFFFF" letter-spacing="1.2">MALABAR</text>
+  <text x="55" y="43" font-family="'Arial', sans-serif" font-size="7.5" font-weight="600" fill="#FDE047" letter-spacing="2.2">GOLD &amp; DIAMONDS</text>
+</svg>

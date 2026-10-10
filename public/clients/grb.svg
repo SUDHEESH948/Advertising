@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <rect x="10" y="10" width="65" height="40" rx="20" fill="#DC2626" stroke="#F59E0B" stroke-width="2"/>
+  <text x="18" y="37" font-family="'Arial Black', sans-serif" font-size="20" font-weight="900" fill="white" letter-spacing="1.5">GRB</text>
+  <text x="84" y="30" font-family="'Georgia', serif" font-size="15" font-weight="bold" fill="#DC2626">Pure Ghee</text>
+  <text x="85" y="44" font-family="'Arial', sans-serif" font-size="8" font-weight="700" fill="#B45309" letter-spacing="2">DAIRY FOODS</text>
+</svg>

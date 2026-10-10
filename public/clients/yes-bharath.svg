@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <rect x="4" y="6" width="192" height="48" rx="8" fill="#831843" stroke="#F59E0B" stroke-width="1.5"/>
+  <circle cx="30" cy="30" r="16" fill="#9D174D" stroke="#FBBF24" stroke-width="1.5"/>
+  <path d="M22 28 L27 35 L38 23" fill="none" stroke="#FDE68A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="54" y="31" font-family="'Georgia', serif" font-size="15" font-weight="bold" fill="#FFFFFF" letter-spacing="1">YES BHARATH</text>
+  <text x="55" y="43" font-family="'Arial', sans-serif" font-size="7.5" font-weight="700" fill="#FDE047" letter-spacing="1.8">WEDDING COLLECTIONS</text>
+</svg>
