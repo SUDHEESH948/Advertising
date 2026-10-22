@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, ExternalLink, ChevronDown } from "lucide-react";
 
 // Automatically imports all image files inside src/assets/work/
 const imageFiles = import.meta.glob(
@@ -25,24 +25,34 @@ const workItems = Object.entries(imageFiles).map(([path, url], index) => {
   };
 });
 
+const INITIAL_COUNT = 6;
+const BATCH_SIZE = 6;
+
 export default function OurWork() {
+  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
   const [selectedIndex, setSelectedIndex] = useState(null);
+
+  const visibleItems = workItems.slice(0, visibleCount);
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + BATCH_SIZE);
+  };
 
   const previous = (e) => {
     e?.stopPropagation();
     setSelectedIndex((current) =>
-      current === 0 ? workItems.length - 1 : current - 1
+      current === 0 ? visibleItems.length - 1 : current - 1
     );
   };
 
   const next = (e) => {
     e?.stopPropagation();
     setSelectedIndex((current) =>
-      current === workItems.length - 1 ? 0 : current + 1
+      current === visibleItems.length - 1 ? 0 : current + 1
     );
   };
 
-  const selectedItem = selectedIndex !== null ? workItems[selectedIndex] : null;
+  const selectedItem = selectedIndex !== null ? visibleItems[selectedIndex] : null;
 
   useEffect(() => {
     if (selectedIndex === null) return;
@@ -52,11 +62,11 @@ export default function OurWork() {
         setSelectedIndex(null);
       } else if (e.key === "ArrowLeft") {
         setSelectedIndex((current) =>
-          current === 0 ? workItems.length - 1 : current - 1
+          current === 0 ? visibleItems.length - 1 : current - 1
         );
       } else if (e.key === "ArrowRight") {
         setSelectedIndex((current) =>
-          current === workItems.length - 1 ? 0 : current + 1
+          current === visibleItems.length - 1 ? 0 : current + 1
         );
       }
     };
@@ -69,7 +79,7 @@ export default function OurWork() {
       window.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = originalOverflow;
     };
-  }, [selectedIndex]);
+  }, [selectedIndex, visibleItems.length]);
 
   return (
     <section id="work" className="min-h-screen scroll-mt-16 sm:scroll-mt-20 bg-[#F4DC86] px-4 py-12 sm:px-8 sm:py-20 lg:px-16 text-[#1A1A1A]">
@@ -95,10 +105,10 @@ export default function OurWork() {
         </div>
 
         {/* =====================================================
-            WORK GRID
+            WORK GRID (Initial: 6, Loads 6 more per click)
         ====================================================== */}
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-6">
-          {workItems.map((item, index) => (
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
+          {visibleItems.map((item, index) => (
             <motion.div
               key={item.id}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -130,6 +140,7 @@ export default function OurWork() {
                   src={item.src}
                   alt={item.title}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
                 />
 
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90" />
@@ -137,7 +148,7 @@ export default function OurWork() {
                 {/* Card Title Overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-4">
                   <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#F2299A]">
-                    Project 0{item.id}
+                    Project {String(item.id).padStart(2, "0")}
                   </span>
                   
                   <div className="mt-2 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-white/70 group-hover:text-white">
@@ -149,6 +160,52 @@ export default function OurWork() {
             </motion.div>
           ))}
         </div>
+
+        {/* =====================================================
+            LOAD MORE BUTTON (Disappears when all images loaded)
+        ====================================================== */}
+        {visibleCount < workItems.length && (
+          <div className="mt-10 sm:mt-14 flex flex-col items-center justify-center gap-3">
+            <button
+              type="button"
+              onClick={handleLoadMore}
+              className="
+                group
+                inline-flex
+                items-center
+                gap-2.5
+                rounded-full
+                border-2
+                border-[#D1007F]
+                bg-[#D1007F]
+                px-8
+                py-3.5
+                text-xs
+                sm:text-sm
+                font-bold
+                uppercase
+                tracking-[0.2em]
+                text-white
+                shadow-[0_8px_25px_rgba(209,0,127,0.25)]
+                transition-all
+                duration-300
+                hover:bg-[#B0006B]
+                hover:border-[#B0006B]
+                hover:shadow-[0_12px_32px_rgba(209,0,127,0.35)]
+                active:scale-95
+              "
+            >
+              <span>Load More</span>
+              <ChevronDown
+                size={18}
+                className="transition-transform duration-300 group-hover:translate-y-1"
+              />
+            </button>
+            <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#6E5A23]">
+              Showing {visibleItems.length} of {workItems.length} Works
+            </p>
+          </div>
+        )}
       </div>
 
       {/* =====================================================
@@ -208,9 +265,8 @@ export default function OurWork() {
               <div className="flex items-center justify-between border-t border-[#F3B4D8] bg-[#FFF3F9] px-5 py-4">
                 <div>
                   <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#D1007F]">
-                    Project 0{selectedItem.id}
+                    Project {String(selectedItem.id).padStart(2, "0")}
                   </span>
-                  
                 </div>
 
                 <div className="flex items-center gap-2 text-xs font-bold text-[#D1007F]">
