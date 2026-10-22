@@ -366,7 +366,7 @@ const stats = [
   ["500+", "Campaigns"],
   ["100+", "Media Locations"],
   ["50+", "Brand Partners"],
-  ["10+", "Years Experience"],
+  ["25+", "Years Experience"],
 ];
 
 export default function AboutServices() {
