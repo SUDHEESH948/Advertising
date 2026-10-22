@@ -6,7 +6,6 @@ import {
   ChevronRight,
   ExternalLink,
   ChevronDown,
-  ChevronUp,
   Building2,
   Bus,
   MapPin,
@@ -15,7 +14,7 @@ import {
 } from "lucide-react";
 
 // ============================================================================
-// CURATED 20 PORTFOLIO IMAGES (Strictly importing only the 20 best works)
+// CURATED 20 PORTFOLIO IMAGES
 // ============================================================================
 
 // Category 1: Hoardings & Billboards (7 items)
@@ -44,13 +43,7 @@ import imgMini4 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.53 PM.jpe
 import imgMini5 from "../assets/work/ee.png";
 import imgMini6 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.20 PM.jpeg";
 
-// ============================================================================
-// 20 CURATED PORTFOLIO WORK ITEMS
-// ============================================================================
-export const WORK_ITEMS = [
-  // --------------------------------------------------------------------------
-  // COLUMN 1 / CATEGORY 1: HOARDINGS & BILLBOARDS (7 items)
-  // --------------------------------------------------------------------------
+export const hoardings = [
   {
     id: 1,
     src: imgHoarding1,
@@ -114,10 +107,9 @@ export const WORK_ITEMS = [
     location: "Ayathil Flyover Junction, Kollam",
     tag: "Flyover View Billboard",
   },
+];
 
-  // --------------------------------------------------------------------------
-  // COLUMN 2 / CATEGORY 2: TRANSIT & MOVING MEDIA (7 items)
-  // --------------------------------------------------------------------------
+export const transit = [
   {
     id: 8,
     src: imgTransit1,
@@ -181,10 +173,9 @@ export const WORK_ITEMS = [
     location: "Suburban Arterial Road",
     tag: "Fleet Mobility Ad",
   },
+];
 
-  // --------------------------------------------------------------------------
-  // COLUMN 3 / CATEGORY 3: MINI HOARDINGS & STREET SIGNAGE (6 items)
-  // --------------------------------------------------------------------------
+export const miniHoardings = [
   {
     id: 15,
     src: imgMini1,
@@ -241,12 +232,31 @@ export const WORK_ITEMS = [
   },
 ];
 
+// Curated interleaved order for "All":
+// Row 1: Hoarding 1, Transit 1, Mini 1
+// Row 2: Hoarding 2, Transit 2, Mini 2
+// Row 3: Hoarding 3, Transit 3, Mini 3
+// Row 4: Hoarding 4, Transit 4, Mini 4
+// Row 5: Hoarding 5, Transit 5, Mini 5
+// Row 6: Hoarding 6, Transit 6, Mini 6
+// Row 7: Hoarding 7, Transit 7
+export const ALL_CURATED_ITEMS = [
+  hoardings[0], transit[0], miniHoardings[0],
+  hoardings[1], transit[1], miniHoardings[1],
+  hoardings[2], transit[2], miniHoardings[2],
+  hoardings[3], transit[3], miniHoardings[3],
+  hoardings[4], transit[4], miniHoardings[4],
+  hoardings[5], transit[5], miniHoardings[5],
+  hoardings[6], transit[6],
+];
+
 export const CATEGORIES_CONFIG = [
   {
     id: "all",
     name: "All Categories",
-    shortName: "All (20)",
+    shortName: "All",
     icon: Sparkles,
+    tagline: "Complete Curated Portfolio across All Outdoor & Transit Media",
     count: 20,
   },
   {
@@ -254,7 +264,7 @@ export const CATEGORIES_CONFIG = [
     name: "Hoardings & Billboards",
     shortName: "Hoardings",
     icon: Building2,
-    tagline: "High-Impact Unipoles & Rooftop Billboards",
+    tagline: "High-Impact Unipoles & Arterial Rooftop Billboards",
     count: 7,
   },
   {
@@ -277,46 +287,46 @@ export const CATEGORIES_CONFIG = [
 
 export default function OurWork() {
   const [activeTab, setActiveTab] = useState("all");
-  
-  // Desktop expansion state: false = shows 2 per column (6 works total), true = shows all 20 works
-  const [webExpanded, setWebExpanded] = useState(false);
-
-  // Mobile expansion state per category: false = shows 6 photos, true = shows all
-  const [expandedMobileCategories, setExpandedMobileCategories] = useState({});
-
-  // Lightbox selection
+  const [visibleCount, setVisibleCount] = useState(6);
   const [selectedItem, setSelectedItem] = useState(null);
 
-  const hoardingsItems = WORK_ITEMS.filter((i) => i.categoryId === "hoardings");
-  const transitItems = WORK_ITEMS.filter((i) => i.categoryId === "transit");
-  const miniHoardingsItems = WORK_ITEMS.filter((i) => i.categoryId === "mini-hoardings");
-
-  const categoryBuckets = [
-    {
-      config: CATEGORIES_CONFIG[1], // Column 1: Hoardings & Billboards
-      items: hoardingsItems,
-    },
-    {
-      config: CATEGORIES_CONFIG[2], // Column 2: Transit & Moving Media
-      items: transitItems,
-    },
-    {
-      config: CATEGORIES_CONFIG[3], // Column 3: Mini Hoardings & Street Signage
-      items: miniHoardingsItems,
-    },
-  ];
-
-  // Active items for single tab filtering or modal navigation
-  const currentActiveItems =
+  // Active pool based on selected tab
+  const currentPool =
     activeTab === "all"
-      ? WORK_ITEMS
-      : WORK_ITEMS.filter((item) => item.categoryId === activeTab);
+      ? ALL_CURATED_ITEMS
+      : activeTab === "hoardings"
+      ? hoardings
+      : activeTab === "transit"
+      ? transit
+      : miniHoardings;
 
-  const toggleMobileCategoryExpand = (catId) => {
-    setExpandedMobileCategories((prev) => ({
-      ...prev,
-      [catId]: !prev[catId],
-    }));
+  const visibleItems = currentPool.slice(0, visibleCount);
+
+  const handleTabChange = (tabId) => {
+    setActiveTab(tabId);
+    setVisibleCount(6); // Reset pagination on tab change
+  };
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + 6);
+  };
+
+  const handlePrev = (e) => {
+    e?.stopPropagation();
+    const idx = currentPool.findIndex((i) => i.id === selectedItem?.id);
+    if (idx !== -1) {
+      const prevIdx = idx === 0 ? currentPool.length - 1 : idx - 1;
+      setSelectedItem(currentPool[prevIdx]);
+    }
+  };
+
+  const handleNext = (e) => {
+    e?.stopPropagation();
+    const idx = currentPool.findIndex((i) => i.id === selectedItem?.id);
+    if (idx !== -1) {
+      const nextIdx = idx === currentPool.length - 1 ? 0 : idx + 1;
+      setSelectedItem(currentPool[nextIdx]);
+    }
   };
 
   // Keyboard navigation & body scroll lock for Lightbox Modal
@@ -327,16 +337,16 @@ export default function OurWork() {
       if (e.key === "Escape") {
         setSelectedItem(null);
       } else if (e.key === "ArrowLeft") {
-        const idx = currentActiveItems.findIndex((i) => i.id === selectedItem.id);
+        const idx = currentPool.findIndex((i) => i.id === selectedItem.id);
         if (idx !== -1) {
-          const prevIdx = idx === 0 ? currentActiveItems.length - 1 : idx - 1;
-          setSelectedItem(currentActiveItems[prevIdx]);
+          const prevIdx = idx === 0 ? currentPool.length - 1 : idx - 1;
+          setSelectedItem(currentPool[prevIdx]);
         }
       } else if (e.key === "ArrowRight") {
-        const idx = currentActiveItems.findIndex((i) => i.id === selectedItem.id);
+        const idx = currentPool.findIndex((i) => i.id === selectedItem.id);
         if (idx !== -1) {
-          const nextIdx = idx === currentActiveItems.length - 1 ? 0 : idx + 1;
-          setSelectedItem(currentActiveItems[nextIdx]);
+          const nextIdx = idx === currentPool.length - 1 ? 0 : idx + 1;
+          setSelectedItem(currentPool[nextIdx]);
         }
       }
     };
@@ -349,7 +359,7 @@ export default function OurWork() {
       window.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = originalOverflow;
     };
-  }, [selectedItem, currentActiveItems]);
+  }, [selectedItem, currentPool]);
 
   const getWhatsAppEnquiryUrl = (item) => {
     const message = encodeURIComponent(
@@ -361,13 +371,13 @@ export default function OurWork() {
   return (
     <section
       id="work"
-      className="min-h-screen scroll-mt-16 sm:scroll-mt-20 bg-[#F4DC86] px-4 py-12 sm:px-8 sm:py-20 lg:px-16 text-[#1A1A1A]"
+      className="min-h-screen scroll-mt-16 sm:scroll-mt-20 bg-[#F4DC86] px-4 py-10 sm:px-6 sm:py-16 md:px-8 lg:px-12 xl:px-16 text-[#1A1A1A]"
     >
       <div className="mx-auto max-w-7xl">
         {/* =====================================================
             SECTION HEADER
         ====================================================== */}
-        <div className="mb-8 sm:mb-12">
+        <div className="mb-6 sm:mb-10">
           <div className="flex items-center gap-2.5 sm:gap-3">
             <span className="h-[2px] w-6 sm:w-10 bg-[#D1007F]" />
             <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] sm:tracking-[0.35em] text-[#D1007F]">
@@ -375,30 +385,30 @@ export default function OurWork() {
             </p>
           </div>
 
-          <div className="mt-2 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+          <div className="mt-2 flex flex-col md:flex-row md:items-end md:justify-between gap-3 sm:gap-4">
             <div>
               <h1 className="text-3xl font-black tracking-tight text-[#1A1A1A] sm:text-5xl md:text-6xl lg:text-7xl">
                 Our Work in <span className="text-[#D1007F]">Action.</span>
               </h1>
-              <p className="mt-2.5 max-w-2xl text-xs sm:text-sm leading-relaxed text-[#5A4B1A]">
+              <p className="mt-2 max-w-2xl text-xs sm:text-sm leading-relaxed text-[#5A4B1A]">
                 Explore our high-impact outdoor media executions across Kerala. 
                 Organized into distinct media categories: large format hoardings, transit wraps, and street signage.
               </p>
             </div>
 
             {/* Total Count Badge */}
-            <div className="inline-flex items-center gap-2 self-start rounded-full border-2 border-[#D1007F]/40 bg-white/80 px-4 py-1.5 shadow-sm backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 self-start md:self-end shrink-0 rounded-full border border-[#D1007F]/40 bg-white/90 px-3.5 py-1.5 shadow-sm backdrop-blur-sm">
               <span className="h-2 w-2 rounded-full bg-[#D1007F] animate-pulse" />
-              <span className="text-xs font-black uppercase tracking-wider text-[#D1007F]">
+              <span className="text-[11px] sm:text-xs font-black uppercase tracking-wider text-[#D1007F] whitespace-nowrap">
                 20 Curated Works
               </span>
             </div>
           </div>
 
           {/* =====================================================
-              CATEGORY FILTER PILLS / TABS
+              CATEGORY FILTER PILLS / TABS (Responsive Scroll & Wrap)
           ====================================================== */}
-          <div className="mt-8 flex flex-wrap items-center gap-2 sm:gap-3">
+          <div className="mt-6 sm:mt-8 flex items-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar pb-1.5 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap sm:overflow-visible">
             {CATEGORIES_CONFIG.map((cat) => {
               const Icon = cat.icon;
               const isActive = activeTab === cat.id;
@@ -407,25 +417,23 @@ export default function OurWork() {
                 <button
                   key={cat.id}
                   type="button"
-                  onClick={() => {
-                    setActiveTab(cat.id);
-                    setWebExpanded(false);
-                  }}
+                  onClick={() => handleTabChange(cat.id)}
                   className={`
-                    group flex items-center gap-2 rounded-full px-4 py-2 text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer
+                    group inline-flex shrink-0 items-center gap-1.5 sm:gap-2 rounded-full px-3.5 py-2 sm:px-4 sm:py-2.5
+                    text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer whitespace-nowrap
                     ${
                       isActive
-                        ? "bg-[#D1007F] text-white shadow-[0_6px_20px_rgba(209,0,127,0.35)] scale-105"
-                        : "bg-white/80 text-[#5A4B1A] border border-[#D1007F]/30 hover:border-[#D1007F] hover:bg-white hover:text-[#D1007F]"
+                        ? "bg-[#D1007F] text-white shadow-[0_4px_16px_rgba(209,0,127,0.35)] scale-[1.02]"
+                        : "bg-white/85 text-[#5A4B1A] border border-[#D1007F]/25 hover:border-[#D1007F] hover:bg-white hover:text-[#D1007F]"
                     }
                   `}
                 >
-                  <Icon size={14} className={isActive ? "text-white" : "text-[#D1007F]"} />
+                  <Icon size={14} className={isActive ? "text-white" : "text-[#D1007F] shrink-0"} />
                   <span>{cat.shortName || cat.name}</span>
                   <span
                     className={`
-                      ml-0.5 rounded-full px-1.5 py-0.2 text-[10px] font-black
-                      ${isActive ? "bg-white/20 text-white" : "bg-[#D1007F]/10 text-[#D1007F]"}
+                      ml-0.5 rounded-full px-1.5 py-0.5 text-[10px] font-black leading-none
+                      ${isActive ? "bg-white/25 text-white" : "bg-[#D1007F]/10 text-[#D1007F]"}
                     `}
                   >
                     {cat.count}
@@ -436,246 +444,80 @@ export default function OurWork() {
           </div>
         </div>
 
-        {/* =================================================================
-            VIEW A: DESKTOP COLUMN LAYOUT (WHEN "ALL CATEGORIES" IS ACTIVE)
-            Column 1: Category 1 (Hoardings & Billboards)
-            Column 2: Category 2 (Transit & Moving Media)
-            Column 3: Category 3 (Mini Hoardings & Street Signage)
-        ================================================================== */}
-        {activeTab === "all" ? (
-          <>
-            {/* Desktop (md & up) - 3 Columns Side-by-Side per Category */}
-            <div className="hidden md:grid md:grid-cols-3 md:gap-6 lg:gap-8 items-start">
-              {categoryBuckets.map((bucket, colIdx) => {
-                const Icon = bucket.config.icon;
-                const visibleInCol = webExpanded
-                  ? bucket.items
-                  : bucket.items.slice(0, 2); // 2 per column = 6 visible initially
-
-                return (
-                  <div key={bucket.config.id} className="flex flex-col gap-5">
-                    {/* Category Column Header */}
-                    <div className="rounded-2xl border-2 border-[#D1007F]/40 bg-white/95 p-4 shadow-sm backdrop-blur-sm transition-all hover:border-[#D1007F]">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2.5">
-                          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#D1007F] text-white shadow-md">
-                            <Icon size={18} />
-                          </div>
-                          <div>
-                            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#D1007F]">
-                              Column {colIdx + 1}
-                            </span>
-                            <h2 className="text-base font-black text-[#1A1A1A]">
-                              {bucket.config.name}
-                            </h2>
-                          </div>
-                        </div>
-
-                        <span className="rounded-full bg-[#FFF3F9] px-2.5 py-1 text-xs font-black text-[#D1007F] border border-[#F3B4D8]">
-                          {bucket.items.length} Works
-                        </span>
-                      </div>
-                      <p className="mt-2 text-[11px] text-[#6E5A23] leading-snug">
-                        {bucket.config.tagline}
-                      </p>
-                    </div>
-
-                    {/* Column Image Cards */}
-                    <div className="flex flex-col gap-5">
-                      {visibleInCol.map((item) => (
-                        <WorkCard
-                          key={item.id}
-                          item={item}
-                          onSelect={() => setSelectedItem(item)}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Desktop "View More" Toggle */}
-            <div className="hidden md:flex mt-12 flex-col items-center justify-center gap-3">
-              <button
-                type="button"
-                onClick={() => setWebExpanded((prev) => !prev)}
-                className="
-                  group inline-flex items-center gap-2.5 rounded-full border-2 border-[#D1007F] bg-[#D1007F]
-                  px-8 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-white
-                  shadow-[0_8px_25px_rgba(209,0,127,0.25)] transition-all duration-300
-                  hover:bg-[#B0006B] hover:border-[#B0006B] hover:shadow-[0_12px_32px_rgba(209,0,127,0.35)]
-                  active:scale-95 cursor-pointer
-                "
-              >
-                <span>{webExpanded ? "Show Fewer Works" : "View More Works"}</span>
-                {webExpanded ? (
-                  <ChevronUp size={18} className="transition-transform duration-300 group-hover:-translate-y-1" />
-                ) : (
-                  <ChevronDown size={18} className="transition-transform duration-300 group-hover:translate-y-1" />
-                )}
-              </button>
-              <p className="text-[11px] font-semibold uppercase tracking-wider text-[#6E5A23]">
-                {webExpanded ? "Showing all 20 Curated Works" : "Showing 6 of 20 Works (2 Per Column)"}
-              </p>
-            </div>
-
-            {/* Mobile (< md) - Stacked by Category with 6 Photos + "View More" */}
-            <div className="md:hidden flex flex-col gap-10">
-              {categoryBuckets.map((bucket, colIdx) => {
-                const Icon = bucket.config.icon;
-                const isCatExpanded = !!expandedMobileCategories[bucket.config.id];
-                const mobileVisibleItems = isCatExpanded
-                  ? bucket.items
-                  : bucket.items.slice(0, 6); // 6 photos on mobile
-
-                return (
-                  <div key={bucket.config.id} className="flex flex-col gap-4">
-                    {/* Category Mobile Header */}
-                    <div className="rounded-xl border-2 border-[#D1007F]/40 bg-white p-3.5 shadow-sm">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2.5">
-                          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#D1007F] text-white shadow-sm">
-                            <Icon size={16} />
-                          </div>
-                          <div>
-                            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#D1007F]">
-                              Category {colIdx + 1}
-                            </span>
-                            <h2 className="text-sm font-black text-[#1A1A1A]">
-                              {bucket.config.name}
-                            </h2>
-                          </div>
-                        </div>
-
-                        <span className="rounded-full bg-[#FFF3F9] px-2.5 py-0.5 text-[11px] font-black text-[#D1007F] border border-[#F3B4D8]">
-                          {bucket.items.length} Photos
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Mobile Grid (6 Photos Initially) */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {mobileVisibleItems.map((item) => (
-                        <WorkCard
-                          key={item.id}
-                          item={item}
-                          onSelect={() => setSelectedItem(item)}
-                        />
-                      ))}
-                    </div>
-
-                    {/* Mobile "View More" button for this category (when > 6 photos) */}
-                    {bucket.items.length > 6 && (
-                      <div className="flex justify-center mt-1">
-                        <button
-                          type="button"
-                          onClick={() => toggleMobileCategoryExpand(bucket.config.id)}
-                          className="
-                            inline-flex items-center gap-2 rounded-full border border-[#D1007F] bg-white px-6 py-2.5
-                            text-xs font-bold uppercase tracking-wider text-[#D1007F] shadow-sm transition-all
-                            hover:bg-[#D1007F] hover:text-white active:scale-95 cursor-pointer
-                          "
-                        >
-                          <span>
-                            {isCatExpanded
-                              ? `Show Less ${bucket.config.shortName}`
-                              : `View More ${bucket.config.shortName} (+${bucket.items.length - 6} more)`}
-                          </span>
-                          {isCatExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          </>
-        ) : (
-          /* =================================================================
-              VIEW B: SINGLE CATEGORY TAB VIEW
-              (Shows 6 photos initially on mobile & desktop with "View More")
-          ================================================================== */
-          <div className="flex flex-col gap-6">
-            {/* Category Banner */}
+        {/* =====================================================
+            CATEGORY SUB-BANNER (Active when category tab is picked)
+        ====================================================== */}
+        {activeTab !== "all" && (
+          <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-2xl border-2 border-[#D1007F]/30 bg-white/95 p-4 sm:p-5 shadow-sm">
             {(() => {
-              const activeConfig = CATEGORIES_CONFIG.find((c) => c.id === activeTab);
-              const Icon = activeConfig?.icon || Sparkles;
-
-              return (
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-2xl border-2 border-[#D1007F]/40 bg-white p-5 shadow-sm">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#D1007F] text-white shadow-md">
-                      <Icon size={22} />
-                    </div>
-                    <div>
-                      <h2 className="text-lg sm:text-xl font-black text-[#1A1A1A]">
-                        {activeConfig?.name}
-                      </h2>
-                      <p className="text-xs text-[#6E5A23]">{activeConfig?.tagline}</p>
-                    </div>
-                  </div>
-
-                  <span className="self-start sm:self-auto rounded-full bg-[#FFF3F9] px-3.5 py-1 text-xs font-black text-[#D1007F] border border-[#F3B4D8]">
-                    {currentActiveItems.length} Curated Photos
-                  </span>
-                </div>
-              );
-            })()}
-
-            {/* Grid for Single Category */}
-            {(() => {
-              const isCatExpanded = !!expandedMobileCategories[activeTab];
-              const visibleItems = isCatExpanded
-                ? currentActiveItems
-                : currentActiveItems.slice(0, 6); // 6 photos initially
-
+              const cfg = CATEGORIES_CONFIG.find((c) => c.id === activeTab);
+              const Icon = cfg?.icon || Sparkles;
               return (
                 <>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {visibleItems.map((item) => (
-                      <WorkCard
-                        key={item.id}
-                        item={item}
-                        onSelect={() => setSelectedItem(item)}
-                      />
-                    ))}
-                  </div>
-
-                  {/* View More if > 6 photos */}
-                  {currentActiveItems.length > 6 && (
-                    <div className="mt-8 flex flex-col items-center justify-center gap-2">
-                      <button
-                        type="button"
-                        onClick={() => toggleMobileCategoryExpand(activeTab)}
-                        className="
-                          group inline-flex items-center gap-2.5 rounded-full border-2 border-[#D1007F] bg-[#D1007F]
-                          px-8 py-3 text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-white
-                          shadow-[0_8px_25px_rgba(209,0,127,0.25)] transition-all duration-300
-                          hover:bg-[#B0006B] hover:border-[#B0006B] active:scale-95 cursor-pointer
-                        "
-                      >
-                        <span>
-                          {isCatExpanded
-                            ? "Show Fewer Photos"
-                            : `View More Photos (+${currentActiveItems.length - 6} more)`}
-                        </span>
-                        {isCatExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                      </button>
-                      <p className="text-[11px] font-semibold uppercase tracking-wider text-[#6E5A23]">
-                        Showing {visibleItems.length} of {currentActiveItems.length} Photos
-                      </p>
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-xl bg-[#D1007F] text-white shadow-md shrink-0">
+                      <Icon size={20} />
                     </div>
-                  )}
+                    <div>
+                      <h2 className="text-base sm:text-lg font-black text-[#1A1A1A]">
+                        {cfg?.name}
+                      </h2>
+                      <p className="text-xs text-[#6E5A23]">{cfg?.tagline}</p>
+                    </div>
+                  </div>
+                  <span className="self-start sm:self-auto rounded-full bg-[#FFF3F9] px-3 py-1 text-xs font-black text-[#D1007F] border border-[#F3B4D8] whitespace-nowrap">
+                    {currentPool.length} Curated Works
+                  </span>
                 </>
               );
             })()}
           </div>
         )}
+
+        {/* =====================================================
+            RESPONSIVE WORK GRID (1 Col Mobile, 2 Col Tablet, 3 Col Desktop)
+        ====================================================== */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {visibleItems.map((item) => (
+            <WorkCard
+              key={item.id}
+              item={item}
+              onSelect={() => setSelectedItem(item)}
+            />
+          ))}
+        </div>
+
+        {/* =====================================================
+            LOAD MORE BUTTON (Disappears when all items loaded)
+        ====================================================== */}
+        {visibleCount < currentPool.length && (
+          <div className="mt-10 sm:mt-14 flex flex-col items-center justify-center gap-2.5">
+            <button
+              type="button"
+              onClick={handleLoadMore}
+              className="
+                group inline-flex items-center gap-2.5 rounded-full border-2 border-[#D1007F] bg-[#D1007F]
+                px-7 py-3 sm:px-8 sm:py-3.5 text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-white
+                shadow-[0_8px_25px_rgba(209,0,127,0.25)] transition-all duration-300
+                hover:bg-[#B0006B] hover:border-[#B0006B] hover:shadow-[0_12px_32px_rgba(209,0,127,0.35)]
+                active:scale-95 cursor-pointer
+              "
+            >
+              <span>Load More</span>
+              <ChevronDown
+                size={17}
+                className="transition-transform duration-300 group-hover:translate-y-1"
+              />
+            </button>
+            <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#6E5A23]">
+              Showing {visibleItems.length} of {currentPool.length} Works
+            </p>
+          </div>
+        )}
       </div>
 
       {/* =====================================================
-          LIGHTBOX MODAL WITH FULL IMAGE PREVIEW & WHATSAPP
+          LIGHTBOX MODAL (Responsive Mobile/Tablet/Desktop)
       ====================================================== */}
       <AnimatePresence>
         {selectedItem && (
@@ -687,44 +529,32 @@ export default function OurWork() {
             <button
               onClick={() => setSelectedItem(null)}
               aria-label="Close modal"
-              className="absolute right-4 top-4 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-[#D1007F] text-white shadow-xl transition-transform hover:scale-110 cursor-pointer"
+              className="absolute right-3 top-3 sm:right-5 sm:top-5 z-50 flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-[#D1007F] text-white shadow-xl transition-transform hover:scale-110 cursor-pointer"
             >
-              <X size={22} />
+              <X size={20} />
             </button>
 
             {/* Previous Button */}
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                const idx = currentActiveItems.findIndex((i) => i.id === selectedItem.id);
-                if (idx !== -1) {
-                  const prevIdx = idx === 0 ? currentActiveItems.length - 1 : idx - 1;
-                  setSelectedItem(currentActiveItems[prevIdx]);
-                }
-              }}
+              onClick={handlePrev}
               aria-label="Previous work"
-              className="absolute left-3 top-1/2 -translate-y-1/2 z-50 flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white shadow-lg transition-transform hover:scale-110 cursor-pointer"
+              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-50 flex h-10 w-10 sm:h-13 sm:w-13 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white shadow-lg transition-transform hover:scale-110 cursor-pointer"
             >
-              <ChevronLeft size={28} />
+              <ChevronLeft size={24} className="sm:hidden" />
+              <ChevronLeft size={28} className="hidden sm:block" />
             </button>
 
             {/* Next Button */}
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                const idx = currentActiveItems.findIndex((i) => i.id === selectedItem.id);
-                if (idx !== -1) {
-                  const nextIdx = idx === currentActiveItems.length - 1 ? 0 : idx + 1;
-                  setSelectedItem(currentActiveItems[nextIdx]);
-                }
-              }}
+              onClick={handleNext}
               aria-label="Next work"
-              className="absolute right-3 top-1/2 -translate-y-1/2 z-50 flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white shadow-lg transition-transform hover:scale-110 cursor-pointer"
+              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-50 flex h-10 w-10 sm:h-13 sm:w-13 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white shadow-lg transition-transform hover:scale-110 cursor-pointer"
             >
-              <ChevronRight size={28} />
+              <ChevronRight size={24} className="sm:hidden" />
+              <ChevronRight size={28} className="hidden sm:block" />
             </button>
 
-            {/* Lightbox Content Container */}
+            {/* Lightbox Container */}
             <motion.div
               initial={{ scale: 0.92, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -732,32 +562,32 @@ export default function OurWork() {
               onClick={(e) => e.stopPropagation()}
               className="relative flex max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border-2 border-[#D1007F] bg-white shadow-2xl"
             >
-              {/* Image Preview Container */}
-              <div className="flex max-h-[68vh] items-center justify-center bg-neutral-950 p-2 sm:p-4">
+              {/* Image Preview */}
+              <div className="flex max-h-[60vh] sm:max-h-[68vh] items-center justify-center bg-neutral-950 p-2 sm:p-4">
                 <img
                   src={selectedItem.src}
                   alt={selectedItem.title}
-                  className="max-h-[64vh] w-auto max-w-full object-contain drop-shadow-md"
+                  className="max-h-[56vh] sm:max-h-[64vh] w-auto max-w-full object-contain drop-shadow-md"
                 />
               </div>
 
-              {/* Title, Category & Action Footer */}
-              <div className="flex flex-col gap-3 border-t border-[#F3B4D8] bg-[#FFF3F9] px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
-                <div>
+              {/* Title & Info Footer */}
+              <div className="flex flex-col gap-3 border-t border-[#F3B4D8] bg-[#FFF3F9] px-4 py-3.5 sm:px-5 sm:py-4 sm:flex-row sm:items-center sm:justify-between">
+                <div className="min-w-0">
                   <div className="flex items-center gap-2">
-                    <span className="rounded-full bg-[#D1007F] px-2.5 py-0.5 text-[9px] font-black uppercase tracking-wider text-white">
+                    <span className="rounded-full bg-[#D1007F] px-2.5 py-0.5 text-[9px] font-black uppercase tracking-wider text-white shrink-0">
                       {selectedItem.category}
                     </span>
-                    <span className="text-[10px] font-bold text-[#D1007F]">
-                      Project {String(selectedItem.id).padStart(2, "0")} of 20
+                    <span className="text-[10px] font-bold text-[#D1007F] whitespace-nowrap">
+                      #{String(selectedItem.id).padStart(2, "0")}
                     </span>
                   </div>
-                  <h3 className="mt-1 text-base sm:text-lg font-black text-[#1A1A1A]">
+                  <h3 className="mt-1 text-sm sm:text-base md:text-lg font-black text-[#1A1A1A] truncate">
                     {selectedItem.title}
                   </h3>
-                  <p className="flex items-center gap-1.5 text-xs text-[#6E5A23] font-medium">
-                    <MapPin size={12} className="text-[#D1007F]" />
-                    <span>{selectedItem.location}</span>
+                  <p className="flex items-center gap-1.5 text-xs text-[#6E5A23] font-medium truncate">
+                    <MapPin size={12} className="text-[#D1007F] shrink-0" />
+                    <span className="truncate">{selectedItem.location}</span>
                   </p>
                 </div>
 
@@ -781,7 +611,7 @@ export default function OurWork() {
 }
 
 // ============================================================================
-// INDIVIDUAL WORK CARD COMPONENT
+// WORK CARD COMPONENT (Responsive Aspect Ratio & Truncation)
 // ============================================================================
 function WorkCard({ item, onSelect }) {
   return (
@@ -807,27 +637,27 @@ function WorkCard({ item, onSelect }) {
         />
 
         {/* Gradient Overlay */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent opacity-85 transition-opacity duration-300 group-hover:opacity-95" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-85 transition-opacity duration-300 group-hover:opacity-95" />
 
         {/* Top Badges */}
-        <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-          <span className="rounded-full bg-black/60 backdrop-blur-md px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white border border-white/20">
+        <div className="absolute top-2.5 left-2.5 right-2.5 sm:top-3 sm:left-3 sm:right-3 flex items-center justify-between gap-2">
+          <span className="truncate max-w-[70%] rounded-full bg-black/65 backdrop-blur-md px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white border border-white/20">
             {item.tag}
           </span>
-          <span className="rounded-full bg-[#D1007F] px-2 py-0.5 text-[9px] font-black text-white shadow-sm">
+          <span className="rounded-full bg-[#D1007F] px-2 py-0.5 text-[9px] font-black text-white shadow-sm shrink-0">
             #{String(item.id).padStart(2, "0")}
           </span>
         </div>
 
         {/* Card Details Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-3.5 sm:p-4">
-          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#F2299A]">
+        <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
+          <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-[#F2299A]">
             {item.category}
           </p>
-          <h3 className="mt-0.5 text-xs sm:text-sm font-black text-white leading-snug drop-shadow-sm group-hover:text-[#F4DC86] transition-colors">
+          <h3 className="mt-0.5 text-xs sm:text-sm font-black text-white leading-snug line-clamp-1 drop-shadow-sm group-hover:text-[#F4DC86] transition-colors">
             {item.title}
           </h3>
-          <div className="mt-1 flex items-center justify-between">
+          <div className="mt-1 flex items-center justify-between gap-2">
             <span className="truncate text-[10px] sm:text-[11px] text-white/80 font-medium">
               📍 {item.location}
             </span>
