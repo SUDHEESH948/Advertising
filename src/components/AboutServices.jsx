@@ -39,6 +39,39 @@ import hoardingWork2 from "../assets/work/rbghj.png";
 import hoardingWork3 from "../assets/work/err.png";
 import hoardingWork4 from "../assets/work/efgh.png";
 
+// =========================================================
+// AUTOMATIC FOLDER IMAGE IMPORTERS (Vite import.meta.glob)
+// Automatically loads all images added to public folders:
+// - /public/MiniHoarding
+// - /public/ksrtc
+// - /public/pivetbus
+// - /public/transitbranding
+// =========================================================
+const miniHoardingGlob = import.meta.glob(
+  "../../public/MiniHoarding/*.{png,jpg,jpeg,JPG,JPEG,webp,WEBP,png.jpeg,jpg.jpeg}",
+  { eager: true, query: "?url", import: "default" }
+);
+const miniHoardingImages = Object.values(miniHoardingGlob);
+
+const ksrtcGlob = import.meta.glob(
+  "../../public/ksrtc/*.{png,jpg,jpeg,JPG,JPEG,webp,WEBP,png.jpeg,jpg.jpeg}",
+  { eager: true, query: "?url", import: "default" }
+);
+const ksrtcImages = Object.values(ksrtcGlob);
+
+const pivetBusGlob = import.meta.glob(
+  "../../public/pivetbus/*.{png,jpg,jpeg,JPG,JPEG,webp,WEBP,png.jpeg,jpg.jpeg}",
+  { eager: true, query: "?url", import: "default" }
+);
+const privateBusImages = Object.values(pivetBusGlob);
+
+const transitBrandingGlob = import.meta.glob(
+  "../../public/transitbranding/*.{png,jpg,jpeg,JPG,JPEG,webp,WEBP,png.jpeg,jpg.jpeg}",
+  { eager: true, query: "?url", import: "default" }
+);
+const transitBrandingImages = Object.values(transitBrandingGlob);
+
+
 const services = [
   {
     title: "Hoarding",
@@ -74,7 +107,8 @@ const services = [
     title: "Mini Hoarding",
     category: "Local & Retail Out-of-Home",
     icon: Signpost,
-    image: shopbrandImg,
+    image: miniHoardingImages.length > 0 ? miniHoardingImages[0] : shopbrandImg,
+    gallery: miniHoardingImages.length > 0 ? miniHoardingImages : [shopbrandImg],
     text: "Targeted outdoor advertising solutions designed for high-traffic local areas.",
     detailedDescription:
       "Compact, strategically positioned mini hoardings engineered for maximum neighborhood resonance and local market dominance. Ideal for retail corridors, junction points, market entrances, and busy town centers to guide local shoppers and commuters directly to your business.",
@@ -117,10 +151,11 @@ const services = [
     ],
   },
   {
-    title: "Bus Branding",
+    title: "Private Bus Branding",
     category: "Transit Media",
     icon: Bus,
-    image: busBrandingImg,
+    image: privateBusImages.length > 0 ? privateBusImages[0] : busBrandingImg,
+    gallery: privateBusImages.length > 0 ? privateBusImages : [busBrandingImg],
     text: "Transform buses into powerful mobile advertising platforms.",
     detailedDescription:
       "Command the road with full-bus and side-panel transit wraps. Buses travel across the busiest commercial routes and pedestrian zones daily, transforming ordinary commutes into high-dwell brand exposures that commuters and drivers cannot ignore.",
@@ -143,7 +178,8 @@ const services = [
     title: "KSRTC Branding",
     category: "State Transit Network",
     icon: Bus,
-    image: ksrtcBrandingImg,
+    image: ksrtcImages.length > 0 ? ksrtcImages[0] : ksrtcBrandingImg,
+    gallery: ksrtcImages.length > 0 ? ksrtcImages : [ksrtcBrandingImg],
     text: "Connect your brand with a large traveling audience through transit advertising.",
     detailedDescription:
       "Harness Kerala's premier public transportation network. KSRTC buses travel extensive interstate and interdistrict highway routes, connecting urban centers, towns, and suburban communities with immense credibility and unmatched statewide reach.",
@@ -189,7 +225,8 @@ const services = [
     title: "Transit Branding",
     category: "Transit Stations & Shelters",
     icon: Train,
-    image: transitBrandingImg,
+    image: transitBrandingImages.length > 0 ? transitBrandingImages[0] : transitBrandingImg,
+    gallery: transitBrandingImages.length > 0 ? transitBrandingImages : [transitBrandingImg],
     text: "Bus shelter, railway station and platform advertising solutions.",
     detailedDescription:
       "Reach commuters during high dwell times at bus shelters, railway platforms, and transit terminals. With wait times spanning 10 to 30 minutes, transit branding offers close-proximity pedestrian visibility and lasting brand impressions.",
@@ -335,6 +372,7 @@ const stats = [
 export default function AboutServices() {
   const [selectedServiceIndex, setSelectedServiceIndex] = useState(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [isModalPaused, setIsModalPaused] = useState(false);
 
   const selectedService =
     selectedServiceIndex !== null ? services[selectedServiceIndex] : null;
@@ -344,6 +382,19 @@ export default function AboutServices() {
       ? selectedService.gallery
       : [selectedService.image]
     : [];
+
+  // Auto-play slideshow inside modal (moves images automatically one by one)
+  useEffect(() => {
+    if (selectedServiceIndex === null || currentImages.length <= 1 || isModalPaused) return;
+
+    const timer = setInterval(() => {
+      setActiveImageIndex((curr) =>
+        curr === currentImages.length - 1 ? 0 : curr + 1
+      );
+    }, 3200);
+
+    return () => clearInterval(timer);
+  }, [selectedServiceIndex, currentImages.length, isModalPaused]);
 
   const handlePrevImage = (e) => {
     e?.stopPropagation();
@@ -429,7 +480,20 @@ export default function AboutServices() {
   }, [selectedServiceIndex, currentImages.length]);
 
   const getWhatsAppLink = (service) => {
-    const text = `Hi Quilonad Media, I am interested in ${service.title} advertising (${service.category}). Please share available locations, pricing, and full details.`;
+    if (!service) {
+      return `https://wa.me/919497014999?text=${encodeURIComponent(
+        "Hello Quilonad Media, I want to enquire about your advertising services. Please share full details."
+      )}`;
+    }
+    const cleanTitle =
+      service.title.toLowerCase().includes("advertising") ||
+      service.title.toLowerCase().includes("branding") ||
+      service.title.toLowerCase().includes("marketing") ||
+      service.title.toLowerCase().includes("printing")
+        ? service.title
+        : `${service.title} Advertising`;
+
+    const text = `Hello Quilonad Media, I want to enquire about ${cleanTitle} (${service.category}). Please share available locations, pricing, and full details.`;
     return `https://wa.me/919497014999?text=${encodeURIComponent(text)}`;
   };
 
@@ -654,12 +718,23 @@ export default function AboutServices() {
                     </button>
                   </div>
 
+                  {/* Auto-Moving indicator badge */}
+                  {currentImages.length > 1 && (
+                    <span
+                      title={isModalPaused ? "Hovering paused slideshow" : "Automatically moving one by one"}
+                      className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-[#D1007F]/25 bg-white/80 px-2.5 py-1 text-[11px] font-bold text-[#D1007F] shadow-sm"
+                    >
+                      <span className={`h-1.5 w-1.5 rounded-full ${isModalPaused ? "bg-amber-500" : "bg-[#25D366] animate-pulse"}`} />
+                      {isModalPaused ? "Paused" : "Auto-Moving"}
+                    </span>
+                  )}
+
                   {/* WhatsApp button */}
                   <a
                     href={getWhatsAppLink(selectedService)}
                     target="_blank"
                     rel="noreferrer"
-                    className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] px-3.5 py-1.5 text-xs font-bold text-white shadow-md transition-all active:scale-[0.98]"
+                    className="inline-flex items-center gap-1.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] px-3 sm:px-3.5 py-1.5 text-xs font-bold text-white shadow-md transition-all active:scale-[0.98]"
                   >
                     <MessageCircle size={14} />
                     <span>WhatsApp</span>
@@ -679,9 +754,13 @@ export default function AboutServices() {
 
               {/* =============================================
                   MAIN CENTER: FULL DISPLAY IMAGE
-                  MOVE LEFT TO RIGHT
+                  AUTOMATICALLY MOVES ONE BY ONE
               ============================================== */}
-              <div className="relative flex-1 flex items-center justify-center overflow-hidden bg-[#F4DC86] p-2 sm:p-6 min-h-[420px] sm:min-h-[520px] md:min-h-[600px]">
+              <div
+                onMouseEnter={() => setIsModalPaused(true)}
+                onMouseLeave={() => setIsModalPaused(false)}
+                className="relative flex-1 flex items-center justify-center overflow-hidden bg-[#F4DC86] p-2 sm:p-6 min-h-[420px] sm:min-h-[520px] md:min-h-[600px]"
+              >
                 {/* Background ambient glow */}
                 <div className="pointer-events-none absolute -left-20 -top-20 h-64 w-64 rounded-full bg-[#F2299A]/10 blur-[100px]" />
                 <div className="pointer-events-none absolute -right-20 -bottom-20 h-64 w-64 rounded-full bg-[#D1007F]/10 blur-[100px]" />

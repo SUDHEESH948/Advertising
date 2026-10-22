@@ -185,7 +185,7 @@ export default function InfiniteLogoTicker() {
 
   const getWhatsAppLink = (channelName) => {
     const text = encodeURIComponent(
-      `Hello Quilon Advertising, I would like to enquire about advertising slots and commercial placements on ${channelName}.`
+      `Hello Quilonad Media, I want to enquire about advertising slots on ${channelName}. Please share available slots, pricing, and full details.`
     );
     return `https://wa.me/919497014999?text=${text}`;
   };

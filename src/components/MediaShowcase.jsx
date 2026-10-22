@@ -597,7 +597,7 @@ export default function MediaShowcase() {
 
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <a
-                    href={`https://wa.me/919497014999?text=${encodeURIComponent(`Hi Quilonad Media, I want to enquire about ${selectedService?.title}. Please share full details and pricing.`)}`}
+                    href={`https://wa.me/919497014999?text=${encodeURIComponent(`Hello Quilonad Media, I want to enquire about ${selectedService?.title}. Please share available locations, pricing, and full details.`)}`}
                     target="_blank"
                     rel="noreferrer"
                     className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] hover:bg-[#20ba59] py-3 text-center text-sm font-bold text-white shadow-md transition-all active:scale-[0.98]"
