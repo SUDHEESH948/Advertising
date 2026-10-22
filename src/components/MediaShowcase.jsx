@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from "react";
+import { MessageCircle } from "lucide-react";
 import {
   AnimatePresence,
   motion,
@@ -162,12 +163,31 @@ export default function MediaShowcase() {
   };
 
   // =========================================================
-  // CLOSE MODAL
+  // CLOSE MODAL & ESCAPE / BODY LOCK
   // =========================================================
 
   const closeModal = () => {
     setSelectedService(null);
   };
+
+  useEffect(() => {
+    if (!selectedService) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [selectedService]);
 
   // =========================================================
   // ENQUIRY
@@ -394,7 +414,7 @@ export default function MediaShowcase() {
       <AnimatePresence>
         {selectedService && (
           <motion.div
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
             initial={{
               opacity: 0,
             }}
@@ -576,6 +596,15 @@ export default function MediaShowcase() {
                 {/* BUTTONS */}
 
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <a
+                    href={`https://wa.me/919497014999?text=${encodeURIComponent(`Hi Quilonad Media, I want to enquire about ${selectedService?.title}. Please share full details and pricing.`)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] hover:bg-[#20ba59] py-3 text-center text-sm font-bold text-white shadow-md transition-all active:scale-[0.98]"
+                  >
+                    <MessageCircle size={17} />
+                    <span>WhatsApp (9497014999)</span>
+                  </a>
                   <button
                     type="button"
                     onClick={handleEnquiry}

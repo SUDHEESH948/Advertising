@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 
@@ -44,8 +44,35 @@ export default function OurWork() {
 
   const selectedItem = selectedIndex !== null ? workItems[selectedIndex] : null;
 
+  useEffect(() => {
+    if (selectedIndex === null) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setSelectedIndex(null);
+      } else if (e.key === "ArrowLeft") {
+        setSelectedIndex((current) =>
+          current === 0 ? workItems.length - 1 : current - 1
+        );
+      } else if (e.key === "ArrowRight") {
+        setSelectedIndex((current) =>
+          current === workItems.length - 1 ? 0 : current + 1
+        );
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [selectedIndex]);
+
   return (
-    <div className="min-h-screen bg-[#F4DC86] px-4 py-12 sm:px-8 sm:py-20 lg:px-16 text-[#1A1A1A]">
+    <section id="work" className="min-h-screen scroll-mt-16 sm:scroll-mt-20 bg-[#F4DC86] px-4 py-12 sm:px-8 sm:py-20 lg:px-16 text-[#1A1A1A]">
       <div className="mx-auto max-w-7xl">
         {/* =====================================================
             SECTION HEADER
@@ -131,7 +158,7 @@ export default function OurWork() {
         {selectedItem && (
           <div
             onClick={() => setSelectedIndex(null)}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-3 backdrop-blur-md sm:p-6"
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-3 backdrop-blur-md sm:p-6"
           >
             {/* Close Button */}
             <button
@@ -195,6 +222,6 @@ export default function OurWork() {
           </div>
         )}
       </AnimatePresence>
-    </div>
+    </section>
   );
 }

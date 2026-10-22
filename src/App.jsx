@@ -18,8 +18,9 @@ export default function App() {
 
       <MediaShowcase />
 
+      <Work />
+
       <GalleryNews />
-      < Work/>
 
       <ContactFooter />
     </div>
