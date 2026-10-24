@@ -35,13 +35,12 @@ import imgTransit5 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.44 PM 
 import imgTransit6 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.46 PM (1).jpeg";
 import imgTransit7 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.52 PM.jpeg";
 
-// Category 3: Mini Hoardings & Street Signage (6 items)
-import imgMini1 from "../assets/work/rrt.png";
-import imgMini2 from "../assets/work/rt.png";
-import imgMini3 from "../assets/work/efgh.png";
-import imgMini4 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.53 PM.jpeg";
-import imgMini5 from "../assets/work/ee.png";
-import imgMini6 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.20 PM.jpeg";
+// Category 3: Mini Hoardings & Street Signage (5 items)
+import imgMini1 from "../assets/work/rt.png";
+import imgMini2 from "../assets/work/efgh.png";
+import imgMini3 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.53 PM.jpeg";
+import imgMini4 from "../assets/work/ee.png";
+import imgMini5 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.20 PM.jpeg";
 
 export const hoardings = [
   {
@@ -179,15 +178,6 @@ export const miniHoardings = [
   {
     id: 15,
     src: imgMini1,
-    title: "Asset Homes Prime Mini Hoarding",
-    category: "Mini Hoardings & Signage",
-    categoryId: "mini-hoardings",
-    location: "Kannur District Commercial Road",
-    tag: "Ground-Level Mini Unipole",
-  },
-  {
-    id: 16,
-    src: imgMini2,
     title: "Twin Roadside Mini Hoarding Network",
     category: "Mini Hoardings & Signage",
     categoryId: "mini-hoardings",
@@ -195,8 +185,8 @@ export const miniHoardings = [
     tag: "Dual Mini Hoarding",
   },
   {
-    id: 17,
-    src: imgMini3,
+    id: 16,
+    src: imgMini2,
     title: "Monsoon Highway Roadside Display",
     category: "Mini Hoardings & Signage",
     categoryId: "mini-hoardings",
@@ -204,8 +194,8 @@ export const miniHoardings = [
     tag: "Curved Highway Hoarding",
   },
   {
-    id: 18,
-    src: imgMini4,
+    id: 17,
+    src: imgMini3,
     title: "State Transit Roadside Display",
     category: "Mini Hoardings & Signage",
     categoryId: "mini-hoardings",
@@ -213,8 +203,8 @@ export const miniHoardings = [
     tag: "Roadside Poster Display",
   },
   {
-    id: 19,
-    src: imgMini5,
+    id: 18,
+    src: imgMini4,
     title: "Traffic Island & Central Median Sign",
     category: "Mini Hoardings & Signage",
     categoryId: "mini-hoardings",
@@ -222,8 +212,8 @@ export const miniHoardings = [
     tag: "Traffic Median Branding",
   },
   {
-    id: 20,
-    src: imgMini6,
+    id: 19,
+    src: imgMini5,
     title: "Experiential Walking Board Crew",
     category: "Mini Hoardings & Signage",
     categoryId: "mini-hoardings",
@@ -238,16 +228,28 @@ export const miniHoardings = [
 // Row 3: Hoarding 3, Transit 3, Mini 3
 // Row 4: Hoarding 4, Transit 4, Mini 4
 // Row 5: Hoarding 5, Transit 5, Mini 5
-// Row 6: Hoarding 6, Transit 6, Mini 6
+// Row 6: Hoarding 6, Transit 6
 // Row 7: Hoarding 7, Transit 7
 export const ALL_CURATED_ITEMS = [
-  hoardings[0], transit[0], miniHoardings[0],
-  hoardings[1], transit[1], miniHoardings[1],
-  hoardings[2], transit[2], miniHoardings[2],
-  hoardings[3], transit[3], miniHoardings[3],
-  hoardings[4], transit[4], miniHoardings[4],
-  hoardings[5], transit[5], miniHoardings[5],
-  hoardings[6], transit[6],
+  hoardings[0],
+  transit[0],
+  miniHoardings[0],
+  hoardings[1],
+  transit[1],
+  miniHoardings[1],
+  hoardings[2],
+  transit[2],
+  miniHoardings[2],
+  hoardings[3],
+  transit[3],
+  miniHoardings[3],
+  hoardings[4],
+  transit[4],
+  miniHoardings[4],
+  hoardings[5],
+  transit[5],
+  hoardings[6],
+  transit[6],
 ];
 
 export const CATEGORIES_CONFIG = [
@@ -257,7 +259,7 @@ export const CATEGORIES_CONFIG = [
     shortName: "All",
     icon: Sparkles,
     tagline: "Complete Curated Portfolio across All Outdoor & Transit Media",
-    count: 20,
+    count: ALL_CURATED_ITEMS.length,
   },
   {
     id: "hoardings",
@@ -265,7 +267,7 @@ export const CATEGORIES_CONFIG = [
     shortName: "Hoardings",
     icon: Building2,
     tagline: "High-Impact Unipoles & Arterial Rooftop Billboards",
-    count: 7,
+    count: hoardings.length,
   },
   {
     id: "transit",
@@ -273,7 +275,7 @@ export const CATEGORIES_CONFIG = [
     shortName: "Transit & Fleet",
     icon: Bus,
     tagline: "Bus Wraps & Auto Rickshaw Fleet Branding",
-    count: 7,
+    count: transit.length,
   },
   {
     id: "mini-hoardings",
@@ -281,7 +283,7 @@ export const CATEGORIES_CONFIG = [
     shortName: "Mini Hoardings",
     icon: MapPin,
     tagline: "Roadside Mini Hoardings & Traffic Medians",
-    count: 6,
+    count: miniHoardings.length,
   },
 ];
 
@@ -295,10 +297,10 @@ export default function OurWork() {
     activeTab === "all"
       ? ALL_CURATED_ITEMS
       : activeTab === "hoardings"
-      ? hoardings
-      : activeTab === "transit"
-      ? transit
-      : miniHoardings;
+        ? hoardings
+        : activeTab === "transit"
+          ? transit
+          : miniHoardings;
 
   const visibleItems = currentPool.slice(0, visibleCount);
 
@@ -363,7 +365,7 @@ export default function OurWork() {
 
   const getWhatsAppEnquiryUrl = (item) => {
     const message = encodeURIComponent(
-      `Hello Quilonad Media, I am interested in advertising with your ${item.category} service (Ref: ${item.title} - ${item.location}). Please share availability and rate card.`
+      `Hello Quilonad Media, I am interested in advertising with your ${item.category} service (Ref: ${item.title} - ${item.location}). Please share availability and rate card.`,
     );
     return `https://wa.me/919497014999?text=${message}`;
   };
@@ -391,8 +393,9 @@ export default function OurWork() {
                 Our Work in <span className="text-[#D1007F]">Action.</span>
               </h1>
               <p className="mt-2 max-w-2xl text-xs sm:text-sm leading-relaxed text-[#5A4B1A]">
-                Explore our high-impact outdoor media executions across Kerala. 
-                Organized into distinct media categories: large format hoardings, transit wraps, and street signage.
+                Explore our high-impact outdoor media executions across Kerala.
+                Organized into distinct media categories: large format
+                hoardings, transit wraps, and street signage.
               </p>
             </div>
 
@@ -400,7 +403,7 @@ export default function OurWork() {
             <div className="inline-flex items-center gap-2 self-start md:self-end shrink-0 rounded-full border border-[#D1007F]/40 bg-white/90 px-3.5 py-1.5 shadow-sm backdrop-blur-sm">
               <span className="h-2 w-2 rounded-full bg-[#D1007F] animate-pulse" />
               <span className="text-[11px] sm:text-xs font-black uppercase tracking-wider text-[#D1007F] whitespace-nowrap">
-                20 Curated Works
+                {ALL_CURATED_ITEMS.length} Curated Works
               </span>
             </div>
           </div>
@@ -428,7 +431,12 @@ export default function OurWork() {
                     }
                   `}
                 >
-                  <Icon size={14} className={isActive ? "text-white" : "text-[#D1007F] shrink-0"} />
+                  <Icon
+                    size={14}
+                    className={
+                      isActive ? "text-white" : "text-[#D1007F] shrink-0"
+                    }
+                  />
                   <span>{cat.shortName || cat.name}</span>
                   <span
                     className={`
