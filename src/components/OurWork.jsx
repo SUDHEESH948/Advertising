@@ -14,26 +14,71 @@ import {
 } from "lucide-react";
 
 // ============================================================================
-// CURATED 20 PORTFOLIO IMAGES
+// AUTOMATIC FOLDER IMAGE IMPORTERS (Vite import.meta.glob)
+// Automatically loads all images added to /public/Hoarding
 // ============================================================================
+const hoardingGlob = import.meta.glob(
+  "../../public/Hoarding/*.{png,jpg,jpeg,JPG,JPEG,webp,WEBP,png.jpeg,jpg.jpeg}",
+  { eager: true, query: "?url", import: "default" }
+);
 
-// Category 1: Hoardings & Billboards (7 items)
-import imgHoarding1 from "../assets/work/rbghj.png";
-import imgHoarding2 from "../assets/work/err.png";
-import imgHoarding3 from "../assets/work/tttt.png";
-import imgHoarding4 from "../assets/work/ttto.png";
-import imgHoarding5 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.50 PM.jpeg";
-import imgHoarding6 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.54 PM.jpeg";
-import imgHoarding7 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.56 PM (1).jpeg";
+const HOARDING_TITLES = [
+  "National Highway Mega Unipole",
+  "Arterial Bypass Skyline Hoarding",
+  "Prime Expressway Gantry Hoarding",
+  "Commercial Junction Mega Billboard",
+  "High-Traffic Transit Corridor Billboard",
+  "Scenic Highway High-Lumen Hoarding",
+  "Metropolitan Arterial Unipole",
+  "City Center Elevated Billboard",
+  "Flyover View Prime Gantry",
+  "Twin Highway Display Network",
+  "District Commercial Gateway Hoarding",
+  "Bypass Flyover Skyline Display",
+];
 
-// Category 2: Transit & Moving Media (7 items)
+const HOARDING_LOCATIONS = [
+  "Kumbalam Toll Plaza, Panvel-Kochi Hwy",
+  "Nochad Corridor, Kozhikode",
+  "Kallidumbu, Koyilandy-Edavanna Rd",
+  "Karukutty Service Road, Angamaly",
+  "M.G. Road Commercial Center, Kochi",
+  "Bypass Flyover, Thiruvananthapuram",
+  "Central Junction, Kollam",
+  "National Highway Bypass Corridor",
+  "Ayathil Flyover Junction, Kollam",
+  "Calicut Bypass Highway, Kozhikode",
+  "Paliyekkara Toll Plaza, Thrissur",
+  "Kannur Arterial Highway Junction",
+  "Kottayam Central Highway Bypass",
+  "Alappuzha National Highway Stretch",
+];
+
+const HOARDING_TAGS = [
+  "High-Visibility Unipole",
+  "Highway Mega Billboard",
+  "Expressway Gantry",
+  "Urban Commercial Static",
+  "Panoramic Rooftop Hoarding",
+  "Large Format Display",
+  "Prime Flyover Billboard",
+];
+
+// Category 1: Static Hoardings (6 items)
+import imgHoarding1 from "../assets/work/err.png";
+import imgHoarding2 from "../assets/work/tttt.png";
+import imgHoarding3 from "../assets/work/ttto.png";
+import imgHoarding4 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.50 PM.jpeg";
+import imgHoarding5 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.54 PM.jpeg";
+import imgHoarding6 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.56 PM (1).jpeg";
+
+// Category 2: Transit & Moving Media (6 items)
 import imgTransit1 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.55 PM.jpeg";
-import imgTransit2 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.45 PM (2).jpeg";
-import imgTransit3 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.49 PM.jpeg";
-import imgTransit4 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.54 PM (2).jpeg";
-import imgTransit5 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.44 PM (1).jpeg";
-import imgTransit6 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.46 PM (1).jpeg";
-import imgTransit7 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.52 PM.jpeg";
+import imgTransit2 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.49 PM.jpeg";
+import imgTransit3 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.54 PM (2).jpeg";
+import imgTransit4 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.44 PM (1).jpeg";
+import imgTransit5 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.46 PM (1).jpeg";
+import imgTransit6 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.52 PM.jpeg";
 
 // Category 3: Mini Hoardings & Street Signage (5 items)
 import imgMini1 from "../assets/work/rt.png";
@@ -42,19 +87,9 @@ import imgMini3 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.53 PM.jpe
 import imgMini4 from "../assets/work/ee.png";
 import imgMini5 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.20 PM.jpeg";
 
-export const hoardings = [
+const rawStaticHoardings = [
   {
-    id: 1,
     src: imgHoarding1,
-    title: "Airport Corridor Skyline Hoarding",
-    category: "Hoardings & Billboards",
-    categoryId: "hoardings",
-    location: "Karipur Airport Road Junction",
-    tag: "High-Visibility Unipole",
-  },
-  {
-    id: 2,
-    src: imgHoarding2,
     title: "Commercial Multi-Tier City Billboard",
     category: "Hoardings & Billboards",
     categoryId: "hoardings",
@@ -62,8 +97,7 @@ export const hoardings = [
     tag: "Urban Static & Digital",
   },
   {
-    id: 3,
-    src: imgHoarding3,
+    src: imgHoarding2,
     title: "Lush Green Highway Billboard",
     category: "Hoardings & Billboards",
     categoryId: "hoardings",
@@ -71,8 +105,7 @@ export const hoardings = [
     tag: "Large Format Unipole",
   },
   {
-    id: 4,
-    src: imgHoarding4,
+    src: imgHoarding3,
     title: "Panoramic High-Traffic Mega Hoarding",
     category: "Hoardings & Billboards",
     categoryId: "hoardings",
@@ -80,8 +113,7 @@ export const hoardings = [
     tag: "Panoramic Structure",
   },
   {
-    id: 5,
-    src: imgHoarding5,
+    src: imgHoarding4,
     title: "Elevated Bypass Rooftop Hoarding",
     category: "Hoardings & Billboards",
     categoryId: "hoardings",
@@ -89,8 +121,7 @@ export const hoardings = [
     tag: "Rooftop Landmark",
   },
   {
-    id: 6,
-    src: imgHoarding6,
+    src: imgHoarding5,
     title: "Prime Commercial Junction Billboard",
     category: "Hoardings & Billboards",
     categoryId: "hoardings",
@@ -98,8 +129,7 @@ export const hoardings = [
     tag: "High-Footfall Intersection",
   },
   {
-    id: 7,
-    src: imgHoarding7,
+    src: imgHoarding6,
     title: "Overhead Arterial Highway Display",
     category: "Hoardings & Billboards",
     categoryId: "hoardings",
@@ -108,9 +138,19 @@ export const hoardings = [
   },
 ];
 
-export const transit = [
+const rawDynamicHoardings = Object.entries(hoardingGlob).map(([filePath, src], index) => ({
+  src,
+  title:
+    HOARDING_TITLES[index % HOARDING_TITLES.length] +
+    (index >= HOARDING_TITLES.length ? ` #${Math.floor(index / HOARDING_TITLES.length) + 1}` : ""),
+  category: "Hoardings & Billboards",
+  categoryId: "hoardings",
+  location: HOARDING_LOCATIONS[index % HOARDING_LOCATIONS.length],
+  tag: HOARDING_TAGS[index % HOARDING_TAGS.length],
+}));
+
+const rawStaticTransit = [
   {
-    id: 8,
     src: imgTransit1,
     title: "Intercity Bus Fleet Back Wrap",
     category: "Transit & Moving Media",
@@ -119,17 +159,7 @@ export const transit = [
     tag: "Full Rear Bus Wrap",
   },
   {
-    id: 9,
     src: imgTransit2,
-    title: "Piaggio Ape Urban Transit Wrap",
-    category: "Transit & Moving Media",
-    categoryId: "transit",
-    location: "Metropolitan Delivery Fleet",
-    tag: "Commercial Vehicle Branding",
-  },
-  {
-    id: 10,
-    src: imgTransit3,
     title: "City Auto Fleet Campaign #27",
     category: "Transit & Moving Media",
     categoryId: "transit",
@@ -137,8 +167,7 @@ export const transit = [
     tag: "Auto Rickshaw Hood Ad",
   },
   {
-    id: 11,
-    src: imgTransit4,
+    src: imgTransit3,
     title: "Dynamic Urban Transit Panel #23",
     category: "Transit & Moving Media",
     categoryId: "transit",
@@ -146,8 +175,7 @@ export const transit = [
     tag: "Fleet Rear Panel",
   },
   {
-    id: 12,
-    src: imgTransit5,
+    src: imgTransit4,
     title: "Metropolitan Fleet Transit Ad #28",
     category: "Transit & Moving Media",
     categoryId: "transit",
@@ -155,8 +183,7 @@ export const transit = [
     tag: "Auto Rickshaw Media",
   },
   {
-    id: 13,
-    src: imgTransit6,
+    src: imgTransit5,
     title: "Street Fleet Mobility Ad #31",
     category: "Transit & Moving Media",
     categoryId: "transit",
@@ -164,8 +191,7 @@ export const transit = [
     tag: "Transit Exposure",
   },
   {
-    id: 14,
-    src: imgTransit7,
+    src: imgTransit6,
     title: "Intercity Commuter Ad Wrap #32",
     category: "Transit & Moving Media",
     categoryId: "transit",
@@ -174,9 +200,8 @@ export const transit = [
   },
 ];
 
-export const miniHoardings = [
+const rawStaticMiniHoardings = [
   {
-    id: 15,
     src: imgMini1,
     title: "Twin Roadside Mini Hoarding Network",
     category: "Mini Hoardings & Signage",
@@ -185,7 +210,6 @@ export const miniHoardings = [
     tag: "Dual Mini Hoarding",
   },
   {
-    id: 16,
     src: imgMini2,
     title: "Monsoon Highway Roadside Display",
     category: "Mini Hoardings & Signage",
@@ -194,7 +218,6 @@ export const miniHoardings = [
     tag: "Curved Highway Hoarding",
   },
   {
-    id: 17,
     src: imgMini3,
     title: "State Transit Roadside Display",
     category: "Mini Hoardings & Signage",
@@ -203,7 +226,6 @@ export const miniHoardings = [
     tag: "Roadside Poster Display",
   },
   {
-    id: 18,
     src: imgMini4,
     title: "Traffic Island & Central Median Sign",
     category: "Mini Hoardings & Signage",
@@ -212,7 +234,6 @@ export const miniHoardings = [
     tag: "Traffic Median Branding",
   },
   {
-    id: 19,
     src: imgMini5,
     title: "Experiential Walking Board Crew",
     category: "Mini Hoardings & Signage",
@@ -222,35 +243,35 @@ export const miniHoardings = [
   },
 ];
 
+let globalId = 1;
+export const hoardings = [...rawStaticHoardings, ...rawDynamicHoardings].map((item) => ({
+  ...item,
+  id: globalId++,
+}));
+
+export const transit = rawStaticTransit.map((item) => ({
+  ...item,
+  id: globalId++,
+}));
+
+export const miniHoardings = rawStaticMiniHoardings.map((item) => ({
+  ...item,
+  id: globalId++,
+}));
+
 // Curated interleaved order for "All":
-// Row 1: Hoarding 1, Transit 1, Mini 1
-// Row 2: Hoarding 2, Transit 2, Mini 2
-// Row 3: Hoarding 3, Transit 3, Mini 3
-// Row 4: Hoarding 4, Transit 4, Mini 4
-// Row 5: Hoarding 5, Transit 5, Mini 5
-// Row 6: Hoarding 6, Transit 6
-// Row 7: Hoarding 7, Transit 7
-export const ALL_CURATED_ITEMS = [
-  hoardings[0],
-  transit[0],
-  miniHoardings[0],
-  hoardings[1],
-  transit[1],
-  miniHoardings[1],
-  hoardings[2],
-  transit[2],
-  miniHoardings[2],
-  hoardings[3],
-  transit[3],
-  miniHoardings[3],
-  hoardings[4],
-  transit[4],
-  miniHoardings[4],
-  hoardings[5],
-  transit[5],
-  hoardings[6],
-  transit[6],
-];
+const maxCategoryLength = Math.max(
+  hoardings.length,
+  transit.length,
+  miniHoardings.length
+);
+const interleavedItems = [];
+for (let i = 0; i < maxCategoryLength; i++) {
+  if (i < hoardings.length) interleavedItems.push(hoardings[i]);
+  if (i < transit.length) interleavedItems.push(transit[i]);
+  if (i < miniHoardings.length) interleavedItems.push(miniHoardings[i]);
+}
+export const ALL_CURATED_ITEMS = interleavedItems;
 
 export const CATEGORIES_CONFIG = [
   {

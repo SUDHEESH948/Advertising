@@ -35,18 +35,25 @@ import prototypeBrandingImg from "../assets/PrototypeBRANDING.png";
 
 // Hoarding 4-image showcase gallery
 import hoardingWork1 from "../assets/work/ttto.png";
-import hoardingWork2 from "../assets/work/rbghj.png";
+import hoardingWork2 from "../assets/work/tttt.png";
 import hoardingWork3 from "../assets/work/err.png";
 import hoardingWork4 from "../assets/work/efgh.png";
 
 // =========================================================
 // AUTOMATIC FOLDER IMAGE IMPORTERS (Vite import.meta.glob)
 // Automatically loads all images added to public folders:
+// - /public/Hoarding
 // - /public/MiniHoarding
 // - /public/ksrtc
 // - /public/pivetbus
 // - /public/transitbranding
 // =========================================================
+const hoardingGlob = import.meta.glob(
+  "../../public/Hoarding/*.{png,jpg,jpeg,JPG,JPEG,webp,WEBP,png.jpeg,jpg.jpeg}",
+  { eager: true, query: "?url", import: "default" }
+);
+const hoardingImages = Object.values(hoardingGlob);
+
 const miniHoardingGlob = import.meta.glob(
   "../../public/MiniHoarding/*.{png,jpg,jpeg,JPG,JPEG,webp,WEBP,png.jpeg,jpg.jpeg}",
   { eager: true, query: "?url", import: "default" }
@@ -77,14 +84,17 @@ const services = [
     title: "Hoarding",
     category: "Outdoor Advertising / Billboards",
     icon: Megaphone,
-    image: hoardingImg,
-    gallery: [
-      hoardingWork1,
-      hoardingWork2,
-      hoardingWork3,
-      hoardingWork4,
-      hoardingImg,
-    ],
+    image: hoardingImages.length > 0 ? hoardingImages[0] : hoardingImg,
+    gallery:
+      hoardingImages.length > 0
+        ? hoardingImages
+        : [
+            hoardingWork1,
+            hoardingWork2,
+            hoardingWork3,
+            hoardingWork4,
+            hoardingImg,
+          ],
     text: "High-impact outdoor advertising positioned in strategic locations for maximum visibility.",
     detailedDescription:
       "Our large-format hoardings and unipoles command unmatched attention across high-traffic highways, busy city junctions, and commercial hotspots. Built with premium materials, weather-resistant illumination, and superior print clarity to deliver 24/7 round-the-clock brand dominance and maximum audience recall.",
