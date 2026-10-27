@@ -86,7 +86,7 @@ export default function ContactFooter() {
               <h2
                 className="
                   mt-4 sm:mt-6 text-4xl font-black leading-[0.95]
-                  tracking-[-0.04em] text-[#1A1A1A]
+                  tracking-[-0.04em] text-[#60A917]
                   sm:text-6xl md:text-7xl lg:text-8xl
                 "
               >
@@ -322,7 +322,7 @@ export default function ContactFooter() {
                       Request a Quote
                     </p>
 
-                    <h3 className="mt-2 sm:mt-3 text-xl font-black text-[#1A1A1A] sm:text-2xl md:text-3xl">
+                    <h3 className="mt-2 sm:mt-3 text-xl font-black text-[#60A917] sm:text-2xl md:text-3xl">
                       Tell us about your campaign.
                     </h3>
 
@@ -454,7 +454,7 @@ export default function ContactFooter() {
                 </span>
               </div>
 
-              <h3 className="mt-3 sm:mt-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-[#1A1A1A]">
+              <h3 className="mt-3 sm:mt-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-[#60A917]">
                 Make your brand
                 <span className="text-[#D1007F]"> impossible to miss.</span>
               </h3>

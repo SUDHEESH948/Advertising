@@ -80,12 +80,11 @@ import imgTransit4 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.44 PM 
 import imgTransit5 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.46 PM (1).jpeg";
 import imgTransit6 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.52 PM.jpeg";
 
-// Category 3: Mini Hoardings & Street Signage (5 items)
+// Category 3: Mini Hoardings & Street Signage (4 items)
 import imgMini1 from "../assets/work/rt.png";
 import imgMini2 from "../assets/work/efgh.png";
 import imgMini3 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.53 PM.jpeg";
-import imgMini4 from "../assets/work/ee.png";
-import imgMini5 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.20 PM.jpeg";
+import imgMini4 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.20 PM.jpeg";
 
 const rawStaticHoardings = [
   {
@@ -227,14 +226,6 @@ const rawStaticMiniHoardings = [
   },
   {
     src: imgMini4,
-    title: "Traffic Island & Central Median Sign",
-    category: "Mini Hoardings & Signage",
-    categoryId: "mini-hoardings",
-    location: "Opposite SBI Circle, City Center",
-    tag: "Traffic Median Branding",
-  },
-  {
-    src: imgMini5,
     title: "Experiential Walking Board Crew",
     category: "Mini Hoardings & Signage",
     categoryId: "mini-hoardings",
@@ -410,7 +401,7 @@ export default function OurWork() {
 
           <div className="mt-2 flex flex-col md:flex-row md:items-end md:justify-between gap-3 sm:gap-4">
             <div>
-              <h1 className="text-3xl font-black tracking-tight text-[#1A1A1A] sm:text-5xl md:text-6xl lg:text-7xl">
+              <h1 className="text-3xl font-black tracking-tight text-[#60A917] sm:text-5xl md:text-6xl lg:text-7xl">
                 Our Work in <span className="text-[#D1007F]">Action.</span>
               </h1>
               <p className="mt-2 max-w-2xl text-xs sm:text-sm leading-relaxed text-[#5A4B1A]">

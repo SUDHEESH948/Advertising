@@ -187,7 +187,7 @@ export default function GalleryNews() {
               </p>
             </div>
 
-            <h2 className="mt-1.5 text-xl font-black text-[#1A1A1A] sm:mt-3 sm:text-3xl md:text-5xl">
+            <h2 className="mt-1.5 text-xl font-black text-[#60A917] sm:mt-3 sm:text-3xl md:text-5xl">
               Our Esteemed Clients
             </h2>
           </div>
@@ -229,7 +229,7 @@ export default function GalleryNews() {
               </p>
             </div>
 
-            <h2 className="mt-1.5 text-2xl font-black text-[#1A1A1A] sm:mt-3 sm:text-4xl md:text-5xl lg:text-6xl">
+            <h2 className="mt-1.5 text-2xl font-black text-[#60A917] sm:mt-3 sm:text-4xl md:text-5xl lg:text-6xl">
               Latest from
               <span className="block text-[#D1007F]">our world.</span>
             </h2>

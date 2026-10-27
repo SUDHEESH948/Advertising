@@ -532,7 +532,7 @@ export default function AboutServices() {
             <p className="mb-3 sm:mb-4 text-xs font-bold uppercase tracking-[0.35em] text-[#D1007F]">
               About Quilonad Media
             </p>
-            <h2 className="max-w-xl text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-[#171217]">
+            <h2 className="max-w-xl text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-[#60A917]">
               We make brands
               <span className="block text-[#D1007F]">visible.</span>
             </h2>
@@ -584,7 +584,7 @@ export default function AboutServices() {
               <p className="mb-3 sm:mb-4 text-xs font-bold uppercase tracking-[0.35em] text-[#D1007F]">
                 What We Do
               </p>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-[#171217]">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-[#60A917]">
                 Complete Media
                 <span className="block text-[#D1007F]">Promotion</span>
               </h2>
