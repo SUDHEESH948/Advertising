@@ -15,12 +15,131 @@ import {
 
 // ============================================================================
 // AUTOMATIC FOLDER IMAGE IMPORTERS (Vite import.meta.glob)
-// Automatically loads all images added to /public/Hoarding
+// Automatically loads all images added to /public/Hoarding, /public/ksrtc, /public/pivetbus
 // ============================================================================
 const hoardingGlob = import.meta.glob(
   "../../public/Hoarding/*.{png,jpg,jpeg,JPG,JPEG,webp,WEBP,png.jpeg,jpg.jpeg}",
   { eager: true, query: "?url", import: "default" }
 );
+
+const pivetBusGlob = import.meta.glob(
+  "../../public/pivetbus/*.{png,jpg,jpeg,JPG,JPEG,webp,WEBP,png.jpeg,jpg.jpeg}",
+  { eager: true, query: "?url", import: "default" }
+);
+
+const ksrtcGlob = import.meta.glob(
+  "../../public/ksrtc/*.{png,jpg,jpeg,JPG,JPEG,webp,WEBP,png.jpeg,jpg.jpeg}",
+  { eager: true, query: "?url", import: "default" }
+);
+
+// Specific metadata mapped to images in /public/Hoarding (derived from real on-site GPS verification)
+const HOARDING_METADATA = {
+  "kumbalam-toll-plaza-kochi-hoarding.jpeg": {
+    title: "Kumbalam Toll Plaza NH 66 Mega Rooftop Hoarding",
+    location: "Near Kumbalam Toll Plaza, Panvel-Kochi-Kanyakumari Hwy, Kochi, Kerala",
+    tag: "Highway Mega Hoarding",
+  },
+  "WhatsApp Image 2026-10-28 at 11.24.14 AM.jpeg": {
+    title: "Koyilandy-Edavanna Highway Curved Billboard",
+    location: "Kallidumbu, Koyilandy-Edavanna Road, Kerala",
+    tag: "Highway Curved Billboard",
+  },
+  "WhatsApp Image 2026-10-28 at 11.24.15 AM (1).jpeg": {
+    title: "Karukutty Arterial Service Road Unipole",
+    location: "Karayamparambu, Karukutty, Angamaly, Kerala",
+    tag: "Expressway Unipole",
+  },
+  "WhatsApp Image 2026-10-28 at 11.24.15 AM.jpeg": {
+    title: "Kuruppumthara Arterial Junction Billboard",
+    location: "Kuravilangad - Kuruppumthara Rd, Kottayam, Kerala",
+    tag: "Arterial Junction Billboard",
+  },
+  "WhatsApp Image 2026-10-28 at 11.24.16 AM (1).jpeg": {
+    title: "Mathur East Open Highway Billboard",
+    location: "Melamuri Kottayi Road, Mathur East, Palakkad, Kerala",
+    tag: "Scenic Highway Billboard",
+  },
+  "WhatsApp Image 2026-10-28 at 11.24.16 AM (2).jpeg": {
+    title: "Nagampadam Commercial Corridor Panoramic Billboard",
+    location: "Nagampadam Junction, Kottayam, Kerala",
+    tag: "Panoramic Static Billboard",
+  },
+  "WhatsApp Image 2026-10-28 at 11.24.16 AM.jpeg": {
+    title: "National Highway Elevated Flyover Bypass Billboard",
+    location: "Arterial Highway Bypass Corridor, Kerala",
+    tag: "High-Speed Bypass Gantry",
+  },
+  "WhatsApp Image 2026-10-28 at 11.24.17 AM (1).jpeg": {
+    title: "Town Railway Station Overbridge Billboard",
+    location: "Vh Road, Opposite Railway Station, Palakkad, Kerala",
+    tag: "Transit Overbridge Billboard",
+  },
+  "WhatsApp Image 2026-10-28 at 11.24.17 AM.jpeg": {
+    title: "Mavoor Road Commercial Rooftop Hoarding",
+    location: "Mavoor Road, Kuttikkattoor, Kozhikode, Kerala",
+    tag: "Rooftop Commercial Billboard",
+  },
+  "WhatsApp Image 2026-10-28 at 11.24.18 AM (1).jpeg": {
+    title: "Palakkad Arterial Highway Billboard",
+    location: "Melamuri Kottayi Road, Palakkad, Kerala",
+    tag: "Highway Unipole",
+  },
+  "WhatsApp Image 2026-10-28 at 11.24.18 AM (2).jpeg": {
+    title: "Nallalam Mega Highway Commercial Billboard",
+    location: "Calicut Road, Nallalam, Kozhikode, Kerala",
+    tag: "Mega Format Billboard",
+  },
+  "WhatsApp Image 2026-10-28 at 11.24.18 AM.jpeg": {
+    title: "Kattipparuthi Highway Junction Display",
+    location: "National Highway Stretch, Kattipparuthi, Malappuram, Kerala",
+    tag: "Twin Highway Display",
+  },
+  "WhatsApp Image 2026-10-28 at 11.24.19 AM (1).jpeg": {
+    title: "Cherukunnu Curved Highway Landmark Billboard",
+    location: "Cherukunnu Arterial Highway, Kannur, Kerala",
+    tag: "Curved Corridor Billboard",
+  },
+  "WhatsApp Image 2026-10-28 at 11.24.19 AM.jpeg": {
+    title: "Kochi-Madurai Highway Center Rooftop Hoarding",
+    location: "Dhanushkodi Rd, Kolenchery, Kochi, Kerala",
+    tag: "City Center Rooftop",
+  },
+  "WhatsApp Image 2026-10-28 at 11.24.20 AM (1).jpeg": {
+    title: "Main Central (MC) Road Commercial Billboard",
+    location: "MC Road Karakkad, Chengannur, Mulakuzha, Kerala",
+    tag: "MC Road Unipole",
+  },
+  "WhatsApp Image 2026-10-28 at 11.24.20 AM (2).jpeg": {
+    title: "Malappuram Highway Gateway Hoarding",
+    location: "Kattipparuthi, Malappuram, Kerala",
+    tag: "Highway Gateway",
+  },
+  "WhatsApp Image 2026-10-28 at 11.24.20 AM.jpeg": {
+    title: "Nellimattom Arterial Roadside Mega Unipole",
+    location: "Nellimattom - Uppukulam Road, Ernakulam, Kerala",
+    tag: "Elevated Roadside Unipole",
+  },
+  "WhatsApp Image 2026-10-28 at 11.24.21 AM (1).jpeg": {
+    title: "High-Lumen Night Illuminated City Unipole",
+    location: "Urban Commercial Boulevard, Kerala",
+    tag: "24/7 Illuminated Unipole",
+  },
+  "WhatsApp Image 2026-10-28 at 11.24.21 AM.jpeg": {
+    title: "Calicut Road Commercial Hub Large Display",
+    location: "Calicut Road, Nallalam, Kozhikode, Kerala",
+    tag: "Large Format Display",
+  },
+  "WhatsApp Image 2026-10-28 at 11.24.22 AM (1).jpeg": {
+    title: "Ranni Hill Highway Curve Billboard",
+    location: "Plachery Road, Near Chellakkadu, Ranni, Pathanamthitta, Kerala",
+    tag: "Scenic Highway Billboard",
+  },
+  "WhatsApp Image 2026-10-28 at 11.24.22 AM.jpeg": {
+    title: "Pettah Capital Junction Commercial Rooftop Hoardings",
+    location: "Pettah Signal Junction, Thiruvananthapuram, Kerala",
+    tag: "Prime Junction Rooftop",
+  },
+};
 
 const HOARDING_TITLES = [
   "National Highway Mega Unipole",
@@ -64,14 +183,6 @@ const HOARDING_TAGS = [
   "Prime Flyover Billboard",
 ];
 
-// Category 1: Static Hoardings (6 items)
-import imgHoarding1 from "../assets/work/err.png";
-import imgHoarding2 from "../assets/work/tttt.png";
-import imgHoarding3 from "../assets/work/ttto.png";
-import imgHoarding4 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.50 PM.jpeg";
-import imgHoarding5 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.54 PM.jpeg";
-import imgHoarding6 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.56 PM (1).jpeg";
-
 // Category 2: Transit & Moving Media (6 items)
 import imgTransit1 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.55 PM.jpeg";
 import imgTransit2 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.49 PM.jpeg";
@@ -80,73 +191,181 @@ import imgTransit4 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.44 PM 
 import imgTransit5 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.46 PM (1).jpeg";
 import imgTransit6 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.52 PM.jpeg";
 
-// Category 3: Mini Hoardings & Street Signage (4 items)
+// Category 3: Mini Hoardings & Street Signage
+import imgRoshiMini from "../assets/work/roshi-kasaragod-mini-hoarding.jpeg";
 import imgMini1 from "../assets/work/rt.png";
 import imgMini2 from "../assets/work/efgh.png";
 import imgMini3 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.53 PM.jpeg";
 import imgMini4 from "../assets/work/WhatsApp Image 2026-10-22 at 4.41.20 PM.jpeg";
 
-const rawStaticHoardings = [
-  {
-    src: imgHoarding1,
-    title: "Commercial Multi-Tier City Billboard",
-    category: "Hoardings & Billboards",
-    categoryId: "hoardings",
-    location: "M.G. Road Commercial Center, Kochi",
-    tag: "Urban Static & Digital",
-  },
-  {
-    src: imgHoarding2,
-    title: "Lush Green Highway Billboard",
-    category: "Hoardings & Billboards",
-    categoryId: "hoardings",
-    location: "NH Highway Scenic Corridor",
-    tag: "Large Format Unipole",
-  },
-  {
-    src: imgHoarding3,
-    title: "Panoramic High-Traffic Mega Hoarding",
-    category: "Hoardings & Billboards",
-    categoryId: "hoardings",
-    location: "National Highway Bypass",
-    tag: "Panoramic Structure",
-  },
-  {
-    src: imgHoarding4,
-    title: "Elevated Bypass Rooftop Hoarding",
-    category: "Hoardings & Billboards",
-    categoryId: "hoardings",
-    location: "Bypass Flyover, Thiruvananthapuram",
-    tag: "Rooftop Landmark",
-  },
-  {
-    src: imgHoarding5,
-    title: "Prime Commercial Junction Billboard",
-    category: "Hoardings & Billboards",
-    categoryId: "hoardings",
-    location: "Central Junction, Kollam",
-    tag: "High-Footfall Intersection",
-  },
-  {
-    src: imgHoarding6,
-    title: "Overhead Arterial Highway Display",
-    category: "Hoardings & Billboards",
-    categoryId: "hoardings",
-    location: "Ayathil Flyover Junction, Kollam",
-    tag: "Flyover View Billboard",
-  },
-];
+const rawDynamicHoardings = Object.entries(hoardingGlob)
+  .sort(([pathA], [pathB]) =>
+    pathA.localeCompare(pathB, undefined, { numeric: true, sensitivity: "base" })
+  )
+  .map(([filePath, src], index) => {
+    const fileName = filePath.split("/").pop().split("\\").pop();
+    const meta = HOARDING_METADATA[fileName] || {
+      title:
+        HOARDING_TITLES[index % HOARDING_TITLES.length] +
+        (index >= HOARDING_TITLES.length
+          ? ` #${Math.floor(index / HOARDING_TITLES.length) + 1}`
+          : ""),
+      location: HOARDING_LOCATIONS[index % HOARDING_LOCATIONS.length],
+      tag: HOARDING_TAGS[index % HOARDING_TAGS.length],
+    };
 
-const rawDynamicHoardings = Object.entries(hoardingGlob).map(([filePath, src], index) => ({
-  src,
-  title:
-    HOARDING_TITLES[index % HOARDING_TITLES.length] +
-    (index >= HOARDING_TITLES.length ? ` #${Math.floor(index / HOARDING_TITLES.length) + 1}` : ""),
-  category: "Hoardings & Billboards",
-  categoryId: "hoardings",
-  location: HOARDING_LOCATIONS[index % HOARDING_LOCATIONS.length],
-  tag: HOARDING_TAGS[index % HOARDING_TAGS.length],
-}));
+    return {
+      src,
+      title: meta.title,
+      category: "Hoardings & Billboards",
+      categoryId: "hoardings",
+      location: meta.location,
+      tag: meta.tag,
+    };
+  });
+
+const PIVET_BUS_METADATA = {
+  "pooja bus.jpg.jpeg": {
+    title: "Pooja Hyper Shoppie Private Bus Rear Glass Ad",
+    location: "Kollam - Kottarakkara Highway Route, Kerala",
+    tag: "Private Bus Rear Glass",
+  },
+  "PRIVATE BUS AD BACK PANEL.jpeg": {
+    title: "Jayalakshmi Silks Private Bus Back Panel Ad",
+    location: "Kozhikode - Thrissur Commuter Route, Kerala",
+    tag: "Bus Rear Metal Panel",
+  },
+  "PVT BUS BACK PANEL.jpeg": {
+    title: "Bhima Gold Adoor Private Bus Branding",
+    location: "Adoor Central Junction - Pathanamthitta Route, Kerala",
+    tag: "Private Bus Rear Panel",
+  },
+};
+
+const KSRTC_METADATA = {
+  "KSRTC.jpg.jpeg": {
+    title: "KSRTC Kerala State Anti-Drug Public Awareness Campaign",
+    location: "Pan-Kerala KSRTC Fast Passenger Fleet, Kerala",
+    tag: "KSRTC Bus Side Panel",
+  },
+  "k1.png": {
+    title: "KSRTC Super Fast Side Panel Campaign",
+    location: "Central Depot Transit Route, Kerala",
+    tag: "KSRTC Super Fast",
+  },
+  "k2.png": {
+    title: "KSRTC Super Fast Rear Panel Ad",
+    location: "Ernakulam - Thiruvananthapuram Route, Kerala",
+    tag: "KSRTC Rear Panel",
+  },
+  "k3.png": {
+    title: "KSRTC Long-Format Side Branding",
+    location: "KSRTC Depot Fleet, Kerala",
+    tag: "Full Side Panel Ad",
+  },
+  "k4.png": {
+    title: "KSRTC Multi-Bus Campaign Depot Activation",
+    location: "Regional Bus Terminal & Depot, Kerala",
+    tag: "KSRTC Fleet Branding",
+  },
+  "k5.png": {
+    title: "KSRTC Intercity Commuter Bus Side Ad",
+    location: "Arterial Highway KSRTC Route, Kerala",
+    tag: "KSRTC Side Banner",
+  },
+  "k6.png": {
+    title: "KSRTC Fast Passenger Side Panel Display",
+    location: "High-Traffic Suburban Route, Kerala",
+    tag: "Fast Passenger Side Ad",
+  },
+  "k7.png": {
+    title: "KSRTC Express Route Transit Panel",
+    location: "Regional KSRTC Transit Network, Kerala",
+    tag: "Express Bus Panel",
+  },
+  "k8.png": {
+    title: "KSRTC State Carrier Campaign Side Panel",
+    location: "Kerala State Road Transport Network",
+    tag: "KSRTC Side Panel",
+  },
+  "k9.png": {
+    title: "KSRTC Fleet Showcase Campaign Collage",
+    location: "Central Kerala KSRTC Transit Hub",
+    tag: "Depot Fleet Activation",
+  },
+  "k10.png": {
+    title: "KSRTC Super Fast Kottayam Market Depot Branding",
+    location: "Tourist Bungalow Road, Market, Kottayam, Kerala",
+    tag: "Kottayam KSRTC Depot",
+  },
+  "k11.png": {
+    title: "KSRTC Kozhikode Mavoor Road Terminal Fleet Branding",
+    location: "Mavoor Road KSRTC Bus Stand, Kozhikode, Kerala",
+    tag: "Kozhikode KSRTC Terminal",
+  },
+  "k12.png": {
+    title: "KSRTC Super Fast Fleet Multi-Angle Campaign",
+    location: "State Highway Corridor Depot, Kerala",
+    tag: "KSRTC Fleet Ad",
+  },
+  "k13.png": {
+    title: "KSRTC Super Fast Regional Route Bus Branding",
+    location: "High-Frequency Commuter Route, Kerala",
+    tag: "KSRTC Side & Rear Ad",
+  },
+  "k14.png": {
+    title: "KSRTC Multi-Bus Commercial Campaign Proof",
+    location: "Inter-District KSRTC Service Network, Kerala",
+    tag: "KSRTC State Carrier",
+  },
+  "k15.png": {
+    title: "KSRTC Terminal Fleet Comprehensive Branding",
+    location: "Major Bus Station Depot Hub, Kerala",
+    tag: "Full Bus Fleet Ad",
+  },
+};
+
+const rawPivetBus = Object.entries(pivetBusGlob)
+  .sort(([pathA], [pathB]) =>
+    pathA.localeCompare(pathB, undefined, { numeric: true, sensitivity: "base" })
+  )
+  .map(([filePath, src], index) => {
+    const fileName = filePath.split("/").pop().split("\\").pop();
+    const meta = PIVET_BUS_METADATA[fileName] || {
+      title: `Private Bus Transit Ad #${index + 1}`,
+      location: "Kerala Commuter Route Network",
+      tag: "Private Bus Branding",
+    };
+    return {
+      src,
+      title: meta.title,
+      category: "Transit & Moving Media",
+      categoryId: "transit",
+      location: meta.location,
+      tag: meta.tag,
+    };
+  });
+
+const rawKsrtcBus = Object.entries(ksrtcGlob)
+  .sort(([pathA], [pathB]) =>
+    pathA.localeCompare(pathB, undefined, { numeric: true, sensitivity: "base" })
+  )
+  .map(([filePath, src], index) => {
+    const fileName = filePath.split("/").pop().split("\\").pop();
+    const meta = KSRTC_METADATA[fileName] || {
+      title: `KSRTC State Carrier Ad #${index + 1}`,
+      location: "Kerala KSRTC Route Network",
+      tag: "KSRTC Bus Branding",
+    };
+    return {
+      src,
+      title: meta.title,
+      category: "Transit & Moving Media",
+      categoryId: "transit",
+      location: meta.location,
+      tag: meta.tag,
+    };
+  });
 
 const rawStaticTransit = [
   {
@@ -201,6 +420,14 @@ const rawStaticTransit = [
 
 const rawStaticMiniHoardings = [
   {
+    src: imgRoshiMini,
+    title: "Roshi Jewellery Premium Roadside Mini Hoarding",
+    category: "Mini Hoardings & Signage",
+    categoryId: "mini-hoardings",
+    location: "Bank Road & Court Road, Kasaragod, Kerala",
+    tag: "Roadside Mini Hoarding",
+  },
+  {
     src: imgMini1,
     title: "Twin Roadside Mini Hoarding Network",
     category: "Mini Hoardings & Signage",
@@ -235,12 +462,16 @@ const rawStaticMiniHoardings = [
 ];
 
 let globalId = 1;
-export const hoardings = [...rawStaticHoardings, ...rawDynamicHoardings].map((item) => ({
+export const hoardings = rawDynamicHoardings.map((item) => ({
   ...item,
   id: globalId++,
 }));
 
-export const transit = rawStaticTransit.map((item) => ({
+export const transit = [
+  ...rawPivetBus,
+  ...rawKsrtcBus,
+  ...rawStaticTransit,
+].map((item) => ({
   ...item,
   id: globalId++,
 }));
